@@ -17,11 +17,8 @@ and open the template in the editor.
         $pdo = new PDO($db, $user, $pass);
         
         $zoeken = $_GET['zoekresultaat'];
-        // Prepare statement
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
-        // Execute with wildcards
         $search->execute(array("%$zoeken%"));
-        // Echo results
         foreach($search as $s) {
         print $s['StockItemName'];
         print(" - €");
