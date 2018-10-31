@@ -9,9 +9,13 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
     </head>
+    <form method="get" action="search.php">
+        Zoeken: <input type="text" name="zoekresultaat">
+        <input type="submit" value="Zoeken" name="Zoeken"></form>
     <body>
         <?php
-        // put your code here
+  
+        
         ?>
     </body>
 </html>
