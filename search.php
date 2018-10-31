@@ -16,7 +16,8 @@ and open the template in the editor.
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
         
-        $zoeken = $_GET['zoekresultaat'];
+        $zoeken = filter_input(INPUT_GET, "zoekresultaat",
+        FILTER_SANITIZE_STRING);
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
         $search->execute(array("%$zoeken%"));
         foreach($search as $s) {
@@ -25,6 +26,7 @@ and open the template in the editor.
         print $s['RecommendedRetailPrice'];
         print("<br>");
         }
+        $pdo = NULL;
         ?>
         <a href="http://localhost/Workshopdatabase/index.php">Terug naar homepagina</a>
     </body>
