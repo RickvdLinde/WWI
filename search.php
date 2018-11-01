@@ -28,6 +28,6 @@ and open the template in the editor.
         }
         $pdo = NULL;
         ?>
-        <a href="http://localhost/Workshopdatabase/index.php">Terug naar homepagina</a>
+        <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
     </body>
 </html>
