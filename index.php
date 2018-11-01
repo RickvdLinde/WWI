@@ -13,8 +13,8 @@
                 <li><a href="inloggen.php">Inloggen</a></li>
             </ul>
         </div>
-        <form method="get" action="search2.php">
-        Zoeken: <input type="text" name="zoekresultaat">
+        <form method="post" action="search2.php">
+        Zoeken: <input type="text" name="zoekresultaat" value="">
         <input type="submit" value="Zoeken" name="Zoeken"></form>
     <?php
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";

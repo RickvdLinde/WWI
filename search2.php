@@ -15,26 +15,30 @@ and open the template in the editor.
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
+        $a = 0;
         
-        $zoeken = filter_input(INPUT_GET, "zoekresultaat",
-        FILTER_SANITIZE_STRING);
+        $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
         $search->execute(array("%$zoeken%"));
+        $a = $search->rowCount();
+        print($_POST["zoekresultaat"]. "<-----");
         
-        if ($search){
-            foreach($search as $s) {
-                print $s['StockItemName'];
-                print(" - €");
-                print $s['RecommendedRetailPrice'];
-                print("<br>");
-            }
-        } else {
-            if($zoeken == NULL){
+            if($zoeken != NULL){
+                foreach($search as $s) {
+                    print $s['StockItemName'];
+                    print(" - €");
+                    print $s['RecommendedRetailPrice'];
+                    print("<br>");
+                }
+            print($a. " resultaten<br>");
+            } else {
+                if(empty($_POST) || $a == NULL){
+                    print("Geen resultaten");
+            } else {
                 print("Geen resultaten");
-        } else {
-            print("Geen resultaten");
-        }
-        }
+            }
+            }
+        
         
         $pdo = NULL;
         ?>
