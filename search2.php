@@ -21,8 +21,7 @@ and open the template in the editor.
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
         $search->execute(array("%$zoeken%"));
         $a = $search->rowCount();
-        print($_POST["zoekresultaat"]. "<-----");
-        
+
             if($zoeken != NULL){
                 foreach($search as $s) {
                     print $s['StockItemName'];
