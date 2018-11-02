@@ -5,20 +5,21 @@ function zoeken($zoeken){
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
     
-    $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
-    $search->execute(array("%$zoeken%"));
-    $a = $search->rowCount();
+        $search = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
+        $search->execute(array("%$zoeken%"));
+        $a = $search->rowCount();
 
-        if($zoeken != NULL){
-            foreach($search as $s) {
-                print $s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . "<br>";
-            }
-        print($a. " resultaten<br>");
-        } else {
-            if(empty($_POST) || $a == NULL){
+            if($zoeken != NULL){
+                foreach($search as $s) {
+                    print ($s['StockItemName'] . " - €" . $s['RecommendedRetailPrice'] . " Voorraad: " . $s['QuantityOnHand'] . "<br>");
+                }
+            print($a. " resultaten<br>");
+            } else {
+                if(empty($_POST) || $a == NULL){
+                    print("Geen resultaten");
+            } else {
                 print("Geen resultaten");
-            } else { print("Geen resultaten");
-        }
-        }
+            }
+            }
 $pdo = NULL;
 }
