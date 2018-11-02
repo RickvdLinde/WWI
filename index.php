@@ -13,7 +13,7 @@
                 <li><a href="inloggen.php">Inloggen</a></li>
             </ul>
         </div>
-        <form method="post" action="search2.php">
+        <form method="post" action="search.php">
         Zoeken: <input type="text" name="zoekresultaat" value="">
         <input type="submit" value="Zoeken" name="Zoeken"></form>
     <?php
