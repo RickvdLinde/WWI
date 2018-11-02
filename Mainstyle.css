@@ -49,9 +49,6 @@ header a{
     margin-top: 1%;
     margin-left: 1%;
 }
-.loggen label{
-    display: block;
-}
 .inloggen label{
     float: left;
     clear: both;
