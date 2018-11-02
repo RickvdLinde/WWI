@@ -45,3 +45,15 @@ header a{
     float: right;
     margin-top: 0.2%;
 }
+.inloggen{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+.loggen label{
+    display: block;
+}
+.inloggen label{
+    float: left;
+    clear: both;
+    width: 10em;
+}

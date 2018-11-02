@@ -11,7 +11,8 @@ function zoeken($zoeken){
 
             if($zoeken != NULL){
                 foreach($search as $s) {
-                    print ($s['StockItemName'] . " - â‚¬" . $s['RecommendedRetailPrice'] . " Voorraad: " . $s['QuantityOnHand'] . "<br>");
+                    $producten = ($s['StockItemName'] . " - â‚¬" . $s['RecommendedRetailPrice'] . " Voorraad: " . $s['QuantityOnHand'] . "<br>");
+                    print($producten);
                 }
             print($a. " resultaten<br>");
             } else {

@@ -12,10 +12,10 @@ include "functions.php"
        <?php
        print(category());
        ?>
-        <form>
+        <form class="inloggen">
             <label for="user">Gebruikersnaam: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
-            <input type="submit" value="Inloggen">
+            <input class="inloggenknop" type="submit" value="Inloggen">
         </form>
     </body>
 </html>
