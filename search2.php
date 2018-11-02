@@ -18,7 +18,7 @@ and open the template in the editor.
         $a = 0;
         
         $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
-        $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
+        $search = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
         $search->execute(array("%$zoeken%"));
         $a = $search->rowCount();
 
@@ -27,6 +27,8 @@ and open the template in the editor.
                     print $s['StockItemName'];
                     print(" - €");
                     print $s['RecommendedRetailPrice'];
+                    print(" Voorraad: ");
+                    print $s['QuantityOnHand'];
                     print("<br>");
                 }
             print($a. " resultaten<br>");
