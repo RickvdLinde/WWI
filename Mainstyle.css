@@ -41,6 +41,9 @@ header a{
     float: left;
     color: #FFFFFF;
 }
+.hover { 
+    background-color: black;
+}
 .zoeken{
     float: right;
     margin-top: 0.2%;
@@ -54,3 +57,4 @@ header a{
     clear: both;
     width: 10em;
 }
+

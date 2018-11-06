@@ -46,7 +46,7 @@ function category(){
         $stmt = $pdo->prepare("SELECT * FROM stockgroups");
         $stmt->execute();
         
-        print("<div class=\"navbar\"><ul>");
+        print("<div class=\"navbar hover\"><ul>");
         while($row = $stmt->fetch()){
             $category = $row["StockGroupName"];
             print("<a href=\"$category.php\">" . $category . "</a>");
