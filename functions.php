@@ -56,7 +56,7 @@ function category(){
         $pdo = NULL;
         
         print('
-        <form method="POST" action="search.php" class="zoeken">
+        <form method="POST" action="search3.php" class="zoeken">
             <input type="text" placeholder="Zoeken.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
         </form>
