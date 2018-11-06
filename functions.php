@@ -17,7 +17,7 @@ function searchontwerp($search, $zoeken, $a){
     if($zoeken != NULL){
         foreach($search as $s) {
             $naam = $s['StockItemName']; 
-            $prijs = " - €" . $s['RecommendedRetailPrice']; 
+            $prijs = "€" . $s['RecommendedRetailPrice']; 
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
             print('<a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
@@ -73,4 +73,15 @@ function category(){
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
         </form>
         </div>');
+}
+
+function contact(){
+        print('<header>
+        <div class = contact>
+            <nav>
+                <a href="contact.php">Contact</a>
+            </nav>
+        </div>
+        </header>
+        <div class="category">');
 }

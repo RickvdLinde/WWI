@@ -17,20 +17,17 @@
         $a = $search->rowCount();
         
         $zoekresultaten = trim($_POST["zoekresultaat"]);
-            if($zoeken != NULL){
+        if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
+                header('Location: http://localhost/WWI/index.php');
+        } elseif($zoeken != NULL){
                 foreach($search as $s) {
                     $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . ("<br>"));
                     print($producten);
                 }
             print($a. " resultaten<br>");
-            } elseif (empty($zoekresultaten)) {
-                header('Location: http://localhost/WWI/index.php'); 
-                exit();
             } elseif ($a === NULL) {
                     print("Geen resultaten");
             }
-        
-        
         $pdo = NULL;
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
