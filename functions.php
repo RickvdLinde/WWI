@@ -51,7 +51,7 @@ function category(){
             $category = $row["StockGroupName"];
             print("<a href=\"$category.php\">" . $category . "</a>");
         }
-        print("</ul></div>");
+        print("</ul></div class = hover>");
         
         $pdo = NULL;
         
