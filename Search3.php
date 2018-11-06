@@ -23,13 +23,11 @@
                 foreach($search as $s) {
                     $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . ("<br>"));
                     print($producten);
-                }if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
-                header('Location: http://localhost/WWI/index.php');
+                }
             print($a. " resultaten<br>");
             } elseif ($a === NULL) {
                     print("Geen resultaten");
             }
-        }
         $pdo = NULL;
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
