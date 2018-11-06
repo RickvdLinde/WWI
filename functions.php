@@ -73,12 +73,8 @@ function category(){
 
 function contact(){
         print('<header>
-        <div class="kop">
-            <div class="logo">
-                <a href="index.php"><img src="Images/WWIlogo.png"></a>
-            </div>
+        <div class = contact>
             <nav>
-                <a>Contact</a>
                 <a href="contact.php">Contact</a>
             </nav>
         </div>
