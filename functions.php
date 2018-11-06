@@ -9,21 +9,29 @@ function zoeken($zoeken){
         $search->execute(array("%$zoeken%"));
         $a = $search->rowCount();
 
-            if($zoeken != NULL){
-                foreach($search as $s) {
-                    $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . " Voorraad: " . $s['QuantityOnHand'] . "<br>");
-                    print($producten);
-                }
-            print($a. " resultaten<br>");
-            } else {
-                if(empty($_POST) || $a == NULL){
-                    print("Geen resultaten");
-                } else {
-                    print("Geen resultaten");
-                }
-            }
+    print(searchontwerp($search, $zoeken, $a));
+    
 $pdo = NULL;
 }
+
+function searchontwerp($search, $zoeken, $a){
+    if($zoeken != NULL){
+        foreach($search as $s) {
+            $naam = $s['StockItemName']; 
+            $prijs = " - €" . $s['RecommendedRetailPrice']; 
+            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+            print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
+        }
+        print($a. " resultaten<br>");
+    } else {
+        if(empty($_POST) || $a == NULL){
+            print("Geen resultaten");
+        } else {
+            print("Geen resultaten");
+        }
+    }
+}
+
 function category(){
     print('<header>
         <div class="kop">
