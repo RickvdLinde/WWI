@@ -1,18 +1,19 @@
 <?php
-include "Testindex.php";
+include "functions.php";
 ?>
 <!DOCTYPE html>
 
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Wide World Importers</title>
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
         
         <?php
         
-        print(Test());
+        print(category());
         // Verbinding maken database
         $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
