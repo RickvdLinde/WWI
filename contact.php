@@ -10,7 +10,15 @@ include "functions.php"
     </head>
     <body>
         <?php
-        print(category());
+        print(contact());
         ?>
+        
+        <h1>
+            Contact informatie
+        </h1>
+        
+        
+        
+        
     </body>
 </html>
