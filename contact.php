@@ -5,7 +5,7 @@ include "functions.php"
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Wide World Importers</title>
+        <title>World Wide Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
@@ -13,5 +13,12 @@ include "functions.php"
         print(category());
         print(contact());
         ?>
+        <h1>
+            Contact informatie
+        </h1>
+        
+        
+        
+        
     </body>
 </html>
