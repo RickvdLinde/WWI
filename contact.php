@@ -1,7 +1,16 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+include "functions.php"
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>World Wide Importers</title>
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+    </head>
+    <body>
+        <?php
+        print(category());
+        ?>
+    </body>
+</html>
