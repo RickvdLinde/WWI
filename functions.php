@@ -64,9 +64,24 @@ function category(){
         $pdo = NULL;
         
         print('
-        <form method="POST" action="search3.php" class="zoeken">
+        <form method="POST" action="search.php" class="zoeken">
             <input type="text" placeholder="Zoeken.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
         </form>
         </div>');
+}
+
+function contact(){
+        print('<header>
+        <div class="kop">
+            <div class="logo">
+                <a href="index.php"><img src="Images/WWIlogo.png"></a>
+            </div>
+            <nav>
+                <a>Contact</a>
+                <a href="contact.php">Contact</a>
+            </nav>
+        </div>
+        </header>
+        <div class="category">');
 }
