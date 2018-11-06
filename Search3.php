@@ -16,16 +16,18 @@
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
         $search->execute(array("%$zoeken%"));
         $a = $search->rowCount();
+        
+        $zoekresultaten = trim($_POST["zoekresultaat"]);
             if($zoeken != NULL){
                 foreach($search as $s) {
                     $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . $s['RecommendedRetailPrice'] . ("<br>"));
                     print($producten);
                 }
             print($a. " resultaten<br>");
-            } elseif(empty($_POST) || $a == NULL) {
+            } elseif (empty($zoekresultaten)) {
+                header('Location: http://localhost/WWI/index.php'); exit();
+            } elseif ($a === NULL) {
                     print("Geen resultaten");
-            } else {
-                print("Geen resultaten");
             }
         
         
