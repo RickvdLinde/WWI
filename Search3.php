@@ -11,7 +11,6 @@
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
         $a = 0;
-        
         $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
         $search = $pdo->prepare("SELECT `StockItemName`, `RecommendedRetailPrice`  FROM `stockitems` WHERE `StockItemName` LIKE ?");
         $search->execute(array("%$zoeken%"));
@@ -25,7 +24,8 @@
                 }
             print($a. " resultaten<br>");
             } elseif (empty($zoekresultaten)) {
-                header('Location: http://localhost/WWI/index.php'); exit();
+                header('Location: http://localhost/WWI/index.php'); 
+                exit();
             } elseif ($a === NULL) {
                     print("Geen resultaten");
             }
@@ -34,6 +34,5 @@
         $pdo = NULL;
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
-        <?php $producten ?>
     </body>
 </html>
