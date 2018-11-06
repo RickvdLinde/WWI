@@ -9,7 +9,10 @@ include "functions.php"
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
-
+        <?php
+        print(category());
+        print(contact());
+        ?>
         <h1>
             Contact informatie
         </h1>

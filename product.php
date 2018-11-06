@@ -19,8 +19,7 @@ include "functions.php"
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
         
-        //$prijs = $pdo->prepare("SELECT UnitPrice FROM stockitems WHERE StockItemName = $naam");
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM stockitems WHERE StockItemName = ?");
+        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
         
         $stmt->execute(array($naam));
         
@@ -29,7 +28,9 @@ include "functions.php"
 
 	$name = $row["StockItemName"];
         $price = $row["RecommendedRetailPrice"];
-	print($name . "<br>" . "€" . $price);
+        $hoeveelheid = $row["QuantityOnHand"];
+        $comments = $row["MarketingComments"];
+	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>MarketingComment: " . $comments . "<br>");
 }
 
         $pdo = NULL;
