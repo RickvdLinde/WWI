@@ -18,7 +18,7 @@ function searchontwerp($search, $zoeken, $a){
     if($zoeken != NULL){
         foreach($search as $s) {
             $naam = $s['StockItemName']; 
-            $prijs = " - €" . $s['RecommendedRetailPrice']; 
+            $prijs = "€" . $s['RecommendedRetailPrice']; 
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
             print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
         }
@@ -64,9 +64,20 @@ function category(){
         $pdo = NULL;
         
         print('
-        <form method="POST" action="search3.php" class="zoeken">
+        <form method="POST" action="search.php" class="zoeken">
             <input type="text" placeholder="Zoeken.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
         </form>
         </div>');
+}
+
+function contact(){
+        print('<header>
+        <div class = contact>
+            <nav>
+                <a href="contact.php">Contact</a>
+            </nav>
+        </div>
+        </header>
+        <div class="category">');
 }
