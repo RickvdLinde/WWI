@@ -19,7 +19,7 @@
         $zoekresultaten = trim($_POST["zoekresultaat"]);
             if($zoeken != NULL){
                 foreach($search as $s) {
-                    $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . $s['RecommendedRetailPrice'] . ("<br>"));
+                    $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . ("<br>"));
                     print($producten);
                 }
             print($a. " resultaten<br>");
