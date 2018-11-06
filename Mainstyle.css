@@ -54,7 +54,7 @@ header a{
     clear: both;
     width: 10em;
 }
-a:hover { 
-    background-color: yellow;
+.hover { 
+    background-color: black;
 }
 
