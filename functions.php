@@ -18,7 +18,7 @@ function searchontwerp($search, $zoeken, $a){
     if($zoeken != NULL){
         foreach($search as $s) {
             $naam = $s['StockItemName']; 
-            $prijs = " - €" . $s['RecommendedRetailPrice']; 
+            $prijs = "€" . $s['RecommendedRetailPrice']; 
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
             print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
         }
