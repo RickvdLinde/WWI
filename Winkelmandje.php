@@ -11,16 +11,11 @@ include "functions.php"
     <body>
         <?php
         print(category());
+        
+        $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_NUMBER_FLOAT);
+        if($aantal > 0){
+            print($aantal);
+        }
         ?>
-        
-        <h1 class="text">
-            Welkom op onze pagina!
-        </h1>
-        
-        <p class = "serrif">
-            Hier kunt u producten bekijken en bestellen.
-        </p>
-        
-        
     </body>
 </html>

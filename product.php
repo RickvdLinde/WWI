@@ -23,7 +23,6 @@ include "functions.php"
         
         $stmt->execute(array($naam));
         
-        
         while ($row = $stmt->fetch()) {
 
 	$name = $row["StockItemName"];
@@ -31,7 +30,15 @@ include "functions.php"
         $hoeveelheid = $row["QuantityOnHand"];
         $comments = $row["MarketingComments"];
 	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>Marketing comment: " . $comments . "<br>");
-}
+        ?>
+        <div>
+            <form method="get" action="product.php">
+                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal"><br>
+                <input type="submit" value="Toevoegen aan Winkelmandje">
+            </form>
+        </div>
+        <?php
+        }
 
         $pdo = NULL;
         ?>

@@ -11,7 +11,6 @@ include "functions.php"
     <body>
         <?php
         print(category());
-        print(contact());
         ?>
         <h1>
             Contact informatie

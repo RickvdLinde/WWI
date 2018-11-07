@@ -19,14 +19,14 @@
         $zoekresultaten = trim($_POST["zoekresultaat"]);
         if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
                 header('Location: http://localhost/WWI/index.php');
+        } elseif ($a == NULL) {
+            print("Geen resultaten");
         } elseif($zoeken != NULL){
                 foreach($search as $s) {
                     $producten = ($s['StockItemName'] . (" - €") . $s['RecommendedRetailPrice'] . ("<br>"));
                     print($producten);
                 }
             print($a. " resultaten<br>");
-            } elseif ($a === NULL) {
-                    print("Geen resultaten");
             }
         $pdo = NULL;
         ?>

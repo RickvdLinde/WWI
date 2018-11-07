@@ -15,7 +15,7 @@
     <?php
     print(category());
     ?>
-            <p>
+        <p>
             <label>Select list</label>
             <select id = "myList">
                <option value = "1">sorteer</option>
