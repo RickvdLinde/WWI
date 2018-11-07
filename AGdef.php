@@ -13,7 +13,7 @@ and open the template in the editor.
 <?php
   $AGs = filter_input(INPUT_GET,
     "productgroup", FILTER_SANITIZE_STRING);
-  //print($AGs); //we kennen hem weer!!
+  //print($AGs); 
   
           // Verbinding maken database
         $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
