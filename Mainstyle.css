@@ -214,3 +214,8 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
     width: 25%;
     margin-left: 161px;
 }
+
+label[for="email"]{
+    float: right;
+    
+}
