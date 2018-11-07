@@ -23,6 +23,7 @@ include "functions.php"
         if(isset($_SESSION["aantal"]) && $_SESSION["aantal"] > 0){
             print($aantal);
         }
+        session_destroy();
         ?>
     </body>
 </html>
