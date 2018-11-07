@@ -11,7 +11,6 @@ function zoeken($zoeken){
 
     print(searchontwerp($search, $zoeken, $a));
     
-$pdo = NULL;
 }
 
 function searchontwerp($search, $zoeken, $a){
@@ -20,6 +19,7 @@ function searchontwerp($search, $zoeken, $a){
             $naam = $s['StockItemName']; 
             $prijs = "€" . $s['RecommendedRetailPrice']; 
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+            print('<a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
         }
         print($a. " resultaten<br>");
@@ -30,6 +30,10 @@ function searchontwerp($search, $zoeken, $a){
             print("Geen resultaten");
         }
     }
+    
+    $pdo = NULL;
+
+    
 }
 
 function category(){

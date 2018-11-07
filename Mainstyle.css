@@ -37,7 +37,7 @@ header a{
     font-size: 20px;
     text-decoration: none;
     color: black;
-    padding-left: 22px;
+    padding-left: 15px;
     float: left;
     color: #FFFFFF;
 }
@@ -75,6 +75,6 @@ header a{
 
 .contact{
     position: absolute;
-    top: 0;
+    top: 5%;
     right: 0;
 }

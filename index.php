@@ -5,7 +5,7 @@ include "functions.php"
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>World Wide Importers</title>
+        <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
