@@ -97,6 +97,7 @@ while ($row = $stmt->fetch()) {
        //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
         	//print($CitemName . "<br>");
 } 
+
 <<<<<<< HEAD
 ?>
         <div class="container">
@@ -111,11 +112,28 @@ print("<li><a href=\"$IsAssignedAG7.php\">" . $IsAssignedAG7. "</a></li>");
 print("<li><a href=\"$IsAssignedAG8.php\">" . $IsAssignedAG8. "</a></li>");
 print("<li><a href=\"$IsAssignedAG9.php\">" . $IsAssignedAG9. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");  
-?>
-        </div>
-<?php
 =======
->>>>>>> 0bb4ed181261e683df8e75df341f068f0c69e8ba
+>>>>>>> 767cd749fe9d360b2b3df60789408c7ee9584a89
+?>
+<div class="container">
+            
+        <ul>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG4);?>"><?php print($IsAssignedAG4);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG5);?>"><?php print($IsAssignedAG5);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG6);?>"><?php print($IsAssignedAG6);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG7);?>"><?php print($IsAssignedAG7);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG8);?>"><?php print($IsAssignedAG8);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
+        </ul>  
+           
+</div>
+<?php
+
 
 // verbinding opruimen
 $pdo = NULL;
@@ -123,19 +141,7 @@ $pdo = NULL;
 
 
     ?>
-        <ul>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG4);?>"><?php print($IsAssignedAG4);?></a></li>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG5);?>"><?php print($IsAssignedAG5);?></a></li>        
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG6);?>"><?php print($IsAssignedAG6);?></a></li>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG7);?>"><?php print($IsAssignedAG7);?></a></li>        
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG8);?>"><?php print($IsAssignedAG8);?></a></li>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
-<li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
-</ul>
+
     </body>
 </html>
 

@@ -4,14 +4,21 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+include "functions.php";
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>World Wide Importers</title>
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
-<?php
 
+        <?php
+        print(category());
+        
   $AGs = filter_input(INPUT_GET,
     "productgroup", FILTER_SANITIZE_STRING);
   //print($AGs); 
