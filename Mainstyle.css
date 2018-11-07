@@ -88,9 +88,37 @@ header a{
 .productnaam{
     font-size: 30px;
 }
+<<<<<<< HEAD
 .productprijs{
     font-size: 28px;
     color: #00AEEF;
+=======
+
+.tk{
+    font-size: 20px;
+    color: #1E90FF;
+<<<<<<< HEAD
+}
+.productnaam{
+    font-size: 30px;
+}
+.productprijs{
+    font-size: 28px;
+    color: #00AEEF;
+}
+.productopvoorraad{
+    font-size: 18px;
+    color: #6be537;
+}
+.productnietvoorraad{
+    font-size: 18px;
+    color: #fc4141;
+}
+=======
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+>>>>>>> a063555f965f42df663ac4f3606cb3d6efae3828
 }
 .productopvoorraad{
     font-size: 18px;
@@ -114,9 +142,13 @@ header a{
     font-size: 18px;
     color: #6be537;
 }
+<<<<<<< HEAD
 .productnietvoorraad{
     font-size: 18px;
     color: #fc4141;
 }
 
 
+=======
+>>>>>>> 2d012eb7eb0dda5b8e4bc645e48a8cf79bf406a6
+>>>>>>> a063555f965f42df663ac4f3606cb3d6efae3828
