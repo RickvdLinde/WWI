@@ -43,8 +43,9 @@ function category(){
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>
             <nav>
-                <a>Winkelwagen</a>
+                <a href="Winkelmandje.php">Winkelmandje</a>
                 <a href="inloggen.php">Inloggen</a>
+                <a class="contact" href="contact.php">Contact</a>
             </nav>
         </div>
         </header>
@@ -73,15 +74,4 @@ function category(){
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
         </form>
         </div>');
-}
-
-function contact(){
-        print('<header>
-        <div class = contact>
-            <nav>
-                <a href="contact.php">Contact</a>
-            </nav>
-        </div>
-        </header>
-        <div class="category">');
 }

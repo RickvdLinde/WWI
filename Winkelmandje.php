@@ -11,6 +11,7 @@ include "functions.php"
     <body>
         <?php
         print(category());
+        
         ?>
     </body>
 </html>

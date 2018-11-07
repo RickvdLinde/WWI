@@ -31,6 +31,14 @@ include "functions.php"
         $hoeveelheid = $row["QuantityOnHand"];
         $comments = $row["MarketingComments"];
 	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>Marketing comment: " . $comments . "<br>");
+        ?>
+        <div>
+            <select>
+                <option></option>
+            </select>
+        </div>
+        <?php
+        print("<button>Toevoegen aan Winkelmandje</button>");
 }
 
         $pdo = NULL;
