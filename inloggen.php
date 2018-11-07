@@ -15,8 +15,7 @@ include "functions.php"
         <form method="POST" class="inloggen">
             <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
-            <input class="inloggenknop" type="submit" value="Inloggen"><br>
-            <input class="registrerenknop" type="submit" value="Registreren">
+            <input class="inloggenknop" type="submit" value="Inloggen">
         </form>
     </body>
 </html>
