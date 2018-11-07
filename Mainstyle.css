@@ -82,10 +82,23 @@ header a{
 .text{
     font-size: 50px;
     color: #1E90FF;
-    
+    text-align: center;
+    padding-top: 40px;
 }
 
-.serrif{
+.tk{
     font-size: 20px;
     color: #1E90FF;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.border{
+    border: 2px solid;
+    border-color:  #1E90FF;
+    border-radius: 5px;
+    border-width: 2px;
+    border-left: 6px #1E90FF;
+    background-color: lightblue;
 }
