@@ -10,7 +10,7 @@ include "functions.php"
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
-    <body>
+    <body class="bodi">
         <?php
         print(category());
         $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
