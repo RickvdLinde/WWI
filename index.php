@@ -17,8 +17,10 @@ include "functions.php"
             Welkom op onze pagina!
         </h1>
         
-        <p class = "serrif">
-            Hier kunt u producten bekijken en bestellen.
+        <br/>
+        
+        <p class="tk border">
+            Hier kunt u producten bekijken en bestellen
         </p>
         
         

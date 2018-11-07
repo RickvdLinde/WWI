@@ -73,6 +73,11 @@ header a{
     
 }
 
+.dib{
+    margin-top: 2%;
+    margin-right: 10%;
+    margin-left: 15%;
+}
 .contact{
     position: absolute;
     top: 5%;
@@ -82,12 +87,14 @@ header a{
 .text{
     font-size: 50px;
     color: #1E90FF;
-    
+    text-align: center;
+    padding-top: 40px;
 }
 
-.serrif{
+.tk{
     font-size: 20px;
     color: #1E90FF;
+<<<<<<< HEAD
 }
 .productnaam{
     font-size: 30px;
@@ -104,3 +111,18 @@ header a{
     font-size: 18px;
     color: #fc4141;
 }
+=======
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.border{
+    border: 2px solid;
+    border-color:  #1E90FF;
+    border-radius: 5px;
+    border-width: 2px;
+    border-left: 6px #1E90FF;
+    background-color: lightblue;
+}
+>>>>>>> 2d012eb7eb0dda5b8e4bc645e48a8cf79bf406a6

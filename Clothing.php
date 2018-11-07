@@ -91,7 +91,7 @@ while ($row = $stmt->fetch()) {
         $CatAG11 = "uperhero action jacket";
         $AssignCatAG11 = stripos($CitemName,$CatAG11);
         if($AssignCatAG11) {
-            $IsAssignedAG11 = "Superhero action jacket";
+            $IsAssignedAG11 = "Superhero action jacket (Blue) 3XL";
         }          
         //print '<img src="'.$CitemPhoto.'"style="width:128px;height:128px">';
        //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
@@ -116,9 +116,8 @@ print("<form action=\"/AGdef.php\" method=\"post\" target=\"_blank\"><br>
 $pdo = NULL;
 //include "testindex.php?var=$category";
         ?>
-
-<a href="AGdef.php?product=<?php print($IsAssignedAG11);?>">Ga naar pagina 2</a>
-
+        
+<a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a>
     </body>
 </html>
 
