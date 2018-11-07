@@ -20,7 +20,6 @@ function searchontwerp($search, $zoeken, $a){
     $zoekresultaten = trim($_POST["zoekresultaat"]);
     
 // Als de zoekbalk leeg is wordt de pagina doorgelinkt naar http://localhost/WWI/index.php
-    
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
                 header('Location: http://localhost/WWI/index.php');
         } elseif ($a == NULL) {
