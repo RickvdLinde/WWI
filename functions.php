@@ -62,7 +62,16 @@ function category(){
         print("<div class=\"navbar\"><ul>");
         while($row = $stmt->fetch()){
             $category = $row["StockGroupName"];
-            print("<a href=\"$category.php\">" . $category . "</a>");
+            //$Catget = 0;
+    if (ctype_space($category)) { 
+        $category =preg_replace('/\s+/', '_', $category);
+        print("<a href=\"$category.php\">" . $category . "</a>");
+    }   else {
+        print("<a href=\"$category.php\">" . $category . "</a>");
+    }    
+            
+            //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
+           
         }
         print("</ul></div>");
         
