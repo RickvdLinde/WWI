@@ -76,7 +76,23 @@ header a{
     border-width: medium;
     background-color: #00AEEF;   
 }
-
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40%;
+}
+.container li{
+    background-color: #FFFFFF;
+    width: 25%;
+    margin: 3px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+}
+.container li:hover{
+    background-color: #e3e4e5;
+    transition-delay: 0.1s;
+}
 .naamproduct {
 
 }

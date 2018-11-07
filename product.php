@@ -47,7 +47,6 @@ include "functions.php"
         </div>
         <?php
         }
-        $winkelmandje = array();
         $_SESSION["naam"] = $naam;
         $pdo = NULL;
         ?>

@@ -97,6 +97,9 @@ while ($row = $stmt->fetch()) {
        //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
         	//print($CitemName . "<br>");
 } 
+?>
+        <div class="container">
+<?php
 print("<li><a href=\"$IsAssignedAG1.php\">" . $IsAssignedAG1. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG2.php\">" . $IsAssignedAG2. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG3.php\">" . $IsAssignedAG3. "</a></li>");  
@@ -107,9 +110,9 @@ print("<li><a href=\"$IsAssignedAG7.php\">" . $IsAssignedAG7. "</a></li>");
 print("<li><a href=\"$IsAssignedAG8.php\">" . $IsAssignedAG8. "</a></li>");
 print("<li><a href=\"$IsAssignedAG9.php\">" . $IsAssignedAG9. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");  
-
-
-
+?>
+        </div>
+<?php
 
 // verbinding opruimen
 $pdo = NULL;
