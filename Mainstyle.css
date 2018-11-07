@@ -21,6 +21,14 @@ body{
     margin: auto;
     overflow: hidden;
 }
+.kop nav{
+    padding-top: 30px;
+}
+.kop nav a{
+    font-size: 28px;
+    padding-right: 10px;
+    color: #00AEEF;
+}
 header{
     background-color: #FFFFFF;
 }
@@ -96,6 +104,13 @@ header a{
     font-size: 30px;
 }
 
+<<<<<<< HEAD
+.tk{
+    font-size: 20px;
+    color: #1E90FF;
+}
+=======
+>>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
 .productnaam{
     font-size: 30px;
 }
@@ -111,6 +126,12 @@ header a{
     font-size: 18px;
     color: #fc4141;
 }
+<<<<<<< HEAD
+ /* text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}*/
+=======
 
 .productopvoorraad{
     font-size: 18px;
@@ -147,6 +168,7 @@ header a{
     padding-top: 40px;
     padding-bottom: 40px;
 }
+>>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
 
 .border{
     border: 2px solid;
@@ -154,6 +176,9 @@ header a{
     border-radius: 5px;
     border-width: 2px;
     background-color: lightblue;
+<<<<<<< HEAD
+}
+=======
 }
 
 .img{
@@ -162,3 +187,4 @@ header a{
     opacity: 0.5;
     width: 500px;
 }
+>>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
