@@ -21,6 +21,14 @@ body{
     margin: auto;
     overflow: hidden;
 }
+.kop nav{
+    padding-top: 30px;
+}
+.kop nav a{
+    font-size: 28px;
+    padding-right: 10px;
+    color: #00AEEF;
+}
 header{
     background-color: #FFFFFF;
 }
@@ -56,6 +64,7 @@ header a{
 .inloggen{
     margin-top: 1%;
     margin-left: 1%;
+    color: #FFFFFF;
 }
 .inloggen label{
     float: left;
@@ -148,12 +157,14 @@ header a{
     padding-bottom: 40px;
 }
 
+
 .border{
     border: 2px solid;
     border-color:  black;
     border-radius: 5px;
     border-width: 2px;
     background-color: lightblue;
+
 }
 
 .img{
@@ -162,3 +173,4 @@ header a{
     opacity: 0.5;
     width: 500px;
 }
+
