@@ -89,3 +89,18 @@ header a{
     font-size: 20px;
     color: #1E90FF;
 }
+.productnaam{
+    font-size: 30px;
+}
+.productprijs{
+    font-size: 28px;
+    color: #00AEEF;
+}
+.productopvoorraad{
+    font-size: 18px;
+    color: #6be537;
+}
+.productnietvoorraad{
+    font-size: 18px;
+    color: #fc4141;
+}
