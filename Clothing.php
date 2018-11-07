@@ -22,10 +22,10 @@ include "functions.php";
         
         // voorbereiden query selecteren items van een categorie
 
-$stmt = $pdo->prepare("select * from stockitems SI join 
-    stockitemstockgroups SISG on SI.StockItemID=SISG.StockItemID 
-    join stockgroups SG on SISG.StockGroupID=SG.StockGroupID 
-    where SG.StockGroupID = 2 order by StockItemName"); 
+$stmt = $pdo->prepare("SELECT * FROM stockitems SI join 
+    stockitemstockgroups SISG ON SI.StockItemID=SISG.StockItemID 
+    join stockgroups SG ON SISG.StockGroupID=SG.StockGroupID 
+    WHERE SG.StockGroupID = 2 ORDER BY StockItemName"); 
 
 // Uitvoeren query 
 $stmt->execute();
@@ -34,7 +34,7 @@ $stmt->execute();
 // Resultaten verwerken namen items
 while ($row = $stmt->fetch()) {
 
-	$CitemName = $row["StockItemName"];
+    $CitemName = $row["StockItemName"];
         //print($CitemName . "<br>");
 
 
@@ -107,15 +107,16 @@ print("<li><a href=\"$IsAssignedAG7.php\">" . $IsAssignedAG7. "</a></li>");
 print("<li><a href=\"$IsAssignedAG8.php\">" . $IsAssignedAG8. "</a></li>");
 print("<li><a href=\"$IsAssignedAG9.php\">" . $IsAssignedAG9. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");  
-print("<li><a href=\"$IsAssignedAG11.php\">" . $IsAssignedAG11. "</a></li>");
-print("<form action=\"/AGdef.php\" method=\"post\" target=\"_blank\"><br>
-        <a href=\"$IsAssignedAG11.php\">" . $IsAssignedAG11. "</a></form>");
+
+
 
 
 // verbinding opruimen
 $pdo = NULL;
 //include "testindex.php?var=$category";
-        ?>
+
+
+    ?>
         
 <a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a>
     </body>
