@@ -173,3 +173,33 @@ header a{
     width: 500px;
 }
 
+label[for="user"], [for="pass"]{
+    margin: 15px 0;
+}
+
+input[name="user"], input[name="pass"]{
+    
+    width: 25%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+
+input[class="inloggenknop"] , input[class="registrerenknop"]{
+    background-color: #00AEEF;
+    color: white;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    margin-left: 161px;
+}
+
+label[for="email"]{
+    float: right;
+    
+}
