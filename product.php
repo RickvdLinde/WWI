@@ -27,13 +27,19 @@ include "functions.php"
 
 	$name = $row["StockItemName"];
         $price = $row["RecommendedRetailPrice"];
-        $hoeveelheid = $row["QuantityOnHand"];
-        $comments = $row["MarketingComments"];
-	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>Marketing comment: " . $comments . "<br>");
+        $voorraad = $row["QuantityOnHand"];
+        $comment = $row["MarketingComments"];
+	print("<div class=\"productnaam\">" . $name . "<br></div>");
+        print("<div class=\"productprijs\">Prijs: €" . $price) . "<br></div>";
+        if($voorraad > 0){
+            print("<div class=\"productopvoorraad\">Product is nog op voorraad</div>");
+        } else {
+            print("<div class=\"productnietvoorraad\">Product is niet op voorraad</div>");
+        }
         ?>
         <div>
-            <form method="get" action="product.php">
-                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal"><br>
+            <form method="get" action="Winkelmandje.php">
+                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>..." name="aantal"><br>
                 <input type="submit" value="Toevoegen aan Winkelmandje">
             </form>
         </div>

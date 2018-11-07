@@ -8,7 +8,7 @@ include "functions.php"
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
-    <body>
+    <body class="bodi">
         <?php
         print(category());
         ?>
@@ -17,10 +17,12 @@ include "functions.php"
             Welkom op onze pagina!
         </h1>
         
-        <p class = "serrif">
-            Hier kunt u producten bekijken en bestellen.
-        </p>
+        <br/>
         
+        <p class="tk border">
+            Hier kunt u producten bekijken en bestellen
+        </p>
+
         
     </body>
 </html>

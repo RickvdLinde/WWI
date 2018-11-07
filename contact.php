@@ -12,10 +12,17 @@ include "functions.php"
         <?php
         print(category());
         ?>
-        <h1>
+        <h1 class="text">
             Contact informatie
         </h1>
         
+        <p class="tk border">
+            E-mail: worldwideimporters@world.nl
+            <br/>
+            Telefoonnummer: 0646634533
+            <br/>
+            Locatie: Zwolle
+        </p>
         
         
         
