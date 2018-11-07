@@ -13,6 +13,14 @@ body{
     margin: auto;
     overflow: hidden;
 }
+.kop nav{
+    padding-top: 30px;
+}
+.kop nav a{
+    font-size: 28px;
+    padding-right: 10px;
+    color: #00AEEF;
+}
 header{
     background-color: #FFFFFF;
 }
@@ -94,7 +102,6 @@ header a{
 .tk{
     font-size: 20px;
     color: #1E90FF;
-<<<<<<< HEAD
 }
 .productnaam{
     font-size: 30px;
@@ -111,11 +118,10 @@ header a{
     font-size: 18px;
     color: #fc4141;
 }
-=======
-    text-align: center;
+ /* text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-}
+}*/
 
 .border{
     border: 2px solid;
@@ -125,4 +131,3 @@ header a{
     border-left: 6px #1E90FF;
     background-color: lightblue;
 }
->>>>>>> 2d012eb7eb0dda5b8e4bc645e48a8cf79bf406a6

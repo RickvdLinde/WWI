@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include "functions.php"
 ?>
 <!DOCTYPE html>
@@ -45,7 +47,8 @@ include "functions.php"
         </div>
         <?php
         }
-
+        $winkelmandje = array();
+        $_SESSION["naam"] = $naam;
         $pdo = NULL;
         ?>
     </body>
