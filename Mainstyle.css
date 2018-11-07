@@ -64,6 +64,7 @@ header a{
 .inloggen{
     margin-top: 1%;
     margin-left: 1%;
+    color: #FFFFFF;
 }
 .inloggen label{
     float: left;
@@ -120,13 +121,6 @@ header a{
     font-size: 30px;
 }
 
-<<<<<<< HEAD
-.tk{
-    font-size: 20px;
-    color: #1E90FF;
-}
-=======
->>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
 .productnaam{
     font-size: 30px;
 }
@@ -142,12 +136,6 @@ header a{
     font-size: 18px;
     color: #fc4141;
 }
-<<<<<<< HEAD
- /* text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}*/
-=======
 
 .productopvoorraad{
     font-size: 18px;
@@ -184,7 +172,6 @@ header a{
     padding-top: 40px;
     padding-bottom: 40px;
 }
->>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
 
 .border{
     border: 2px solid;
@@ -192,9 +179,7 @@ header a{
     border-radius: 5px;
     border-width: 2px;
     background-color: lightblue;
-<<<<<<< HEAD
-}
-=======
+
 }
 
 .img{
@@ -203,4 +188,34 @@ header a{
     opacity: 0.5;
     width: 500px;
 }
->>>>>>> 584f39305c2184749bb8a6c48cd2ce43b95e2dc0
+
+label[for="user"], [for="pass"]{
+    margin: 15px 0;
+}
+
+input[name="user"], input[name="pass"]{
+    
+    width: 25%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+
+input[class="inloggenknop"] , input[class="registrerenknop"]{
+    background-color: #00AEEF;
+    color: white;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    margin-left: 161px;
+}
+
+label[for="email"]{
+    float: right;
+    
+}

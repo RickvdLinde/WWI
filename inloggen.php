@@ -13,9 +13,10 @@ include "functions.php"
        print(category());
        ?>
         <form method="POST" class="inloggen">
-            <label for="user">Gebruikersnaam: </label><input type="text" id="user" name="user"><br>
+            <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
-            <input class="inloggenknop" type="submit" value="Inloggen">
+            <input class="inloggenknop" type="submit" value="Inloggen"><br>
+            <input class="registrerenknop" type="submit" value="Registreren">
         </form>
     </body>
 </html>
