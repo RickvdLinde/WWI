@@ -15,6 +15,7 @@ function zoeken($zoeken){
 
 function searchontwerp($search, $zoeken, $a){
     if($zoeken != NULL){
+        print("<div class='dib'>");
         foreach($search as $s) {
             $naam = $s['StockItemName']; 
             $prijs = "€" . $s['RecommendedRetailPrice']; 
@@ -23,7 +24,9 @@ function searchontwerp($search, $zoeken, $a){
             print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
         }
         print($a. " resultaten<br>");
-    } else {
+    
+        print("</div>");
+        } else {
         if(empty($_POST) || $a == NULL){
             print("Geen resultaten");
         } else {
