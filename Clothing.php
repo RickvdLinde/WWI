@@ -101,7 +101,6 @@ while ($row = $stmt->fetch()) {
 ?>
 <div class="container">
             
-        <ul>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
@@ -113,7 +112,6 @@ while ($row = $stmt->fetch()) {
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
-        </ul>  
            
 </div>
 <?php
