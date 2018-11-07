@@ -19,8 +19,8 @@ function searchontwerp($search, $zoeken, $a){
             $naam = $s['StockItemName']; 
             $prijs = "€" . $s['RecommendedRetailPrice']; 
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
-            print('<a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<div class="dip"><div class="naamproduct"><p>'.$naam.'</p></div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
+            print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+            print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
         }
         print($a. " resultaten<br>");
     } else {

@@ -30,7 +30,7 @@ include "functions.php"
         $price = $row["RecommendedRetailPrice"];
         $hoeveelheid = $row["QuantityOnHand"];
         $comments = $row["MarketingComments"];
-	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>MarketingComment: " . $comments . "<br>");
+	print("Naam: " . $name . "<br>" . "Prijs: €" . $price . "<br>Marketing comment: " . $comments . "<br>");
 }
 
         $pdo = NULL;
