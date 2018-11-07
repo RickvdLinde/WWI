@@ -14,26 +14,24 @@ function zoeken($zoeken){
 }
 
 function searchontwerp($search, $zoeken, $a){
-    if($zoeken != NULL){
-        foreach($search as $s) {
-            $naam = $s['StockItemName']; 
-            $prijs = "€" . $s['RecommendedRetailPrice']; 
-            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
-            print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
-        }
+    $zoekresultaten = trim($_POST["zoekresultaat"]);
+    if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
+                header('Location: http://localhost/WWI/index.php');
+        } elseif ($a == NULL) {
+            print("Geen resultaten");
+        } elseif($zoeken != NULL){
+        print("<div class='dib'>");
+            foreach($search as $s) {
+                $naam = $s['StockItemName']; 
+                $prijs = "€" . $s['RecommendedRetailPrice']; 
+                $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+                print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+                print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
+            }
         print($a. " resultaten<br>");
-    } else {
-        if(empty($_POST) || $a == NULL){
-            print("Geen resultaten");
-        } else {
-            print("Geen resultaten");
+        print("</div>");
         }
-    }
-    
     $pdo = NULL;
-
-    
 }
 
 function category(){
