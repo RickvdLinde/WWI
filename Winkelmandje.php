@@ -12,6 +12,10 @@ include "functions.php"
         <?php
         print(category());
         
+        $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_NUMBER_FLOAT);
+        if($aantal > 0){
+            print($aantal);
+        }
         ?>
     </body>
 </html>

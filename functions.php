@@ -45,7 +45,7 @@ function category(){
             <nav>
                 <a href="Winkelmandje.php">Winkelmandje</a>
                 <a href="inloggen.php">Inloggen</a>
-                <a class="contact" href="contact.php">Contact</a>
+                <a href="contact.php">Contact</a>
             </nav>
         </div>
         </header>
