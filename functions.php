@@ -105,4 +105,7 @@ function LogIn(){
             $password = trim($_POST["pass"]);
             $hashed_password = hash('sha256', $_POST['pass']);
         }
+        if($hashed_password == $ps){
+            print("ingelogd");
+        }
 }
