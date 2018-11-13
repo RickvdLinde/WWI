@@ -35,8 +35,7 @@ function searchontwerp($search, $zoeken, $a){
                 print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
                 print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
             }
-        print($a. " resultaten<br>");
-        print("</div>");
+        print($a. " resultaten<br></div>");
         }
     $pdo = NULL;
 }
@@ -53,7 +52,7 @@ function category(){
                 <a href="inloggen.php">Inloggen</a>
                 <a href="contact.php">Contact</a>
             </nav>
-        </div>
+            </div>
         </header>
         <div class="category">');
         
