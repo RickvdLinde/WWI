@@ -212,9 +212,8 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
 
 label[for="email"]{
     float: right;
-<<<<<<< HEAD
 }
-=======
+
     
 }
 .slider-holder
@@ -281,4 +280,4 @@ label[for="email"]{
             border-radius: 5px;
             background-color: #1E90FF;
         }
->>>>>>> 353f17c98c69d4177705bcdc16cd27023b7d8b96
+
