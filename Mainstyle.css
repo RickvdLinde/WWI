@@ -218,8 +218,8 @@ label[for="email"]{
 }
 .slider-holder
         {
-            width: 800px;
-            height: 400px;
+            width: 225px;
+            height: 225px;
             background-color: yellow;
             margin-left: auto;
             margin-right: auto;
@@ -230,9 +230,9 @@ label[for="email"]{
         
         .image-holder
         {
-            width: 2400px;
+            width: 675px;
             background-color: red;
-            height: 400px;
+            height: 225px;
             clear: both;
             position: relative;
             
@@ -258,12 +258,12 @@ label[for="email"]{
         
         #slider-image-2:target ~ .image-holder
         {
-            left: -800px;
+            left: -225px;
         }
         
         #slider-image-3:target ~ .image-holder
         {
-            left: -1600px;
+            left: -450px;
         }
         
         .button-holder
@@ -280,4 +280,3 @@ label[for="email"]{
             border-radius: 5px;
             background-color: #1E90FF;
         }
-

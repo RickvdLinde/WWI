@@ -30,9 +30,9 @@ session_start();
         <span id="slider-image-2"></span>
         <span id="slider-image-3"></span>
         <div class="image-holder">
-            <img src="Images/usb.jpg" class="slider-image" />
-            <img src="Images/usb.jpg" class="slider-image" />
-            <img src="Images/usb.jpg" class="slider-image" />
+            <img src="Images/3 kg Courier post bag (White).jpg" class="slider-image" />
+            <img src="Images/Chocolate beetles.jpg" class="slider-image" />
+            <img src="Images/Chocolate echidnas.jpg" class="slider-image" />
         </div>
         <div class="button-holder">
             <a href="#slider-image-1" class="slider-change"></a>
