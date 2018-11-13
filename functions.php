@@ -105,7 +105,7 @@ function LogIn(){
             $password = ($_POST["pass"]);
             $hashed_password = hash('sha256', $_POST['pass']);
         
-            if(empty($user) || empty($pass)) {
+            if(empty($logonname) || empty($password)) {
                 print("Je moet een e-mailadres of wachtwoord invoeren.");
             }
             if($hashed_password == $ps){
