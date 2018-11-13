@@ -108,6 +108,7 @@ function LogIn(){
             if(empty($logonname) || empty($password)) {
                 print("Je moet een e-mailadres of wachtwoord invoeren.");
             }
+            
             if($hashed_password == $ps){
                 print("ingelogd");
         }
