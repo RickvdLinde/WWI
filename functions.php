@@ -101,8 +101,8 @@ function LogIn(){
         $ln->execute();
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $logonname = trim($_POST["user"]);
-            $password = trim($_POST["pass"]);
+            $logonname = ($_POST["user"]);
+            $password = ($_POST["pass"]);
             $hashed_password = hash('sha256', $_POST['pass']);
         }
         if($hashed_password == $ps){
