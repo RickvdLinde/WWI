@@ -35,8 +35,7 @@ function searchontwerp($search, $zoeken, $a){
                 print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
                 print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
             }
-        print($a. " resultaten<br>");
-        print("</div>");
+        print($a. " resultaten<br></div>");
         }
     $pdo = NULL;
 }
@@ -53,7 +52,7 @@ function category(){
                 <a href="inloggen.php">Inloggen</a>
                 <a href="contact.php">Contact</a>
             </nav>
-        </div>
+            </div>
         </header>
         <div class="category">');
         
@@ -88,4 +87,26 @@ function category(){
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
             </form>
         </div>');
+}
+
+function LogIn(){
+    
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);
+        $logonname = $_POST['user'];
+        $password = $_POST['pass'];
+        $hashed_password = hash('sha256', $_POST['pass']);
+        
+        $ln = $pdo->prepare("SELECT LogOnName FROM people WHERE IsPermittedToLogon = 1");
+        $ps = $pdo->prepare("SELECT HashedPassword FROM people WHERE IsPermittedToLogon = 1");
+        $ps->execute();
+        $ln->execute();
+        
+        if ($hashed_password == $ps){
+            header('Location: http://localhost/WWI/index.php');
+        }
+    
+    
 }

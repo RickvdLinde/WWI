@@ -11,6 +11,7 @@ include "functions.php"
     <body class="bodi">
        <?php
        print(category());
+       print(LogIn());
        ?>
         <form method="POST" class="inloggen">
             <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
