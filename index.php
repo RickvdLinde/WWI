@@ -14,13 +14,14 @@ include "functions.php"
         ?>
         
         <h1 class="text">
-            Welkom op onze pagina!
+            Week deals, nu in de aanbieding!
         </h1>
         
         <br/>
         
         <p class="tk border">
-            Hier kunt u producten bekijken en bestellen
+            OP = OP <br/>
+            Dus wees er snel bij!
         </p>
         <br>
         <div class="slider-holder">
