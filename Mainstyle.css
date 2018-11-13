@@ -119,6 +119,7 @@ header a{
 
 .productnaam{
     font-size: 30px;
+}
 .productprijs{
     font-size: 28px;
     color: #00AEEF;
@@ -215,7 +216,6 @@ label[for="email"]{
 }
 
     
-}
 .slider-holder
         {
             width: 225px;
