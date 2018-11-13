@@ -15,16 +15,16 @@
     <?php
     print(category());
     ?>
-        <p>
             <label>Select list</label>
-            <select id = "myList">
-               <option value = "1">sorteer</option>
-               <option value = "2">prijs laag < hoog</option>
-               <option value = "3">prijs hoog > laag</option>
-               <option value = "4">Meest verkocht</option>
-               <option value = "5">Nieuwst</option>
-            </select>
-        </p>
+<form action="search.php">
+<select name="cars">
+  <option value="asc">prijs laag hoog</option>
+  <option value="desc">prijs hoog laag</option>
+  <option value="populair">populair</option>
+  <option value="newest">Newste</option>
+</select>
+<input type="submit" value="Submit">
+</form>
     <?php
     zoeken($zoeken);
     ?>
