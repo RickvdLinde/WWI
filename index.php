@@ -1,5 +1,6 @@
 <?php
-include "functions.php"
+include "functions.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html>

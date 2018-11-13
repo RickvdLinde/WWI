@@ -119,11 +119,6 @@ header a{
 
 .productnaam{
     font-size: 30px;
-}
-
-.productnaam{
-    font-size: 30px;
-}
 .productprijs{
     font-size: 28px;
     color: #00AEEF;
@@ -217,5 +212,4 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
 
 label[for="email"]{
     float: right;
-    
 }

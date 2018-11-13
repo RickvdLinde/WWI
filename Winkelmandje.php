@@ -14,16 +14,17 @@ include "functions.php"
         <?php
         print(category());
         
-        if(isset($_SESSION["naam"])){
-            $naam = $_SESSION["naam"];
-            print($naam . ": ");
-        }
         $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_NUMBER_FLOAT);
         $_SESSION["aantal"] = $aantal;
-        if(isset($_SESSION["aantal"]) && $_SESSION["aantal"] > 0){
-            print($aantal);
+        
+        if(isset($_SESSION["naam"])){
+            $naam = $_SESSION["naam"];
+            if(isset($_SESSION["aantal"]) && $_SESSION["aantal"] > 0){
+                print($naam . ": " . $aantal);
+            } else {
+                print("Geen hoeveelheid");
+            }
         }
-        session_destroy();
         ?>
     </body>
 </html>

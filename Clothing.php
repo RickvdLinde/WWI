@@ -98,10 +98,7 @@ while ($row = $stmt->fetch()) {
         	//print($CitemName . "<br>");
 } 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ?>
-        <div class="container">
 <?php
 print("<li><a href=\"$IsAssignedAG1.php\">" . $IsAssignedAG1. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG2.php\">" . $IsAssignedAG2. "</a></li>");  
@@ -113,17 +110,11 @@ print("<li><a href=\"$IsAssignedAG7.php\">" . $IsAssignedAG7. "</a></li>");
 print("<li><a href=\"$IsAssignedAG8.php\">" . $IsAssignedAG8. "</a></li>");
 print("<li><a href=\"$IsAssignedAG9.php\">" . $IsAssignedAG9. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");  
-=======
->>>>>>> 767cd749fe9d360b2b3df60789408c7ee9584a89
-?>
-<div class="container">
-            
+
+?>   
         <ul>
-=======
 ?>
 <div class="container">
-            
->>>>>>> ebb37880915ab7e85427861881383be31c35ca1d
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
@@ -135,19 +126,12 @@ print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
-<<<<<<< HEAD
-        </ul>  
-=======
->>>>>>> ebb37880915ab7e85427861881383be31c35ca1d
-           
+        </ul>   
 </div>
 <?php
-
-
 // verbinding opruimen
 $pdo = NULL;
 //include "testindex.php?var=$category";
-
 
     ?>
 
