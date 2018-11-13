@@ -12,6 +12,7 @@
     <body>
     <?php
     zoeken($zoeken);
+    
     ?>
     <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
     </body>
