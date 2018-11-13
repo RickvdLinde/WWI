@@ -7,7 +7,7 @@ body{
 }
 
 .bodi{
-    /*background-image: url("Images/WW1.jpg");*/
+    background-image: url("Images/WW1.jpg");
     background-position: center;
     background-size: cover;
     height: 900px;
@@ -62,8 +62,8 @@ header a{
     margin-top: 0.2%;
 }
 .inloggen{
-    margin-top: 1%;
-    margin-left: 1%;
+    margin-top: 150px;
+    margin-left: 32%;
     color: #FFFFFF;
 }
 .inloggen label{
