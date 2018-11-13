@@ -88,3 +88,18 @@ function category(){
             </form>
         </div>');
 }
+
+function LogIn(){
+    
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);
+        
+        $ln = $pdo->prepare("SELECT LogOnName FROM people WHERE IsPermittedToLogon = 1");
+        $ps = $pdo->prepare("SELECT HashedPassword FROM people WHERE IsPermittedToLogon = 1");
+        $ps->execute();
+        $ln->execute();
+    
+    
+}
