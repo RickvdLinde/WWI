@@ -109,7 +109,7 @@ function LogIn(){
                 print("Je moet een e-mailadres of wachtwoord invoeren.");
             }
             
-            if($hashed_password == $ps){
+            if($hashed_password == $ps || $logonname == $ln){
                 print("ingelogd");
         }
       } 
