@@ -15,14 +15,13 @@ session_start();
         ?>
         
         <h1 class="text">
-            Week deals, nu in de aanbieding!
+            Wide World Importers
         </h1>
         
         <br/>
         
         <p class="tk border">
-            OP = OP <br/>
-            Dus wees er snel bij!
+            Welkom bij onze webshop!
         </p>
         <br>
         
