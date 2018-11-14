@@ -23,15 +23,16 @@ include "functions.php"
         $rows = $stmt->fetchAll(); // assuming $result == true
         $n = count($rows);
         
-        if($rows > 0){
-            echo "<table><tr><th>Naam leverancier</th><th>Postcode</th><th>Telefoonnummer</th><th>Fax</th><th>Website</th></tr>";
-            while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["SupplierName"]."</td><td>".$row["PostalCityID"]."<tr><td>".$row["PhoneNumber"]."</td><td>".$row["FaxNumber"]."<tr><td>".$row["WebsiteURL"]."";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "Naam leverancier | " . $row["SupplierName"] . "<br>" . "Postcode | " . $row["PostalCityID"] . 
+                        "Telefoonnummer | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"]. "Website | " . $row["WebsiteURL"] . "<br>";
+            }
+        } else {
+            echo "0 results";
+        }
+
         
         
         
