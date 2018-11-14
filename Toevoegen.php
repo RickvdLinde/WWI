@@ -24,7 +24,13 @@ include "functions.php"
         $_SESSION["aantal"] = $aantal;
         ?>
         <div>
-            <p>Products is toegevoegd aan winkelwagen</p>
+            <?php
+            if($aantal > 0){
+                print("Product is toegevoegd aan winkelwagen<br>");
+            } else {
+                print("Aantal moet meer dan 0 zijn<br>");
+            }
+            ?>
             <a href="product.php?product=<?=$naam?>">Terug naar productpagina</a><br>
             <a href="Winkelmandje.php">Ga naar winkelwagen</a>
         </div>

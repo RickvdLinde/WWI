@@ -28,11 +28,11 @@ include "functions.php"
         while ($row = $stmt->fetch()) {
 
 	$name = $row["StockItemName"];
-        $price = $row["RecommendedRetailPrice"];
+        $prijs = $row["RecommendedRetailPrice"];
         $voorraad = $row["QuantityOnHand"];
         $comment = $row["MarketingComments"];
 	print("<div class=\"productnaam\">" . $name . "<br></div>");
-        print("<div class=\"productprijs\">Prijs: €" . $price) . "<br></div>";
+        print("<div class=\"productprijs\">Prijs: €" . $prijs) . "<br></div>";
         if($voorraad > 0){
             print("<div class=\"productopvoorraad\">Product is nog op voorraad</div>");
         } else {
@@ -55,6 +55,7 @@ include "functions.php"
             $winkelwagen = array();
         }
         $_SESSION["winkelwagen"] = $winkelwagen;
+        $_SESSION["prijs"] = $prijs;
         $pdo = NULL;
         ?>
     </body>

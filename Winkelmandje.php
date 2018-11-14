@@ -14,26 +14,23 @@ include "functions.php"
         <?php
         print(category());
         
-        if(isset($_SESSION["naam"])){
-            $naam = $_SESSION["naam"];
+        $naam = $_SESSION["naam"];
+        $winkelwagen = $_SESSION["winkelwagen"];
+        $aantal = $_SESSION["aantal"];
+        $prijs = $_SESSION["prijs"];
+        $totaleBedrag = 0;
+        
+        if(isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["aantal"]) && ($_SESSION["aantal"] > 0)){
+            $winkelwagen[$naam] = $aantal;
+            $_SESSION["winkelwagen"] = $winkelwagen;
         }
-        if(isset($_SESSION["winkelwagen"])){
-            $winkelwagen = $_SESSION["winkelwagen"];
-        }
-        if(isset($_SESSION["aantal"])){
-            $aantal = $_SESSION["aantal"];
-        }
-        $winkelwagen[$naam] = $aantal;
-        $_SESSION["winkelwagen"] = $winkelwagen;
         foreach($winkelwagen as $key => $value){
-            print($key . $value . "<br>");
+            $bedrag = $prijs * $value;
+            print($key . ": " . $value . " - " . $bedrag . " <button>Verwijderen</button><br>");
+            $totaleBedrag = $totaleBedrag + $bedrag;
         }
-        /*if(isset($_SESSION["winkelwagen"])){
-            $winkelwagen = $_SESSION["winkelwagen"];
-            foreach($winkelwagen as $key => $value){
-                print($key . $value);
-            }
-        }*/
+        print("Totale bedrag: €" . $totaleBedrag);
+        $_SESSION["bedrag"] = $bedrag;
         ?>
     </body>
 </html>
