@@ -12,41 +12,37 @@ include "functions.php"
         <?php
         
         print(category());
+
+        ?>
         
+        <h1 class="text">
+            Contactgegevens leveranciers
+        </h1>
+        
+        <p class="te border">
+
+        <?php
+
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
         
         $stmt = $pdo->prepare("SELECT SupplierName, PostalCityID, PhoneNumber, FaxNumber, WebsiteURL FROM suppliers");
-        $result = $stmt->execute();
-        $rows = $stmt->fetchAll(); // assuming $result == true
-        $n = count($rows);
-        
-        if (mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while($row = mysqli_fetch_assoc($result)) {
-                echo "Naam leverancier | " . $row["SupplierName"] . "<br>" . "Postcode | " . $row["PostalCityID"] . 
-                        "Telefoonnummer | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"]. "Website | " . $row["WebsiteURL"] . "<br>";
-            }
-        } else {
-            echo "0 results";
-        }
+        $stmt->execute();
 
-        
-        
+        while($row = $stmt->fetch()){
+            $SupplierName = $row["SupplierName"];
+            $PostalCityID = $row["PostalCityID"];
+            $PhoneNumber = $row["PhoneNumber"];
+            $FaxNumber = $row["FaxNumber"];
+            $WebsiteURL = $row["WebsiteURL"];
+            echo "Naam leverancier | " . $row["SupplierName"]. "<br>" . "Postcode | " . $row["PostalCityID"]. "<br>" . 
+                    "Telefoonnummer | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"] . "<br>" . "Website | " . $row["WebsiteURL"] . "<br>" . "<br>";
+        }
         
         ?>
-        <h1 class="text">
-            Contactgegevens leveranciers
-        </h1>
-        
-        <p class="tk border">
-            E-mail: worldwideimporters@world.nl
-            <br/>
-            Telefoonnummer: 0646634533
-            <br/>
-            Locatie: Zwolle
+            
         </p>
         
         

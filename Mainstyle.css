@@ -169,6 +169,12 @@ header a{
     padding-bottom: 40px;
 }
 
+.te{
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    
+}
 .border{
     border: 2px solid;
     border-color:  black;
@@ -212,7 +218,6 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
 }
 
 label[for="email"]{
-<<<<<<< HEAD
     float: right;  
 }
 .slider-holder
@@ -278,14 +283,11 @@ label[for="email"]{
             border-radius: 5px;
             background-color: #1E90FF;
         }
-=======
-    float: right;
-}
-
+        
     
 .deals{
     width: 25%;
     border-radius: 8px;
     margin: 50px;
 }
->>>>>>> a3eea5cef8fa2704740562bb6c6fd6d3c1dacef5
+

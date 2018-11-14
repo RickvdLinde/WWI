@@ -89,7 +89,59 @@ function category(){
         </div>');
 }
 
-
+function userLogin($usernameEmail, $password){
+           $db = getDB();
+           $hash_password = hash('sha256', $password);
+           $stmt = $db->prepare("SELECT PersonID FROM people WHERE LogOnName=:usernameEmail AND HashedPassword=:hash_password AND IsPermittedToLogon = 1"); 
+       $stmt->bindParam("LogOnName", $usernameEmail, PDO::PARAM_STR) ;
+       $stmt->bindParam("hash_password", $hash_password, PDO::PARAM_STR) ;
+       $stmt->execute();
+       $count = $stmt->rowCount();
+       $user = $stmt->fetch(PDO::FETCH_OBJ);
+       $db = null;
+       if($count){
+           $_SESSION['PersonID']=$data->PersonID;
+           return true;
+       } else {
+           return false;
+       }
+       }
+       
+    function deals(){
+        $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);
+        $dealv= ("3 kg Courier post bag (White)");
+        $deal2v= ("Packing knife with metal insert blade (Yellow) 9mm");
+        $deal3v= ("Red and white urgent despatch");
+        $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
+        $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
+        $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
+        $deal->execute("%$dealv%");
+        $deal2->execute("%$deal2v%");
+        $deal3->execute("%$deal3v%");
         
+        while($row = $deal->fetch()){
+            $item = $row["StockItemName"];
+            $prijs = $row["RecommededRetailPrice"];
+            print $item;
+            print (" " . $prijs);
+            print("<br>");
+        }
+        while($row = $deal2->fetch()){
+            $item2 = $row["StockItemName"];
+            $prijs2 = $row["RecommededRetailPrice"];
+            print $item2;
+            print (" " . $prijs2);
+            print("<br>");
+        }
+          while($row = $deal3->fetch()){
+            $item3 = $row["StockItemName"];
+            $prijs3 = $row["RecommededRetailPrice"];
+            print $item3;
+            print (" " . $prijs3);
+        }
+}    
         
         
