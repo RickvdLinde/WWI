@@ -7,10 +7,7 @@ session_start();
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link href="Mainstyle.css" rel="stylesheet" type="text/css"/>
-        <link rel="icon" href="Images/hakenkruis.png">
     </head>
-    
-    
     <body>
         <body class="bodi">
         <?php
@@ -22,7 +19,10 @@ session_start();
         <img src="Images/3 kg Courier post bag (White).JPG" class="deals">
         <img src="Images/Packing knife with metal insert blade.JPG" class="deals">
         <img src="Images/Red and white heavy urgent despatch tape.jpg" class="deals">
-        
+        <br>
+        <?php
+         print(deals());
+       ?>
     </body>
     
 </html>
