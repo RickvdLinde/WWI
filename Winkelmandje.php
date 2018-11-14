@@ -14,17 +14,26 @@ include "functions.php"
         <?php
         print(category());
         
-        $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_NUMBER_FLOAT);
-        $_SESSION["aantal"] = $aantal;
-        
         if(isset($_SESSION["naam"])){
             $naam = $_SESSION["naam"];
-            if(isset($_SESSION["aantal"]) && $_SESSION["aantal"] > 0){
-                print($naam . ": " . $aantal);
-            } else {
-                print("Geen hoeveelheid");
-            }
         }
+        if(isset($_SESSION["winkelwagen"])){
+            $winkelwagen = $_SESSION["winkelwagen"];
+        }
+        if(isset($_SESSION["aantal"])){
+            $aantal = $_SESSION["aantal"];
+        }
+        $winkelwagen[$naam] = $aantal;
+        $_SESSION["winkelwagen"] = $winkelwagen;
+        foreach($winkelwagen as $key => $value){
+            print($key . $value . "<br>");
+        }
+        /*if(isset($_SESSION["winkelwagen"])){
+            $winkelwagen = $_SESSION["winkelwagen"];
+            foreach($winkelwagen as $key => $value){
+                print($key . $value);
+            }
+        }*/
         ?>
     </body>
 </html>

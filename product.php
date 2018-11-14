@@ -40,14 +40,21 @@ include "functions.php"
         }
         ?>
         <div>
-            <form method="get" action="Winkelmandje.php">
+            <form method="get" action=Toevoegen.php>
                 <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>..." name="aantal"><br>
-                <input type="submit" value="Toevoegen aan Winkelmandje">
+                <input type="submit" name="submit" value="Toevoegen aan Winkelmandje">
             </form>
         </div>
         <?php
         }
         $_SESSION["naam"] = $naam;
+        if(isset($_SESSION["winkelwagen"])){
+            $winkelwagen = $_SESSION["winkelwagen"];
+        }
+        if(empty($winkelwagen)){
+            $winkelwagen = array();
+        }
+        $_SESSION["winkelwagen"] = $winkelwagen;
         $pdo = NULL;
         ?>
     </body>
