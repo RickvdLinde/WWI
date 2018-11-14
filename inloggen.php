@@ -15,7 +15,7 @@ if (!empty($_POST['inloggenknop'])) {
 }
 }
 ?>
-*/
+
 <!DOCTYPE html>
 <html>
     <head>
