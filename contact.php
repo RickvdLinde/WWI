@@ -13,6 +13,16 @@ include "functions.php"
         
         print(category());
 
+        ?>
+        
+        <h1 class="text">
+            Contactgegevens leveranciers
+        </h1>
+        
+        <p class="te border">
+
+        <?php
+
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
@@ -32,16 +42,6 @@ include "functions.php"
         }
         
         ?>
-        
-        <h1 class="text">
-            Contactgegevens leveranciers
-        </h1>
-        
-        <p class="tk border">
-            E-mail: worldwideimporters@world.nl
-            <br/>
-            Telefoonnummer: 0646634533
-            <br/>
             
         </p>
         
