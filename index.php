@@ -23,7 +23,12 @@ session_start();
         <p class="tk border">
             Welkom bij onze webshop!
         </p>
+        
         <br>
+        
+        <p class="tk border">
+            Voor de weekdeals, klik hier!
+        </p>
         
     </body>
 </html>
