@@ -111,12 +111,10 @@ print("<li><a href=\"$IsAssignedAG8.php\">" . $IsAssignedAG8. "</a></li>");
 print("<li><a href=\"$IsAssignedAG9.php\">" . $IsAssignedAG9. "</a></li>");  
 print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");  
 
-<<<<<<< HEAD
 ?>   
         <ul>
 ?>
 <div class="container">
-=======
 ?>
 <div class="container">
             
@@ -124,8 +122,6 @@ print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");
 
 ?>
 <div class="container">
-            
->>>>>>> 353f17c98c69d4177705bcdc16cd27023b7d8b96
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
@@ -137,13 +133,10 @@ print("<li><a href=\"$IsAssignedAG10.php\">" . $IsAssignedAG10. "</a></li>");
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
         <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
-<<<<<<< HEAD
-        </ul>   
-=======
+        </ul>
 
         </ul>  
-           
->>>>>>> 353f17c98c69d4177705bcdc16cd27023b7d8b96
+
 </div>
 <?php
 // verbinding opruimen
