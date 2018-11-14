@@ -62,8 +62,8 @@ header a{
     margin-top: 0.2%;
 }
 .inloggen{
-    margin-top: 1%;
-    margin-left: 1%;
+    margin-top: 150px;
+    margin-left: 32%;
     color: #FFFFFF;
 }
 .inloggen label{
@@ -119,6 +119,7 @@ header a{
 
 .productnaam{
     font-size: 30px;
+}
 .productprijs{
     font-size: 28px;
     color: #00AEEF;
@@ -211,6 +212,7 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
 }
 
 label[for="email"]{
+<<<<<<< HEAD
     float: right;  
 }
 .slider-holder
@@ -276,3 +278,14 @@ label[for="email"]{
             border-radius: 5px;
             background-color: #1E90FF;
         }
+=======
+    float: right;
+}
+
+    
+.deals{
+    width: 25%;
+    border-radius: 8px;
+    margin: 50px;
+}
+>>>>>>> a3eea5cef8fa2704740562bb6c6fd6d3c1dacef5

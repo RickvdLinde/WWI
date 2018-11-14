@@ -15,31 +15,21 @@ session_start();
         ?>
         
         <h1 class="text">
-            Week deals, nu in de aanbieding!
+            Wide World Importers
         </h1>
         
         <br/>
         
         <p class="tk border">
-            OP = OP <br/>
-            Dus wees er snel bij!
+            Welkom bij onze webshop!
         </p>
+        
         <br>
-        <div class="slider-holder">
-        <span id="slider-image-1"></span>
-        <span id="slider-image-2"></span>
-        <span id="slider-image-3"></span>
-        <div class="image-holder">
-            <img src="Images/usb.jpg" class="slider-image" />
-            <img src="Images/usb.jpg" class="slider-image" />
-            <img src="Images/usb.jpg" class="slider-image" />
-        </div>
-        <div class="button-holder">
-            <a href="#slider-image-1" class="slider-change"></a>
-            <a href="#slider-image-2" class="slider-change"></a>
-            <a href="#slider-image-3" class="slider-change"></a>
-        </div>
-    </div>
+        
+        <p class="tk border">
+            Voor de weekdeals, 
+            <a href="deals.php">klik hier!</a>
+        </p>
         
     </body>
 </html>

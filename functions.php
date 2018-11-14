@@ -89,24 +89,7 @@ function category(){
         </div>');
 }
 
-function LogIn(){
-    
-        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-        $logonname = $_POST['user'];
-        $password = $_POST['pass'];
-        $hashed_password = hash('sha256', $_POST['pass']);
+
         
-        $ln = $pdo->prepare("SELECT LogOnName FROM people WHERE IsPermittedToLogon = 1");
-        $ps = $pdo->prepare("SELECT HashedPassword FROM people WHERE IsPermittedToLogon = 1");
-        $ps->execute();
-        $ln->execute();
         
-        if ($hashed_password == $ps){
-            header('Location: http://localhost/WWI/index.php');
-        }
-    
-    
-}
+        
