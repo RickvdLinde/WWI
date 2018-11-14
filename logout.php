@@ -1,8 +1,10 @@
 <?php
-session_start;
-session_destroy();
-
-
+include('connect.php');
+$session_PersonID='';
+$_SESSION['PersonID']=''; 
+if(empty($session_PersonID) && empty($_SESSION['PersonID'])) {
+header("Location: $url");
+}
 ?>
 
 

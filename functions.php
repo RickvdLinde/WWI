@@ -89,7 +89,23 @@ function category(){
         </div>');
 }
 
-
+function userLogin($usernameEmail, $password){
+           $db = getDB();
+           $hash_password = hash('sha256', $password);
+           $stmt = $db->prepare("SELECT PersonID FROM people WHERE LogOnName=:usernameEmail AND HashedPassword=:hash_password AND IsPermittedToLogon = 1"); 
+       $stmt->bindParam("LogOnName", $usernameEmail, PDO::PARAM_STR) ;
+       $stmt->bindParam("hash_password", $hash_password, PDO::PARAM_STR) ;
+       $stmt->execute();
+       $count = $stmt->rowCount();
+       $user = $stmt->fetch(PDO::FETCH_OBJ);
+       $db = null;
+       if($count){
+           $_SESSION['PersonID']=$data->PersonID;
+           return true;
+       } else {
+           return false;
+       }
+       }
         
         
         

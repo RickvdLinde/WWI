@@ -1,40 +1,21 @@
 <?php
-session_start();
 include("connect.php");
 include("functions.php");
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-       $username = !empty($_POST['user']) ? trim($_POST['user']) : null;
-       $passwordAttempt = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
-       $hashed_password = hash('sha256', $_POST['pass']);
-            
-       $sql = "SELECT PersonID, LogOnName, HashedPassword FROM people WHERE IsPermittedToLogon = 1 AND LogOnName = :LogonOnName";
-       $stmt = $pdo->prepare($sql);
-       $stmt->bindValue(':LogOnName', $username);
-       $stmt->execute();
-       
-       $user = $stmt->fetch(PDO::FETCH_ASSOC);
-       
-       if ($user === false){
-           print("Verkeerd E-mailadres of wachtwoord.");
-       } else{
-        $validPassword = password_verify($passwordAttempt, $user['password']);
-        
-        if($validPassword){
-            
-            $_SESSION['user_id'] = $user['PersonID'];
-            $_SESSION['logged_in'] = time();
-
-            header('Location: index.php');
-            exit;
-            
-        } else{
-            die('Verkeerd E-mailadres of wachtwoord.');
-        }
-     }
-   }
+if (!empty($_POST['inloggenknop'])) {
+     $usernameEmail=$_POST['user'];
+     $password=$_POST['pass'];
+     if(strlen(trim($usernameEmail))>1 && strlen(trim($password))>1 ){
+         $uid = userLogin($usernameEmail,$password);
+         if($uid){
+             header("Location: index.php"); 
+} else {
+    print("Verkeerd E-mailadres of wachtwoord.");
+}
+}
+}
 ?>
-
+*/
 <!DOCTYPE html>
 <html>
     <head>
