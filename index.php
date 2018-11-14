@@ -27,7 +27,8 @@ session_start();
         <br>
         
         <p class="tk border">
-            Voor de weekdeals, klik hier!
+            Voor de weekdeals, 
+            <a href="deals.php">klik hier!</a>
         </p>
         
     </body>

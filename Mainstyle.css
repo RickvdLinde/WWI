@@ -216,4 +216,8 @@ label[for="email"]{
 }
 
     
-
+.deals{
+    width: 25%;
+    border-radius: 8px;
+    margin: 50px;
+}
