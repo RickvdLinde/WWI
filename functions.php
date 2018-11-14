@@ -89,37 +89,7 @@ function category(){
         </div>');
 }
 
-function ConnectLogIn(){
-        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-        
-        $ln = $pdo->prepare("SELECT LogOnName FROM people WHERE IsPermittedToLogon = 1");
-        $ps = $pdo->prepare("SELECT HashedPassword FROM people WHERE IsPermittedToLogon = 1");
-        $ps->execute();
-        $ln->execute();
-}
+
         
         
         
-function LogIn(){
-    // session start
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $logonname = ($_POST["user"]);
-            $password = ($_POST["pass"]);
-            $hashed_password = hash('sha256', $_POST['pass']);
-            
-            $sql = "SELECT LogOnName, HashedPassword FROM people WHERE IsPermittedToLogon = 1 AND LogOnName = :LogonOnName";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':LogOnName', $logonname);
-            $stmt->execute();
-            
-            if(empty($logonname) || empty($password)) {
-                print("Je moet een e-mailadres of wachtwoord invoeren.");
-            }
-            if($hashed_password == $ps){
-                header("location: http://localhost/WWI/index.php");
-        }
-      } 
-}

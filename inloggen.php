@@ -10,7 +10,6 @@ include("functions.php");
             
        $sql = "SELECT PersonID, LogOnName, HashedPassword FROM people WHERE IsPermittedToLogon = 1 AND LogOnName = :LogonOnName";
        $stmt = $pdo->prepare($sql);
-       
        $stmt->bindValue(':LogOnName', $username);
        $stmt->execute();
        
