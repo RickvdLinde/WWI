@@ -112,15 +112,12 @@ function userLogin($usernameEmail, $password){
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
-        $dealv= ("3 kg Courier post bag (White)");
-        $deal2v= ("Packing knife with metal insert blade (Yellow) 9mm");
-        $deal3v= ("Red and white urgent despatch");
         $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
         $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
         $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-        $deal->execute("%$dealv%");
-        $deal2->execute("%$deal2v%");
-        $deal3->execute("%$deal3v%");
+        $deal->execute();
+        $deal2->execute();
+        $deal3->execute();
         
         while($row = $deal->fetch()){
             $item = $row["StockItemName"];

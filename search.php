@@ -18,11 +18,11 @@
         <p>
             <label>Select list</label>
             <select id = "myList">
-               <option value = "1">sorteer</option>
-               <option value = "2">prijs laag < hoog</option>
-               <option value = "3">prijs hoog > laag</option>
-               <option value = "4">Meest verkocht</option>
-               <option value = "5">Nieuwst</option>
+               <option value = "1">sorteer</option> 
+               <option value = "2">prijs laag naar hoog</option> SELECT RecommendedRetailPrice FROM stockitems ORDER BY RecommendedRetailPrice ASC
+               <option value = "3">prijs hoog naar laag</option> SELECT RecommendedRetailPrice FROM stockitems ORDER BY RecommendedRetailPrice DESC
+               <option value = "4">Naam A tot Z</option> SELECT StockItemName FROM stockitems ORDER BY StockItemName ASC
+               <option value = "5">Naam Z tot A</option> SELECT StockItemName FROM stockitems ORDER BY StockItemName DESC
             </select>
         </p>
     <?php
