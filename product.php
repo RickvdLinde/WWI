@@ -41,7 +41,7 @@ include "functions.php"
         ?>
         <div>
             <form method="get" action=Toevoegen.php>
-                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>..." name="aantal"><br>
+                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>" name="aantal"><br>
                 <input type="submit" name="submit" value="Toevoegen aan Winkelmandje">
             </form>
         </div>
@@ -56,6 +56,7 @@ include "functions.php"
         }
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
+        $_SESSION["voorraad"] = $voorraad;
         $pdo = NULL;
         ?>
     </body>

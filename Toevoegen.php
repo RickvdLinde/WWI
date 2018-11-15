@@ -21,13 +21,25 @@ include "functions.php"
         if(isset($_GET["aantal"])){
             $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_STRING);
         }
+        if(isset($_SESSION["prijs"])){
+            $prijs = $_SESSION["prijs"];
+        }
+        if(isset($_SESSION["voorraad"])){
+            $voorraad = $_SESSION["voorraad"];
+        }
+        $_SESSION["prijs"] = $prijs;
         $_SESSION["aantal"] = $aantal;
+        if(is_numeric($aantal)){
+            $overige = $aantal - $voorraad;
+        }
         ?>
         <div>
             <?php
-            if($aantal > 0){
+            if($aantal > 0 && $aantal <= $voorraad){
                 print("Product is toegevoegd aan winkelwagen<br>");
-            } else {
+            } elseif($aantal > $voorraad) {
+                print($voorraad . " producten zijn nu op voorraad. De overige " . $overige . " zullen nabesteld worden. De levertijd zal hierdoor langer worden.<br>");
+            } elseif($aantal <= 0){
                 print("Aantal moet meer dan 0 zijn<br>");
             }
             ?>
