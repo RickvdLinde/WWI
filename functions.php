@@ -48,7 +48,7 @@ function category(){
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>
             <nav>
-                <a href="Winkelmandje.php">Winkelmandje</a>
+                <a href="Winkelmandje.php">Winkelwagen</a>
                 <a href="inloggen.php">Inloggen</a>
                 <a href="contact.php">Contact</a>
             </nav>
