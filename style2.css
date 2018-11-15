@@ -18,3 +18,59 @@
     color: #FFFFFF;
     padding: 4px;
 }
+.zoekenproduct{
+    border-bottom: solid;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-color: #d1d2d3;
+    border-width: 2px;
+}
+.naamproduct{
+    text-decoration: none;
+    color: #00AEEF;
+    float: left;
+    font-size: 22px;
+}
+.prijsproduct{
+    float: right;
+    font-size: 24px;
+    margin-right: 25%;
+}
+.voorraadproduct{
+    font-size: 16px;
+}
+.image-placeholder {
+    background-color: #eee;
+    display: flex;
+    height: 180px;
+    margin: 5px;
+    width: 260px;
+    float: left;
+    margin-left: 10%;
+}
+.image-placeholder > h4 {
+    align-self: center;
+    text-align: center;
+    width: 100%;
+}
+.productnaam{
+    font-size: 30px;
+    margin-left: 20px;
+}
+.productprijs{
+    font-size: 28px;
+    color: #00AEEF;
+}
+.productgegevens{
+    margin-top: 20px;
+}
+.toevoegenbutton{
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 8%;
+    background: #18b703;
+    border-color: #18b703;
+    color: #FFFFFF;
+    padding: 4px;
+    margin-left: 10px;
+}

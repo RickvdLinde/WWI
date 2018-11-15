@@ -32,8 +32,8 @@ function searchontwerp($search, $zoeken, $a){
                 $prijs = "€" . $s['RecommendedRetailPrice']; 
                 $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
                 
-                print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-                print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
+                print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+                print('<p class="prijsproduct">'.$prijs.'</p><br><br><p class="voorraadproduct">'.$voorraad.'</p></div>');
             }
         print($a. " resultaten<br></div>");
         }
