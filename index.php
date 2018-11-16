@@ -33,8 +33,8 @@ session_start();
         <a  href="product.php?product=Red and white urgent despatch tape 48mmx75m"><img src="Images/202.jpg"class="deals"></a>
         <br>
         <a class="dealtext" href="product.php?product=Small 9mm replacement blades 9mm">Small 9mm replacement blades</a>
-        <a class="dealtext" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
-        <a class="dealtext" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>   
+        <a class="dealtext1" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
+        <a class="dealtext2" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>   
         <br>
         </p>
       
