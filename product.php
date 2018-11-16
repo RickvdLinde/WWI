@@ -18,12 +18,23 @@ include "functions.php"
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
+<<<<<<< HEAD
+        
+        $naam = filter_input(INPUT_GET,
+        "product", FILTER_SANITIZE_STRING);
+        
+                $naam = preg_replace('/_/', ' ', $naam);
+        
+        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
+        
+=======
 
         $naam = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
 
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName = ?");
 
+>>>>>>> 58ec544b45bd9f63781d5c04320f73cf83a24593
         $stmt->execute(array($naam));
 
         while ($row = $stmt->fetch()) {

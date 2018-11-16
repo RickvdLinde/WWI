@@ -96,6 +96,65 @@ include "functions.php";
             //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
             //print($CitemName . "<br>");
         }
+<<<<<<< HEAD
+        $CatAG7 = "alloween skull mask";
+        $AssignCatAG7 = stripos($CitemName,$CatAG7);
+        if($AssignCatAG7) {
+            $IsAssignedAG7 = "Halloween skull mask";
+        }
+        $CatAG8 = "alloween zombie mask";
+        $AssignCatAG8 = stripos($CitemName,$CatAG8);
+        if($AssignCatAG8) {
+            $IsAssignedAG8 = "Halloween zombie mask";
+        } 
+         $CatAG9 = "gre battery-powered slippers";
+                $AssignCatAG9 = stripos($CitemName,$CatAG9);        
+                if($AssignCatAG9){
+            $IsAssignedAG9 = "Ogre battery-powered slippers";            
+        }
+        $CatAG10 = "lush shark slippers";
+        $AssignCatAG10 = stripos($CitemName,$CatAG10);
+        if($AssignCatAG10) {
+            $IsAssignedAG10 = "Plush shark slippers";
+        }
+        $CatAG11 = "uperhero action jacket";
+        $AssignCatAG11 = stripos($CitemName,$CatAG11);
+        if($AssignCatAG11) {
+            $IsAssignedAG11 = "Superhero action jacket";
+        }          
+        //print '<img src="'.$CitemPhoto.'"style="width:128px;height:128px">';
+       //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
+        	//print($CitemName . "<br>");
+} 
+
+
+?>
+
+<div class="container">
+            
+        <ul>
+
+<div class="container">
+            
+
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG1);?>"><?php print($IsAssignedAG1);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG2);?>"><?php print($IsAssignedAG2);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG3);?>"><?php print($IsAssignedAG3);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG4);?>"><?php print($IsAssignedAG4);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG5);?>"><?php print($IsAssignedAG5);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG6);?>"><?php print($IsAssignedAG6);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG7);?>"><?php print($IsAssignedAG7);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG8);?>"><?php print($IsAssignedAG8);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG9);?>"><?php print($IsAssignedAG9);?></a></li>
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG10);?>"><?php print($IsAssignedAG10);?></a></li>        
+        <li><a href="AGdef.php?productgroup=<?php print($IsAssignedAG11);?>"><?php print($IsAssignedAG11);?></a></li>
+</div>
+        </ul>  
+
+           
+</div>
+<?php
+=======
         ?>
         <?php
         print("<li><a href=\"$IsAssignedAG1.php\">" . $IsAssignedAG1 . "</a></li>");
@@ -116,6 +175,7 @@ include "functions.php";
 
                 ?>
                 <div class="container">
+>>>>>>> 58ec544b45bd9f63781d5c04320f73cf83a24593
 
                     <ul>
 

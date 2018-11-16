@@ -54,6 +54,29 @@ function category() {
             </div>
         </header>
         <div class="category">');
+        
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);
+        
+        $stmt = $pdo->prepare("SELECT * FROM stockgroups");
+        $stmt->execute();
+        
+        print("<div class=\"navbar\"><ul>");
+        while($row = $stmt->fetch()){
+            $category = $row["StockGroupName"];
+            //$Catget = 0;
+        $categorylink = preg_replace('/\s+/', '_', $category);
+        //print("<a href=\"$categorylink.php\">" . $category . "</a>");
+            $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" .($category) . "</a>");
+    }   
+        print("</ul></div>");
+        
+        $pdo = NULL;
+        
+        print('<form method="POST" action="search.php" class="zoeken">');
 
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
