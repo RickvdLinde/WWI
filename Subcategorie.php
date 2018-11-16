@@ -80,9 +80,11 @@ $usedproducts = array();
 if (count($DuplicateCats) > 0){
 foreach ($arraydups as $cats => $counts) {
     
-
-    print($cats);
-    if($counts > 1){
+            $productlink = preg_replace('/\s+/', '_', $cats);
+            print($urlproduct2 . ($productlink) . ">" .($cats) . "</a>");
+}}
+    //print($cats);
+/*    if($counts > 1){
             $productlink = preg_replace('/\s+/', '_', $cats);
             print($urlproduct2 . ($productlink) . ">" .($cats) . "</a>");
 } else {
@@ -101,5 +103,5 @@ print("<br>");
 }
 } else {
     print("Geen resultaten");
-}
+}*/
             $pdo = NULL;    

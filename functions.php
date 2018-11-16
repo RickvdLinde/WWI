@@ -72,13 +72,11 @@ function category() {
             $urlsub = '<a href=Subcategorie.php?category=';
         print($urlsub . ($categorylink) . ">" .($category) . "</a>");
     }   
-        print("</ul></div>");
-        
-        $pdo = NULL;
+
         
         print('<form method="POST" action="search.php" class="zoeken">');
 
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+/*    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
@@ -99,6 +97,7 @@ function category() {
 
         //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
     }
+ */
     print("</ul></div>");
 
     $pdo = NULL;
