@@ -68,16 +68,15 @@ function category(){
         while($row = $stmt->fetch()){
             $category = $row["StockGroupName"];
             //$Catget = 0;
-    if (ctype_space($category)) { 
-        $category =preg_replace('/\s+/', '_', $category);
-        print("<a href=\"$category.php\">" . $category . "</a>");
-    }   else {
-        print("<a href=\"$category.php\">" . $category . "</a>");
-    }    
+        $categorylink = preg_replace('/\s+/', '_', $category);
+        //print("<a href=\"$categorylink.php\">" . $category . "</a>");
+            $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" .($category) . "</a>");
+    }   
             
-            //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
+
            
-        }
+        
         print("</ul></div>");
         
         $pdo = NULL;
