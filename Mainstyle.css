@@ -5,17 +5,23 @@
 body{
     font-family: Arial, Helvetica, sans-serif; 
 }
+/*
 .bodi{
     background-image: url("Images/WW1.jpg");
     background-position: center;
     background-size: cover;
     height: 900px;
 }
+*/
 .logo{
     margin: 0px;
     float: left;
 }
 .kop{
+    background-image: url("Images/WW1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100px;
     margin: auto;
     overflow: hidden;
 }
@@ -25,7 +31,7 @@ body{
 .kop nav a{
     font-size: 28px;
     padding-right: 10px;
-    color: #00AEEF;
+    color: #FFFFFF;
 }
 header{
     background-color: #FFFFFF;
