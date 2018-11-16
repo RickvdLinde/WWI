@@ -136,6 +136,3 @@ function deals() {
         print $item3;
         print (" " . $prijs3);
     }
-}
-       
- 
