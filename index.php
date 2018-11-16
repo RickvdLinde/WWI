@@ -13,23 +13,23 @@ session_start();
         <?php
         print(category());
         ?>
-        
+
         <h1 class="text">
             Wide World Importers
         </h1>
-        
+
         <br/>
-        
+
         <p class="tk border">
             Welkom bij onze webshop!
         </p>
-        
+
         <br>
-        
+
         <p class="tk border">
             Exclusieve weekdeals, 
             <a href="deals.php">klik hier!</a>
         </p>
-        
+
     </body>
 </html>
