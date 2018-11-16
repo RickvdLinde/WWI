@@ -7,19 +7,20 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>World Wide Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
-    <body class="bodi">
+    <body>
         <?php
         
         print(category());
 
         ?>
         
-        <h1 class="text">
+        <h1 class="borderpagina">
             Contactgegevens leveranciers
         </h1>
         
-        <p class="te border">
+        <p class="te borderpagina">
 
         <?php
 
