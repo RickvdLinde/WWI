@@ -135,4 +135,4 @@ function deals() {
         $prijs3 = $row["RecommededRetailPrice"];
         print $item3;
         print (" " . $prijs3);
-    }
+}}
