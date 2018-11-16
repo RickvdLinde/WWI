@@ -137,37 +137,3 @@ function deals() {
         print (" " . $prijs3);
     }
 }
-       
-    function deals(){
-        $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-        $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-        $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-        $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-        $deal->execute();
-        $deal2->execute();
-        $deal3->execute();
-        
-        while($row = $deal->fetch()){
-            $item = $row["StockItemName"];
-            $prijs = $row["RecommededRetailPrice"];
-            print $item;
-            print (" " . $prijs);
-            print("<br>");
-        }
-        while($row = $deal2->fetch()){
-            $item2 = $row["StockItemName"];
-            $prijs2 = $row["RecommededRetailPrice"];
-            print $item2;
-            print (" " . $prijs2);
-            print("<br>");
-        }
-          while($row = $deal3->fetch()){
-            $item3 = $row["StockItemName"];
-            $prijs3 = $row["RecommededRetailPrice"];
-            print $item3;
-            print (" " . $prijs3);
-        }
-}
