@@ -9,31 +9,35 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
-    <body class="bodi">
+    <body>
         <?php
         print(category());
+        print("<div class=\"borderpagina\">");
+        $totaleBedrag = 0;
         
-        if(isset($_SESSION["naam"])){
+        print("<h2>Producten in Winkelwagen</h2><br>");
+        
+        if(isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["aantal"]) && ($_SESSION["aantal"] > 0)){
             $naam = $_SESSION["naam"];
-        }
-        if(isset($_SESSION["winkelwagen"])){
             $winkelwagen = $_SESSION["winkelwagen"];
-        }
-        if(isset($_SESSION["aantal"])){
             $aantal = $_SESSION["aantal"];
-        }
-        $winkelwagen[$naam] = $aantal;
-        $_SESSION["winkelwagen"] = $winkelwagen;
+            $prijs = $_SESSION["prijs"];
+            $winkelwagen[$naam] = $aantal;
+        
         foreach($winkelwagen as $key => $value){
-            print($key . $value . "<br>");
+            $bedrag = $prijs * $value;
+            print($key . ": " . $value . " - €" . $bedrag . " <button>Verwijderen</button><br>");
+            $totaleBedrag = $totaleBedrag + $bedrag;
         }
-        /*if(isset($_SESSION["winkelwagen"])){
-            $winkelwagen = $_SESSION["winkelwagen"];
-            foreach($winkelwagen as $key => $value){
-                print($key . $value);
-            }
-        }*/
+        print("<br>Totale bedrag: €" . $totaleBedrag . "<br><br>");
+        print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
+        $_SESSION["bedrag"] = $bedrag;
+        $_SESSION["winkelwagen"] = $winkelwagen;
+        $_SESSION["totalebedrag"] = $totaleBedrag;
+        }
         ?>
+        </div>
     </body>
 </html>

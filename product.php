@@ -9,6 +9,7 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body class="bodi">
         <?php
@@ -28,22 +29,25 @@ include "functions.php"
         while ($row = $stmt->fetch()) {
 
 	$name = $row["StockItemName"];
-        $price = $row["RecommendedRetailPrice"];
+        $prijs = $row["RecommendedRetailPrice"];
         $voorraad = $row["QuantityOnHand"];
         $comment = $row["MarketingComments"];
-	print("<div class=\"productnaam\">" . $name . "<br></div>");
-        print("<div class=\"productprijs\">Prijs: €" . $price) . "<br></div>";
-        if($voorraad > 0){
-            print("<div class=\"productopvoorraad\">Product is nog op voorraad</div>");
-        } else {
-            print("<div class=\"productnietvoorraad\">Product is niet op voorraad</div>");
-        }
         ?>
-        <div>
-            <form method="get" action=Toevoegen.php>
-                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>..." name="aantal"><br>
-                <input type="submit" name="submit" value="Toevoegen aan Winkelmandje">
-            </form>
+        <div class="productgegevens">
+            <div class="image-placeholder">
+                <h4>image placeholder</h4>
+            </div>
+        <?php
+	print("<div class=\"productnaam\">" . $name . "<br><br></div>");
+        print("<div class=\"productprijs\">Prijs: €" . $prijs) . "<br><br></div>";
+        print("Producten op voorraad: " . $voorraad . "<br><br>");
+        ?>
+            <div>
+                <form method="get" action=Toevoegen.php>
+                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
+                    <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                </form>
+            </div>
         </div>
         <?php
         }
@@ -55,6 +59,8 @@ include "functions.php"
             $winkelwagen = array();
         }
         $_SESSION["winkelwagen"] = $winkelwagen;
+        $_SESSION["prijs"] = $prijs;
+        $_SESSION["voorraad"] = $voorraad;
         $pdo = NULL;
         ?>
     </body>

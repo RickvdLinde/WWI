@@ -32,8 +32,8 @@ function searchontwerp($search, $zoeken, $a){
                 $prijs = "€" . $s['RecommendedRetailPrice']; 
                 $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
                 
-                print('<div class="dip"><div class="naamproduct"><a href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-                print('</div><div class="prijsproduct"><p>'.$prijs.'</p></div><div class="voorraadproduct"><p>'.$voorraad.'</p></div></div>');
+                print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+                print('<p class="prijsproduct">'.$prijs.'</p><br><br><p class="voorraadproduct">'.$voorraad.'</p></div>');
             }
         print($a. " resultaten<br></div>");
         }
@@ -48,7 +48,7 @@ function category(){
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>
             <nav>
-                <a href="Winkelmandje.php">Winkelmandje</a>
+                <a href="Winkelmandje.php">Winkelwagen</a>
                 <a href="inloggen.php">Inloggen</a>
                 <a href="contact.php">Contact</a>
             </nav>
@@ -96,15 +96,12 @@ function category(){
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
-        $dealv= ("3 kg Courier post bag (White)");
-        $deal2v= ("Packing knife with metal insert blade (Yellow) 9mm");
-        $deal3v= ("Red and white urgent despatch");
         $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
         $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
         $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-        $deal->execute("%$dealv%");
-        $deal2->execute("%$deal2v%");
-        $deal3->execute("%$deal3v%");
+        $deal->execute();
+        $deal2->execute();
+        $deal3->execute();
         
         while($row = $deal->fetch()){
             $item = $row["StockItemName"];

@@ -21,7 +21,10 @@ session_start();
         <img src="Images/Red and white heavy urgent despatch tape.jpg" class="deals">
         <br>
         <?php
-         print(deals());
+        $dealv= ("3 kg Courier post bag (White)");
+        $deal2v= ("Packing knife with metal insert blade (Yellow) 9mm");
+        $deal3v= ("Red and white urgent despatch");
+         print(deals($dealv, $dealv2, $dealv));
        ?>
     </body>
     
