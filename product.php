@@ -17,8 +17,7 @@ include "functions.php"
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-        
+        $pdo = new PDO($db, $user, $pass);      
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
         

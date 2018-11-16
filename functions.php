@@ -70,10 +70,8 @@ function category() {
         //print("<a href=\"$categorylink.php\">" . $category . "</a>");
             $urlsub = '<a href=Subcategorie.php?category=';
         print($urlsub . ($categorylink) . ">" .($category) . "</a>");
-    }   
+        }
         print("</ul></div>");
-        
-        $pdo = NULL;
         
         print('<form method="POST" action="search.php" class="zoeken">');
 /*
@@ -99,7 +97,6 @@ function category() {
         //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
     }
     print("</ul></div>");*/
-
     $pdo = NULL;
 
     print('<form method="POST" action="search.php" class="zoeken">
