@@ -26,7 +26,7 @@ session_start();
         
         <br>
         <p class="tk border">
-        Exclusieve weekdeals,
+        Exclusieve weekdeals
             <br>
                     <img src="Images/3 kg Courier post bag (White).JPG" class="deals">
         <img src="Images/Packing knife with metal insert blade.JPG" class="deals">
