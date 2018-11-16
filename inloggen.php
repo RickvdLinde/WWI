@@ -36,9 +36,15 @@ if (isset($_POST['inloggenknop'])) {
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body class="bodi">
+<<<<<<< HEAD
 <?php
 print(category());
 ?>
+=======
+        <?php
+        print(category());
+        ?>
+>>>>>>> d96330757a3989e3a697a726ef530d2b0c9a15de
         <form method="POST" class="inloggen">
             <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
