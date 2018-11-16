@@ -4,18 +4,24 @@
 }
 body{
     font-family: Arial, Helvetica, sans-serif; 
-}/*
+}
+/*
 .bodi{
     background-image: url("Images/WW1.jpg");
     background-position: center;
     background-size: cover;
     height: 900px;
-}*/
+}
+*/
 .logo{
     margin: 0px;
     float: left;
 }
 .kop{
+    background-image: url("Images/WW1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100px;
     margin: auto;
     overflow: hidden;
 }
@@ -25,7 +31,7 @@ body{
 .kop nav a{
     font-size: 28px;
     padding-right: 10px;
-    color: #00AEEF;
+    color: #FFFFFF;
 }
 header{
     background-color: #FFFFFF;
@@ -62,7 +68,7 @@ header a{
 .inloggen{
     margin-top: 150px;
     margin-left: 32%;
-    color: #FFFFFF;
+    color: black;
 }
 .inloggen label{
     float: left;
@@ -108,6 +114,12 @@ header a{
     padding-top: 40px;
 }
 
+.txet{
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    padding-top: 40px;
+}
 .tk{
     font-size: 20px;
     color: black;
@@ -120,15 +132,15 @@ header a{
     font-size: 15px;
     color: black;
     text-align: center;
-    
 }
+
 .border{
     border: 2px solid;
     border-color:  black;
     border-radius: 5px;
     border-width: 2px;
-    background-color: lightblue;
-
+    background-color: #00AEEF;  
+    color: #FFFFFF;
 }
 
 .img{
@@ -235,6 +247,12 @@ label[for="email"]{
 .deals{
     width: 25%;
     border-radius: 8px;
-    margin: 50px;
+    margin: 50px;   
 }
-
+.dealtext{
+    font-size: 100%;
+    display: inline;
+    margin: 80px;
+    color: #FFFFFF;
+    text-decoration: none;
+}

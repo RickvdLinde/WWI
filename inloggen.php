@@ -39,6 +39,10 @@ if (isset($_POST['inloggenknop'])) {
 <?php
 print(category());
 ?>
+    <body>
+       <?php
+       print(category());
+       ?>
         <form method="POST" class="inloggen">
             <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
