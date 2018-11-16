@@ -14,7 +14,7 @@ session_start();
         print(category());
         ?>
         
-        <h1 class="text">
+        <h1 class="txet">
             Wide World Importers
         </h1>
         
@@ -26,10 +26,6 @@ session_start();
         
         <br>
         
-        <p class="tk border">
-            Exclusieve weekdeals, 
-            <a href="deals.php">klik hier!</a>
-        </p>
         
     </body>
 </html>
