@@ -28,9 +28,9 @@ session_start();
         <p class="tk border">
         Exclusieve weekdeals,
         <br>
-        <a href="product.php?product=Small 9mm replacement blades 9mm" ><img src="Images/Small 9mm replacement blades.jpg" class="deals"></a>
-        <a href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm"><img src="Images/Packing knife with metal insert blade.JPG" class="deals"></a>
-        <a  href="product.php?product=Red and white urgent despatch tape 48mmx75m"><img src="Images/Red and white heavy urgent despatch tape.jpg"class="deals"></a>
+        <a href="product.php?product=Small 9mm replacement blades 9mm" ><img src="Images/211.jpg" class="deals"></a>
+        <a href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm"><img src="Images/209-210.jpg" class="deals"></a>
+        <a  href="product.php?product=Red and white urgent despatch tape 48mmx75m"><img src="Images/202.jpg"class="deals"></a>
         <br>
         <a class="dealtext" href="product.php?product=Small 9mm replacement blades 9mm">Small 9mm replacement blades</a>
         <a class="dealtext" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
