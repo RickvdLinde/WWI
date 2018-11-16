@@ -1,9 +1,10 @@
 <?php
-include('connect.php');
-$session_PersonID='';
-$_SESSION['PersonID']=''; 
-if(empty($session_PersonID) && empty($_SESSION['PersonID'])) {
-header("Location: index.php");
+include 'session.php';
+
+session_start();
+
+if (session_destroy()) {
+    header("Location: login.php");
 }
 ?>
 

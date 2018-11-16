@@ -2,7 +2,7 @@
 session_start();
 require 'connect.php';
 require 'functions.php';
-if(isset($_POST['inloggenknop'])){
+if (isset($_POST['inloggenknop'])) {
     $username = !empty($_POST['user']) ? trim($_POST['user']) : null;
     $passwordAttempt = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
     $passwordhash = hash('sha256', $passwordAttempt);
@@ -12,22 +12,20 @@ if(isset($_POST['inloggenknop'])){
     $stmt->bindValue(':HashedPassword', $passwordhash);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($user === false){
+    if ($user === false) {
         die('Incorrect username / password combination!');
-    } else{
-        $validPassword = password_verify($passwordhash, $user['LogonName']);
-        if($validPassword){
-            $_SESSION['user_id'] = $user['id'];
+    } else {
+        $validPassword = password_verify($passwordhash, $user['HashedPassword']);
+        if ($passwordhash == $user['HashedPassword']) {
+            $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = time();
-            header('Location: index.php');
+            header("location: index.php");
             exit;
-        } else{
+        } else {
             die('Incorrect username / password combination!');
         }
     }
-    
 }
- 
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +35,10 @@ if(isset($_POST['inloggenknop'])){
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
+    <body class="bodi">
+<?php
+print(category());
+?>
     <body>
        <?php
        print(category());

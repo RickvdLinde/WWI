@@ -13,17 +13,19 @@ session_start();
         <?php
         print(category());
         ?>
+
+        <h1 class="text">
         
         <h1 class="txet">
             Wide World Importers
         </h1>
-        
+
         <br/>
-        
+
         <p class="tk border">
             Welkom bij onze webshop!
         </p>
-        
+
         <br>
         <p class="tk border">
         Exclusieve weekdeals
@@ -36,6 +38,6 @@ session_start();
         <a class="dealtext" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
         <a class="dealtext" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>    
         </p>
-        
+
     </body>
 </html>
