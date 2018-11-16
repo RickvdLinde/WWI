@@ -140,6 +140,7 @@ header a{
     border-radius: 5px;
     border-width: 2px;
     background-color: #00AEEF;
+    color: #FFFFFF;
 }
 
 .img{
@@ -246,6 +247,12 @@ label[for="email"]{
 .deals{
     width: 25%;
     border-radius: 8px;
-    margin: 50px;
+    margin: 50px;   
 }
-
+.dealtext{
+    font-size: 100%;
+    display: inline;
+    margin: 80px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
