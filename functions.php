@@ -71,42 +71,11 @@ function category() {
         //print("<a href=\"$categorylink.php\">" . $category . "</a>");
             $urlsub = '<a href=Subcategorie.php?category=';
         print($urlsub . ($categorylink) . ">" .($category) . "</a>");
-    }   
-<<<<<<< HEAD
-
-        
-        print('<form method="POST" action="search.php" class="zoeken">');
-
-/*    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-
-    $stmt = $pdo->prepare("SELECT * FROM stockgroups");
-    $stmt->execute();
-
-    print("<div class=\"navbar\"><ul>");
-    while ($row = $stmt->fetch()) {
-        $category = $row["StockGroupName"];
-        //$Catget = 0;
-        if (ctype_space($category)) {
-            $category = preg_replace('/\s+/', '_', $category);
-            print("<a href=\"$category.php\">" . $category . "</a>");
-        } else {
-            print("<a href=\"$category.php\">" . $category . "</a>");
         }
-
-        //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
-    }
- */
-    print("</ul></div>");
-
-=======
         print("</ul></div>");
         
         print('<form method="POST" action="search.php" class="zoeken">');
 
->>>>>>> b4c3b781a4525ab3696cdf8d19b2d43b99af4962
     $pdo = NULL;
 
     print('<form method="POST" action="search.php" class="zoeken">
