@@ -46,6 +46,8 @@ include "functions.php"
             <a href="product.php?product=<?= $naam ?>">Terug naar productpagina</a><br>
             <a href="Winkelmandje.php">Ga naar winkelwagen</a>
         </div>
-
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>

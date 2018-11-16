@@ -96,7 +96,6 @@ include "functions.php";
             //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
             //print($CitemName . "<br>");
         }
-<<<<<<< HEAD
         $CatAG7 = "alloween skull mask";
         $AssignCatAG7 = stripos($CitemName,$CatAG7);
         if($AssignCatAG7) {
@@ -154,7 +153,6 @@ include "functions.php";
            
 </div>
 <?php
-=======
         ?>
         <?php
         print("<li><a href=\"$IsAssignedAG1.php\">" . $IsAssignedAG1 . "</a></li>");
@@ -175,7 +173,6 @@ include "functions.php";
 
                 ?>
                 <div class="container">
->>>>>>> 58ec544b45bd9f63781d5c04320f73cf83a24593
 
                     <ul>
 

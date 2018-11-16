@@ -8,6 +8,7 @@ session_start();
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body class="bodi">
         <?php
@@ -36,7 +37,10 @@ session_start();
         <a class="dealtext" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
         <a class="dealtext" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>   
         <br>
-        </p>
+        </p><br><br>
       
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>

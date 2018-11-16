@@ -49,7 +49,6 @@ function category() {
             <nav>
                 <a href="Winkelmandje.php">Winkelwagen</a>
                 <a href="inloggen.php">Inloggen</a>
-                <a href="contact.php">Contact</a>
             </nav>
             </div>
         </header>
@@ -77,7 +76,7 @@ function category() {
         $pdo = NULL;
         
         print('<form method="POST" action="search.php" class="zoeken">');
-
+/*
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
@@ -99,7 +98,7 @@ function category() {
 
         //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
     }
-    print("</ul></div>");
+    print("</ul></div>");*/
 
     $pdo = NULL;
 
@@ -159,4 +158,9 @@ function deals() {
         print $item3;
         print (" " . $prijs3);
     }
+}
+
+function footer(){
+    print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
+       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }

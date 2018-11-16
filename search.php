@@ -35,5 +35,8 @@ $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
         zoeken($zoeken);
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>
