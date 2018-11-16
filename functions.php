@@ -72,6 +72,7 @@ function category() {
             $urlsub = '<a href=Subcategorie.php?category=';
         print($urlsub . ($categorylink) . ">" .($category) . "</a>");
     }   
+<<<<<<< HEAD
 
         
         print('<form method="POST" action="search.php" class="zoeken">');
@@ -100,6 +101,12 @@ function category() {
  */
     print("</ul></div>");
 
+=======
+        print("</ul></div>");
+        
+        print('<form method="POST" action="search.php" class="zoeken">');
+
+>>>>>>> b4c3b781a4525ab3696cdf8d19b2d43b99af4962
     $pdo = NULL;
 
     print('<form method="POST" action="search.php" class="zoeken">

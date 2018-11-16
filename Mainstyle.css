@@ -253,7 +253,21 @@ label[for="email"]{
 .dealtext{
     font-size: 100%;
     display: inline;
+    margin: 60px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.dealtext1{
+    font-size: 100%;
+    display: inline;
     margin: 80px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.dealtext2{
+    font-size: 100%;
+    display: inline;
+    margin: 60px;
     color: #FFFFFF;
     text-decoration: none;
 }
