@@ -1,19 +1,33 @@
 <?php
-include("connect.php");
-include("functions.php");
-
-if (!empty($_POST['inloggenknop'])) {
-     $usernameEmail=$_POST['user'];
-     $password=$_POST['pass'];
-     if(strlen(trim($usernameEmail))>1 && strlen(trim($password))>1 ){
-         $uid = userLogin($usernameEmail,$password);
-         if($uid){
-             header("Location: index.php"); 
-} else {
-    print("Verkeerd E-mailadres of wachtwoord.");
+session_start();
+require 'connect.php';
+require 'functions.php';
+if(isset($_POST['inloggenknop'])){
+    $username = !empty($_POST['user']) ? trim($_POST['user']) : null;
+    $passwordAttempt = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
+    $passwordhash = hash('sha256', $passwordAttempt);
+    $sql = "SELECT PersonID, LogonName, HashedPassword FROM people WHERE LogonName = :LogonName AND HashedPassword = :HashedPassword";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':LogonName', $username);
+    $stmt->bindValue(':HashedPassword', $passwordhash);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($user === false){
+        die('Incorrect username / password combination!');
+    } else{
+        $validPassword = password_verify($passwordhash, $user['LogonName']);
+        if($validPassword){
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = time();
+            header('Location: index.php');
+            exit;
+        } else{
+            die('Incorrect username / password combination!');
+        }
+    }
+    
 }
-}
-}
+ 
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +37,7 @@ if (!empty($_POST['inloggenknop'])) {
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
-    <body class="bodi">
+    <body>
        <?php
        print(category());
        ?>
