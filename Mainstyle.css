@@ -5,19 +5,23 @@
 body{
     font-family: Arial, Helvetica, sans-serif; 
 }
-
+/*
 .bodi{
     background-image: url("Images/WW1.jpg");
     background-position: center;
     background-size: cover;
     height: 900px;
 }
-
+*/
 .logo{
     margin: 0px;
     float: left;
 }
 .kop{
+    background-image: url("Images/WW1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100px;
     margin: auto;
     overflow: hidden;
 }
@@ -27,7 +31,7 @@ body{
 .kop nav a{
     font-size: 28px;
     padding-right: 10px;
-    color: #00AEEF;
+    color: #FFFFFF;
 }
 header{
     background-color: #FFFFFF;
@@ -62,21 +66,20 @@ header a{
     margin-top: 0.2%;
 }
 .inloggen{
-    margin-top: 1%;
-    margin-left: 1%;
-    color: #FFFFFF;
+    margin-top: 150px;
+    margin-left: 32%;
+    color: black;
 }
 .inloggen label{
     float: left;
     clear: both;
     width: 10em;
-}
-
+}/*
 .dip{
     border-style: solid;
     border-width: medium;
     background-color: #00AEEF;   
-}
+}*/
 .container{
     display: flex;
     flex-direction: column;
@@ -94,18 +97,6 @@ header a{
     background-color: #e3e4e5;
     transition-delay: 0.1s;
 }
-.naamproduct {
-
-}
-
-.voorraadproduct {
-    
-}
-
-.prijsproduct{
-    
-}
-
 .dib{
     margin-top: 2%;
     margin-right: 10%;
@@ -116,48 +107,6 @@ header a{
     top: 5%;
     right: 0;
 }
-
-.productnaam{
-    font-size: 30px;
-}
-
-.productnaam{
-    font-size: 30px;
-}
-.productprijs{
-    font-size: 28px;
-    color: #00AEEF;
-}
-.productopvoorraad{
-    font-size: 18px;
-    color: #6be537;
-}
-.productnietvoorraad{
-    font-size: 18px;
-    color: #fc4141;
-}
-
-.productopvoorraad{
-    font-size: 18px;
-    color: #6be537;
-}
-.productnietvoorraad{
-    font-size: 18px;
-    color: #fc4141;
-}
-
-.productnaam{
-    font-size: 30px;
-}
-.productprijs{
-    font-size: 28px;
-    color: #00AEEF;
-}
-.productopvoorraad{
-    font-size: 18px;
-    color: #6be537;
-}
-
 .text{
     font-size: 50px;
     color: #FFFFFF;
@@ -165,6 +114,11 @@ header a{
     padding-top: 40px;
 }
 
+.txet{
+    font-size: 50px;
+    color: black;
+    text-align: center;
+}
 .tk{
     font-size: 20px;
     color: black;
@@ -173,13 +127,19 @@ header a{
     padding-bottom: 40px;
 }
 
+.te{
+    font-size: 15px;
+    color: black;
+    text-align: center;
+}
+
 .border{
     border: 2px solid;
     border-color:  black;
     border-radius: 5px;
     border-width: 2px;
-    background-color: lightblue;
-
+    background-color: #00AEEF;  
+    color: #FFFFFF;
 }
 
 .img{
@@ -216,6 +176,82 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
 }
 
 label[for="email"]{
-    float: right;
+    float: right;  
+}
+.slider-holder
+        {
+            width: 800px;
+            height: 400px;
+            background-color: yellow;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .image-holder
+        {
+            width: 2400px;
+            background-color: red;
+            height: 400px;
+            clear: both;
+            position: relative;
+            
+            -webkit-transition: left 2s;
+            -moz-transition: left 2s;
+            -o-transition: left 2s;
+            transition: left 2s;
+        }
+        
+        .slider-image
+        {
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+        
+        #slider-image-1:target ~ .image-holder
+        {
+           
+            left: 0px;
+        }
+        
+        #slider-image-2:target ~ .image-holder
+        {
+            left: -800px;
+        }
+        
+        #slider-image-3:target ~ .image-holder
+        {
+            left: -1600px;
+        }
+        
+        .button-holder
+        {
+            position: relative;
+            top: -20px;
+        }
+        
+        .slider-change{
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: #1E90FF;
+        }
+        
     
+.deals{
+    width: 25%;
+    border-radius: 8px;
+    margin: 50px;   
+}
+.dealtext{
+    font-size: 100%;
+    display: inline;
+    margin: 80px;
+    color: #FFFFFF;
+    text-decoration: none;
 }

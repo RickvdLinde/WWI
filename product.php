@@ -9,14 +9,16 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body class="bodi">
         <?php
         print(category());
-        $db ="mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);
+<<<<<<< HEAD
         
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
@@ -25,31 +27,55 @@ include "functions.php"
         
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
         
+=======
+
+        $naam = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
+
+        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
+        ON s.SupplierID = l.SupplierID WHERE StockItemName = ?");
+
+>>>>>>> 58ec544b45bd9f63781d5c04320f73cf83a24593
         $stmt->execute(array($naam));
-        
+
         while ($row = $stmt->fetch()) {
 
-	$name = $row["StockItemName"];
-        $price = $row["RecommendedRetailPrice"];
-        $voorraad = $row["QuantityOnHand"];
-        $comment = $row["MarketingComments"];
-	print("<div class=\"productnaam\">" . $name . "<br></div>");
-        print("<div class=\"productprijs\">Prijs: €" . $price) . "<br></div>";
-        if($voorraad > 0){
-            print("<div class=\"productopvoorraad\">Product is nog op voorraad</div>");
-        } else {
-            print("<div class=\"productnietvoorraad\">Product is niet op voorraad</div>");
-        }
-        ?>
-        <div>
-            <form method="get" action="Winkelmandje.php">
-                <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" placeholder="voorraad: <?=print($voorraad);?>..." name="aantal"><br>
-                <input type="submit" value="Toevoegen aan Winkelmandje">
-            </form>
-        </div>
-        <?php
+            $name = $row["StockItemName"];
+            $prijs = $row["RecommendedRetailPrice"];
+            $voorraad = $row["QuantityOnHand"];
+            $comment = $row["MarketingComments"];
+            $leverancier = $row["SupplierName"];
+            ?>
+            <div class="productgegevens">
+                <div class="image-placeholder">
+                    <h4>image placeholder</h4>
+                </div>
+                <div class="gegevenszonderafbeeling">
+                    <?php
+                    print("<div class=\"productnaam\">" . $name . "</div>");
+                    print("<div class=\"productvoorraad\">Producten op voorraad: " . $voorraad . "<br><br>");
+                    ?>
+                    <div class="formaantal">
+                        <form method="get" action=Toevoegen.php>
+                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                        </form>
+                    </div>
+                    <?php print("<br><br><a href=\"contact.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
+                </div>
+            </div>
+            <?php
+            print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
         }
         $_SESSION["naam"] = $naam;
+        if (isset($_SESSION["winkelwagen"])) {
+            $winkelwagen = $_SESSION["winkelwagen"];
+        }
+        if (empty($winkelwagen)) {
+            $winkelwagen = array();
+        }
+        $_SESSION["winkelwagen"] = $winkelwagen;
+        $_SESSION["prijs"] = $prijs;
+        $_SESSION["voorraad"] = $voorraad;
         $pdo = NULL;
         ?>
     </body>
