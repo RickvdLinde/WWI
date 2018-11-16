@@ -37,7 +37,7 @@ if(isset($_POST['inloggenknop'])){
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
-    <body class="bodi">
+    <body>
        <?php
        print(category());
        ?>

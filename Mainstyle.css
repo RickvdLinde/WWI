@@ -68,7 +68,7 @@ header a{
 .inloggen{
     margin-top: 150px;
     margin-left: 32%;
-    color: #FFFFFF;
+    color: black;
 }
 .inloggen label{
     float: left;
@@ -139,7 +139,7 @@ header a{
     border-color:  black;
     border-radius: 5px;
     border-width: 2px;
-    background-color: #00AEEF;
+    background-color: #00AEEF;  
     color: #FFFFFF;
 }
 
