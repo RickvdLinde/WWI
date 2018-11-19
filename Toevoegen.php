@@ -9,6 +9,7 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body>
         <?php
