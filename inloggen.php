@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'connect.php';
-require 'functions.php';
+include 'connect.php';
+include 'functions.php';
 if (isset($_POST['inloggenknop'])) {
     $username = !empty($_POST['user']) ? trim($_POST['user']) : null;
     $passwordAttempt = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
@@ -13,7 +13,7 @@ if (isset($_POST['inloggenknop'])) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user === false) {
-        die('Incorrect username / password combination!');
+        print('Verkeerd E-mail of wachtwoord.');
     } else {
         $validPassword = password_verify($passwordhash, $user['HashedPassword']);
         if ($passwordhash == $user['HashedPassword']) {
@@ -22,7 +22,7 @@ if (isset($_POST['inloggenknop'])) {
             header("location: index.php");
             exit;
         } else {
-            die('Incorrect username / password combination!');
+            die('Verkeerd E-mail of wachtwoord.');
         }
     }
 }
@@ -36,15 +36,9 @@ if (isset($_POST['inloggenknop'])) {
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body class="bodi">
-<<<<<<< HEAD
-<?php
-print(category());
-?>
-=======
         <?php
         print(category());
         ?>
->>>>>>> d96330757a3989e3a697a726ef530d2b0c9a15de
         <form method="POST" class="inloggen">
             <label for="user">E-mailadres: </label><input type="text" id="user" name="user"><br>
             <label for="pass">Wachtwoord: </label><input type="password" id="pass" name="pass"><br>
