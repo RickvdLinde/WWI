@@ -68,6 +68,7 @@ if (isset($_POST['inloggenknop'])) {
             }
             if(isset($_GET["Uitlogknop"])){
                 $_SESSION['logged_in'] = FALSE;
+                header("Location: inloggen.php");
             }
             
             ?>
