@@ -14,6 +14,16 @@ include "functions.php"
         print(category());
         ?>
         
+        
+        <h1 class="txet">
+            Contact
+        </h1>
+        
+        <p class="tk border">
+            Wide World Importers
+        </p>
+        
+        
         <?php
         print(footer());
         ?>
