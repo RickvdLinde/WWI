@@ -18,6 +18,10 @@
     color: #FFFFFF;
     padding: 4px;
 }
+.disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 .zoekenproduct{
     border-bottom: solid;
     padding-bottom: 5px;
@@ -87,6 +91,15 @@
     background: #18b703;
     border-color: #18b703;
     color: #FFFFFF;
+    padding: 4px;
+    margin-left: 10px;
+}
+.opslaanbutton{
+    border-style: solid;
+    border-radius: 8%;
+    color: #00AEEF;
+    border-color: #00AEEF;
+    background-color: #FFFFFF;
     padding: 4px;
     margin-left: 10px;
 }

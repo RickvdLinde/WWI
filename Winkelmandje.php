@@ -59,7 +59,7 @@ include "functions.php"
             }
 
             print("<br>Totale bedrag: €" . $totaleBedrag . "<br><br>");
-            print("<input type=\"submit\" value=\"Wijzigingen opslaan\" name=\"opslaan\"></form>");
+            print("<input type=\"submit\" value=\"Wijzigingen opslaan\" class=\"opslaanbutton\" name=\"opslaan\"></form><br>");
             print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
 
             $_SESSION["bedrag"] = $bedrag;
