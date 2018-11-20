@@ -2,7 +2,7 @@
 session_start();
 include 'connect.php';
 include 'functions.php';
-$username = NULL;
+
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
@@ -40,6 +40,7 @@ if (isset($_POST['inloggenknop'])) {
         }
     }
 }
+$pdo = NULL;
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +49,7 @@ if (isset($_POST['inloggenknop'])) {
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body class="bodi">
         <?php
