@@ -48,7 +48,7 @@ function category() {
             </div>
             <nav>
                 <a href="Winkelmandje.php">Winkelwagen</a>
-                <a href="inloggen.php">Inloggen</a>
+                <a href="inloggen.php">Account</a>
             </nav>
             </div>
         </header>
