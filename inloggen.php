@@ -2,7 +2,6 @@
 session_start();
 include 'connect.php';
 include 'functions.php';
-$usercheck = $_SESSION['logged_in'];
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
@@ -54,13 +53,12 @@ $pdo = NULL;
     <body class="bodi">
         <?php
         print(category());
-        if (!$_SESSION['logged_in']){ 
+        if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
             <label for='user'>E-mailadres: </label><input type='text' id='user' name='user'><br>
             <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='pass'><br>");
         }
-            $usercheck = $_SESSION['logged_in'];
-            if ($usercheck){
+            if (isset($_SESSION['logged_in'])){
                 print("U bent ingelogd");
                  print('<form action="inloggen.php">
             <input class="inloggenknop" type="submit" value="Uitloggen" name="Uitlogknop">
@@ -69,7 +67,7 @@ $pdo = NULL;
                 print('<input class="inloggenknop" type="submit" value="Inloggen" name="inloggenknop">');
             }
             if(isset($_GET["Uitlogknop"])){
-                $_SESSION['logged_in'] = FALSE;
+                unset($_SESSION['logged_in']);
                 header("Location: inloggen.php");
             }
             
