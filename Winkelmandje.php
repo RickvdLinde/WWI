@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+if(isset($_SESSION["logged_in"])){
+    $loggedin = true;
+} else {
+    $loggedin = false;
+}
 include "functions.php"
 ?>
 <!DOCTYPE html>
@@ -61,8 +65,12 @@ include "functions.php"
 
             print("<br>Totale bedrag: €" . $totaleBedrag . "<br><br>");
             print("<input type=\"submit\" value=\"Wijzigingen opslaan\" class=\"opslaanbutton\" name=\"opslaan\"></form><br>");
-            print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
-
+            if ($loggedin){
+                print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
+            } else {
+                print("<a href=\"betalen.php\" class=\"betaalbutton disabled\" >Naar betaalpagina</a>");
+                print("<a href=\"inloggen.php\">Inloggen</a>");
+            }
             $_SESSION["bedrag"] = $bedrag;
             $_SESSION["winkelwagen"] = $winkelwagen;
             $_SESSION["totalebedrag"] = $totaleBedrag;
