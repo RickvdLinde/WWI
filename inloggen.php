@@ -2,7 +2,7 @@
 session_start();
 include 'connect.php';
 include 'functions.php';
-
+$usercheck = $_SESSION['logged_in'];
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
