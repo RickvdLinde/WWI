@@ -140,8 +140,8 @@ header a{
     border-color:  black;
     border-radius: 5px;
     border-width: 2px;
-    background-color: #00AEEF;  
-    color: #FFFFFF;
+    background-color: #FFFFFF;  
+    color: black;
 }
 
 .img{
@@ -254,20 +254,20 @@ label[for="email"]{
     font-size: 100%;
     display: inline;
     margin: 60px;
-    color: #FFFFFF;
+    color: black;
     text-decoration: none;
 }
 .dealtext1{
     font-size: 100%;
     display: inline;
     margin: 80px;
-    color: #FFFFFF;
+    color: black;
     text-decoration: none;
 }
 .dealtext2{
     font-size: 100%;
     display: inline;
     margin: 60px;
-    color: #FFFFFF;
+    color: black;
     text-decoration: none;
 }

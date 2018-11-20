@@ -23,7 +23,7 @@ include "functions.php"
             Wide World Importers
         </p>
         
-        <img src="Images/kservice.jpg" alt="Klantenservice">
+        <img src="Images/kservice.jpg" alt="Klantenservice" class="service">
         
         <?php
         print(footer());
