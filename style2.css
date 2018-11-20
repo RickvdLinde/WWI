@@ -95,6 +95,7 @@
     width: 100%;
 }
 footer{
+    margin: auto;
     border-top: solid;
     border-color: #d1d2d3;
     border-width: 2px;

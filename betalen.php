@@ -55,7 +55,7 @@ session_start();
         }
         if (isset($_GET["submit"])) {
             print("</form><br>Betaling is verwerkt<br><a href=\"index.php\">Ga terug naar beginpagina</a>");
-            session_destroy();
+            unset($_SESSION['winkelwagen']);
         }
         print("</div>");
         

@@ -16,16 +16,18 @@ include "functions.php"
         
         
         <h1 class="txet">
-            Contact
+            Over Wide World Importers
         </h1>
         
         <p class="tk border">
-            Wide World Importers
+            World Wide Importers is een importeur en groothandel die producten levert aan verschillende warenhuizen en supermarkten in de Verenigde Staten.
+            We hebben als ambitie om onze activiteiten uit te breiden in Europa, dat doen we door producten rechtstreeks te gaan verkopen aan de Nederlandse consument.
         </p>
         
         
         <?php
         print(footer());
         ?>
+        
     </body>
 </html>
