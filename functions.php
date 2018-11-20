@@ -74,29 +74,7 @@ function category() {
         print("</ul></div>");
         
         print('<form method="POST" action="search.php" class="zoeken">');
-/*
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
 
-    $stmt = $pdo->prepare("SELECT * FROM stockgroups");
-    $stmt->execute();
-
-    print("<div class=\"navbar\"><ul>");
-    while ($row = $stmt->fetch()) {
-        $category = $row["StockGroupName"];
-        //$Catget = 0;
-        if (ctype_space($category)) {
-            $category = preg_replace('/\s+/', '_', $category);
-            print("<a href=\"$category.php\">" . $category . "</a>");
-        } else {
-            print("<a href=\"$category.php\">" . $category . "</a>");
-        }
-
-        //print("<a href=\"$category.php?category=\"" . ($Catget) . ">" .($category) . "</a>");
-    }
-    print("</ul></div>");*/
     $pdo = NULL;
 
     print('<form method="POST" action="search.php" class="zoeken">
@@ -104,23 +82,6 @@ function category() {
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
             </form>
         </div>');
-}
-function userLogin($usernameEmail, $password) {
-    $db = getDB();
-    $hash_password = hash('sha256', $password);
-    $stmt = $db->prepare("SELECT PersonID FROM people WHERE LogOnName=:usernameEmail AND HashedPassword=:hash_password AND IsPermittedToLogon = 1");
-    $stmt->bindParam("LogOnName", $usernameEmail, PDO::PARAM_STR);
-    $stmt->bindParam("hash_password", $hash_password, PDO::PARAM_STR);
-    $stmt->execute();
-    $count = $stmt->rowCount();
-    $user = $stmt->fetch(PDO::FETCH_OBJ);
-    $db = null;
-    if ($count) {
-        $_SESSION['PersonID'] = $data->PersonID;
-        return true;
-    } else {
-        return false;
-    }
 }
 
 function deals() {
@@ -158,6 +119,6 @@ function deals() {
 }
 
 function footer(){
-    print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
-       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
+    print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+       . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }

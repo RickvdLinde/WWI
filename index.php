@@ -7,10 +7,12 @@ session_start();
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
+        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body class="bodi">
+
         <?php
         print(category());
         ?>

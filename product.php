@@ -8,6 +8,7 @@ include "functions.php"
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
+        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
@@ -25,12 +26,13 @@ include "functions.php"
         
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
 
-        $naam = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
-
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName = ?");
+        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+
+        $stmt->execute(array("%$naam%"));
 
         $stmt->execute(array($naam));
+
 
         while ($row = $stmt->fetch()) {
 
