@@ -13,6 +13,7 @@ include "functions.php";
         <meta charset="UTF-8">
         <title>World Wide Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
 

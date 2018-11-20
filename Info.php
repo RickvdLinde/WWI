@@ -8,6 +8,7 @@ include "functions.php"
         <title>World Wide Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
         <?php
