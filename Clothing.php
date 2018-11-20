@@ -124,7 +124,7 @@ include "functions.php";
         //print '<img src="'.$CitemPhoto.'"style="width:128px;height:128px">';
        //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
         	//print($CitemName . "<br>");
-} 
+ 
 
 
 ?>
