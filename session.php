@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
-session(start);
-$usercheck = $_SESSION['user_id'];
+session_start();
+$usercheck = $_SESSION['logged_in'];
 if (isset($usercheck)):?>
     <a href="loguit.php">Uitloggen</a>
 <?php else: ?>

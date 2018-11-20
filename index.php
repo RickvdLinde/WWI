@@ -7,9 +7,12 @@ session_start();
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
+        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body class="bodi">
+
         <?php
         print(category());
         ?>
@@ -36,7 +39,10 @@ session_start();
         <a class="dealtext1" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
         <a class="dealtext2" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>   
         <br>
-        </p>
+        </p><br><br>
       
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>

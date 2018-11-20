@@ -8,6 +8,7 @@ include "functions.php"
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
+        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
@@ -17,21 +18,27 @@ include "functions.php"
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-
-        
+        $pdo = new PDO($db, $user, $pass);      
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
         
                 $naam = preg_replace('/_/', ' ', $naam);
         
+<<<<<<< HEAD
+=======
+        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
+>>>>>>> 9965bfe83af8a8a4a3f797aa8fd11601bdeee8cf
 
 
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
+<<<<<<< HEAD
 
         $stmt->execute(array("%$naam%"));
+=======
+        $stmt->execute(array($naam));
+>>>>>>> 9965bfe83af8a8a4a3f797aa8fd11601bdeee8cf
 
         while ($row = $stmt->fetch()) {
 
@@ -73,6 +80,9 @@ include "functions.php"
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
         $pdo = NULL;
+        ?>
+        <?php
+        print(footer());
         ?>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'connect.php';
-require 'functions.php';
+include 'connect.php';
+include 'functions.php';
 if (isset($_POST['inloggenknop'])) {
     $username = !empty($_POST['user']) ? trim($_POST['user']) : null;
     $passwordAttempt = !empty($_POST['pass']) ? trim($_POST['pass']) : null;
@@ -13,7 +13,7 @@ if (isset($_POST['inloggenknop'])) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user === false) {
-        die('Incorrect username / password combination!');
+        print('Verkeerd E-mail of wachtwoord.');
     } else {
         $validPassword = password_verify($passwordhash, $user['HashedPassword']);
         if ($passwordhash == $user['HashedPassword']) {
@@ -22,7 +22,7 @@ if (isset($_POST['inloggenknop'])) {
             header("location: index.php");
             exit;
         } else {
-            die('Incorrect username / password combination!');
+            die('Verkeerd E-mail of wachtwoord.');
         }
     }
 }

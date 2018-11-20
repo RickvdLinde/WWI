@@ -9,6 +9,7 @@ include "functions.php"
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
     <body>
         <?php
@@ -46,6 +47,8 @@ include "functions.php"
             <a href="product.php?product=<?= $naam ?>">Terug naar productpagina</a><br>
             <a href="Winkelmandje.php">Ga naar winkelwagen</a>
         </div>
-
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>

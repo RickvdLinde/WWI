@@ -49,7 +49,6 @@ function category() {
             <nav>
                 <a href="Winkelmandje.php">Winkelwagen</a>
                 <a href="inloggen.php">Inloggen</a>
-                <a href="contact.php">Contact</a>
             </nav>
             </div>
         </header>
@@ -84,23 +83,6 @@ function category() {
             </form>
         </div>');
 }
-function userLogin($usernameEmail, $password) {
-    $db = getDB();
-    $hash_password = hash('sha256', $password);
-    $stmt = $db->prepare("SELECT PersonID FROM people WHERE LogOnName=:usernameEmail AND HashedPassword=:hash_password AND IsPermittedToLogon = 1");
-    $stmt->bindParam("LogOnName", $usernameEmail, PDO::PARAM_STR);
-    $stmt->bindParam("hash_password", $hash_password, PDO::PARAM_STR);
-    $stmt->execute();
-    $count = $stmt->rowCount();
-    $user = $stmt->fetch(PDO::FETCH_OBJ);
-    $db = null;
-    if ($count) {
-        $_SESSION['PersonID'] = $data->PersonID;
-        return true;
-    } else {
-        return false;
-    }
-}
 
 function deals() {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -134,4 +116,9 @@ function deals() {
         print $item3;
         print (" " . $prijs3);
     }
+}
+
+function footer(){
+    print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
+       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }
