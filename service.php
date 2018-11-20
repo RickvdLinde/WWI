@@ -20,7 +20,7 @@ include "functions.php"
             Klantenservice
         </h1>
         
-        <p class="tk border">
+        <p class="tk borderpagina">
             Wide World Importers
         </p>
         
