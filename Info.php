@@ -14,9 +14,6 @@ include "functions.php"
         print(category());
         ?>
         
-        <?php
-        print(footer());
-        ?>
         
         <h1 class="txet">
             Over Wide World Importers
@@ -27,6 +24,10 @@ include "functions.php"
             We hebben als ambitie om onze activiteiten uit te breiden in Europa, dat doen we door producten rechtstreeks te gaan verkopen aan de Nederlandse consument.
         </p>
         
+        
+        <?php
+        print(footer());
+        ?>
         
     </body>
 </html>
