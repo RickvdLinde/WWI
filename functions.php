@@ -53,7 +53,7 @@ function category() {
             </div>
         </header>
         <div class="category">');
-        
+        $pdo = NULL;
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";

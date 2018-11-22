@@ -1,7 +1,11 @@
 <?php
 session_start();
-include 'connect.php';
 include 'functions.php';
+// Databaseconnectie
+$db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
@@ -25,14 +29,12 @@ if (isset($_POST['inloggenknop'])) {
     if ($user === false) {
         print('Verkeerd E-mail of wachtwoord.');
     } else {
-        $_SESSION['logged_in'] = false;
         // Als inloggegevens overeenkomen met de inloggegevens in de database
         if ($passwordhash == $user['HashedPassword'] && $username == $user['LogonName']) {
             // Variabele session wordt aangemaakt en je wordt doorgestuurd naar de homepagina
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
             header("location: index.php");
-            exit;
         } else {
             // Bij eventuele andere errors
             print('Verkeerd E-mail of wachtwoord.');
