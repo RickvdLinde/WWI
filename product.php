@@ -21,11 +21,32 @@ include "functions.php"
         $pdo = new PDO($db, $user, $pass);      
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
+        $resultatenCounts = filter_input(INPUT_GET,
+        "resultaten", FILTER_SANITIZE_NUMBER_INT);
         
                 $naam = preg_replace('/_/', ' ', $naam);
-        
+
+$check = strstr($naam, '"');
+if($check) {        
+
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+
+
+
+
+            $stmt->execute(array('%$naam%'));
+} else {
+            $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
+        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+
+        $stmt->execute(array("%$naam%"));
+}
+        //$stmt->execute(array($naam));
+            $itemresults = array();
+            $keyres = 0;
+            $itemresultsCat = array();
+            $keyresCat = 0;
 
         $stmt->execute(array("%$naam%"));
 
@@ -36,7 +57,10 @@ include "functions.php"
             $voorraad = $row["QuantityOnHand"];
             $comment = $row["MarketingComments"];
             $leverancier = $row["SupplierName"];
+
+            //if($resultatenCounts == 1){
             ?>
+        
             <div class="productgegevens">
                 <div class="image-placeholder">
                     <h4>image placeholder</h4>
@@ -44,20 +68,25 @@ include "functions.php"
                 <div class="gegevenszonderafbeeling">
                     <?php
                     print("<div class=\"productnaam\">" . $name . "</div>");
+                                print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
                     print("<div class=\"productvoorraad\">Producten op voorraad: " . $voorraad . "<br><br>");
                     ?>
                     <div class="formaantal">
-                        <form method="get" action=Winkelmandje.php>
+                        <form method="get" action=Toevoegen.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
                     </div>
                     <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
                 </div>
-            </div>
+            
             <?php
-            print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
-        }
+
+            ?>
+            </div>
+    <?php
+
+        }           
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];

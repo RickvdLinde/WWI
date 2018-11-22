@@ -41,30 +41,15 @@ function searchontwerp($search, $zoeken, $a) {
 
 // Dit is de navigatiebalk van elke pagina
 function category() {
-    if (isset($_SESSION["logged_in"])) {
-        $loggedin = true;
-    } else {
-        $loggedin = false;
-    }
     print('<header>
         <div class="kop">
             <div class="logo">
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>
             <nav>
-                <a href="Winkelmandje.php">Winkelwagen</a>');
-?>
-    <?php
-
-    if ($loggedin) {
-        print("<a href=\"inloggen.php\">Uitloggen</a>");
-        session_destroy();
-    } else {
-        print("<a href=\"inloggen.php\">Account</a>");
-    }
-    ?><?php
-
-    print('</nav>
+                <a href="Winkelmandje.php">Winkelwagen</a>
+                <a href="inloggen.php">Account</a>
+            </nav>
             </div>
         </header>
         <div class="category">');
@@ -81,28 +66,14 @@ function category() {
         while($row = $stmt->fetch()){
             $category = $row["StockGroupName"];
             //$Catget = 0;
-       print(" <div class='category'>");
-
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-
-    $stmt = $pdo->prepare("SELECT * FROM stockgroups");
-    $stmt->execute();
-
-    print("<div class=\"navbar\"><ul>");
-    while ($row = $stmt->fetch()) {
-        $category = $row["StockGroupName"];
-        //$Catget = 0;
         $categorylink = preg_replace('/\s+/', '_', $category);
         //print("<a href=\"$categorylink.php\">" . $category . "</a>");
-        $urlsub = '<a href=Subcategorie.php?category=';
-        print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
-    }
-    print("</ul></div>");
-
-    print('<form method="POST" action="search.php" class="zoeken">');
+            $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" .($category) . "</a>");
+        }
+        print("</ul></div>");
+        
+        print('<form method="POST" action="search.php" class="zoeken">');
 
     $pdo = NULL;
 
@@ -113,44 +84,20 @@ function category() {
         </div>');
 }
 
-function deals() {
+function deals($deal2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-    $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal->execute();
-    $deal2->execute();
-    $deal3->execute();
-
+    $deal = $pdo->prepare("SELECT StockItemName FROM StockItems WHERE StockItemID LIKE ?");
+    $deal->execute (array("$deal2"));
+    
     while ($row = $deal->fetch()) {
         $item = $row["StockItemName"];
-        $prijs = $row["RecommededRetailPrice"];
-        print $item;
-        print (" " . $prijs);
-        print("<br>");
-    }
-    while ($row = $deal2->fetch()) {
-        $item2 = $row["StockItemName"];
-        $prijs2 = $row["RecommededRetailPrice"];
-        print $item2;
-        print (" " . $prijs2);
-        print("<br>");
-    }
-    while ($row = $deal3->fetch()) {
-        $item3 = $row["StockItemName"];
-        $prijs3 = $row["RecommededRetailPrice"];
-        print $item3;
-        print (" " . $prijs3);
+        print ($item);
     }
 }
 
-function footer() {
-    /* print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
-      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>"); */
-}
 function photo($photo2){
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
@@ -165,4 +112,12 @@ function photo($photo2){
         print $item;
      }
 }
+
+function footer(){
+
+    /*print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
+       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
+    /*print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+       . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
+
 }
