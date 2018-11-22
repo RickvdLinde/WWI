@@ -119,6 +119,6 @@ function deals() {
 }
 
 function footer(){
-    print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
-       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
+    /*print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
+       . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
 }

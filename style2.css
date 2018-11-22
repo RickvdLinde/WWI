@@ -108,3 +108,29 @@ footer a{
     padding-left: 8%;
     padding-right: 8%;
 }
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  row-gap: 50px;
+  column-gap: 10px;
+  background-color: #fff;
+  color: #444;
+  padding: 20px;
+}
+
+.grid {
+  background-color: #00AEEF;
+  color: #fff;
+  border-radius: 5px;
+  padding: 50px;
+  font-size: 100%;  
+}
+
+.wrapperproducts {
+       display: grid;
+   grid-template-columns: auto-fix 1fr;
+}
+
+.gridtextsub {
+    color: white;
+}
