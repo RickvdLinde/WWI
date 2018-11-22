@@ -34,7 +34,6 @@ if (isset($_POST['inloggenknop'])) {
             // Variabele session wordt aangemaakt en je wordt doorgestuurd naar de homepagina
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
-            header("location: index.php");
         } else {
             // Bij eventuele andere errors
             print('Verkeerd E-mail of wachtwoord.');
