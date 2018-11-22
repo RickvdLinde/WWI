@@ -57,7 +57,7 @@ include "functions.php"
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"contact.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
                 </div>
             </div>
             <?php
