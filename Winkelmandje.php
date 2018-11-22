@@ -29,7 +29,7 @@ include "functions.php"
             $winkelwagen = $_SESSION["winkelwagen"];
             $prijs = $_SESSION["prijs"];
             $voorraad = $_SESSION["voorraad"];
-            
+
             if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
                 $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_STRING);
                 if ($aantal > $voorraad) {
@@ -37,8 +37,6 @@ include "functions.php"
                         $overige = $aantal - $voorraad;
                     }
                     print($voorraad . " producten zijn nu op voorraad. De overige " . $overige . " zullen nabesteld worden. De levertijd zal hierdoor langer worden.<br>");
-                } elseif ($aantal <= 0) {
-                    print("Aantal moet meer dan 0 zijn<br>");
                 } else {
                     $_SESSION["aantal"] = $aantal;
                 }
@@ -78,7 +76,7 @@ include "functions.php"
             }
 
             print("<br>Totale bedrag: €" . $totaleBedrag . "<br><br>");
-            print('<a href="product.php?product="' . $naam . '">Terug naar productpagina</a><br>');
+            print("<a href=\"javascript:history.go(-2)\">Terug naar productpagina</a>");
             print("<input type=\"submit\" value=\"Wijzigingen opslaan\" class=\"opslaanbutton\" name=\"opslaan\"></form><br>");
             if ($loggedin) {
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
@@ -87,9 +85,9 @@ include "functions.php"
                 print("<a href=\"inloggen.php\">Inloggen</a>");
             }
             if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
-            $_SESSION["bedrag"] = $bedrag;
-            $_SESSION["winkelwagen"] = $winkelwagen;
-            $_SESSION["totalebedrag"] = $totaleBedrag;
+                $_SESSION["bedrag"] = $bedrag;
+                $_SESSION["winkelwagen"] = $winkelwagen;
+                $_SESSION["totalebedrag"] = $totaleBedrag;
             }
         }
         ?>
