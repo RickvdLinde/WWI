@@ -23,16 +23,11 @@ include "functions.php"
         "product", FILTER_SANITIZE_STRING);
         
                 $naam = preg_replace('/_/', ' ', $naam);
-        
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
 
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
         $stmt->execute(array("%$naam%"));
-
-        $stmt->execute(array($naam));
-
 
         while ($row = $stmt->fetch()) {
 
