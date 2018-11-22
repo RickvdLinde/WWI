@@ -257,9 +257,6 @@ label[for="email"]{
     color: black;
     text-decoration: none;
 }
-
-/* Opmaak tekst deals die op de index pagina staan. Er veranderd het volgende met de tekst: grote, tekst op een regel blijft, 
-afstand tussen de regels, de kleur en verwijderd de opmaak die bij een link word bijgeleverd */
 .dealtext1{
     font-size: 100%;
     display: inline;

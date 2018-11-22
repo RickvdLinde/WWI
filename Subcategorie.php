@@ -8,9 +8,6 @@ include "functions.php";
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
-
-        <link rel="stylesheet" type="text/css" href="style2.css">
-        <style type="text/css">a {text-decoration: none}</style>
         <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
@@ -78,19 +75,16 @@ $UniqueCats = array_unique($DuplicateCats);
 }
 //print_r($arraydups);
 $urlproduct1 = '<a href=product.php?product=';
-$urlresultaten = '&&resultaten=';
+$urlproduct2 = '<a href=product2.php?product=';
 //$productlink = preg_replace('/\s+/', '_', $loneproducts);
 $usedproducts = array();
 if (count($DuplicateCats) > 0){
-print("<div class=\"wrapper\">");
-    foreach ($arraydups as $cats => $counts) {
+foreach ($arraydups as $cats => $counts) {
     
             $productlink = preg_replace('/\s+/', '_', $cats);
-            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . $urlresultaten . $counts . ">" .($cats) . "</a></div>");
-            //print("<br>");
-}
-print("</div>");
-    }
+            print($urlproduct1 . ($productlink) . ">" .($cats) . "</a>");
+            print("<br>");
+}}
     //print($cats);
 /*    if($counts > 1){
             $productlink = preg_replace('/\s+/', '_', $cats);
