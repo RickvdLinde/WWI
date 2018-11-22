@@ -24,7 +24,7 @@ include "functions.php"
         print("<h2>Producten in Winkelwagen</h2><br>");
 
         //Gegevens ophalen uit de tabel
-        if (isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && ($_SESSION["aantal"] > 0) && isset($_SESSION["voorraad"])) {
+        if (isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["voorraad"])) {
             $naam = $_SESSION["naam"];
             $winkelwagen = $_SESSION["winkelwagen"];
             $prijs = $_SESSION["prijs"];
