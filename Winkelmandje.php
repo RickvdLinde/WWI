@@ -68,7 +68,7 @@ include "functions.php"
             if ($loggedin){
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
             } else {
-                print("<a href=\"betalen.php\" class=\"betaalbutton disabled\" >Naar betaalpagina</a>");
+                print("<a class=\"betaalbutton disabled\" >Naar betaalpagina</a>");
                 print("<a href=\"inloggen.php\">Inloggen</a>");
             }
             $_SESSION["bedrag"] = $bedrag;
