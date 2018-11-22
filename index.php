@@ -31,14 +31,16 @@ session_start();
         <p class="tk border">
         Exclusieve weekdeals
         <br>
-        <a href="product.php?product=Small 9mm replacement blades 9mm" ><img src="Images/211.jpg" class="deals"></a>
-        <a href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm"><img src="Images/209-210.jpg" class="deals"></a>
-        <a  href="product.php?product=Red and white urgent despatch tape 48mmx75m"><img src="Images/202.jpg"class="deals"></a>
+              <!--foto's van deals met aanklikbare link -->
+       <a href="product.php?product=<?php print(deals(135));?>"><img src="<?php print(photo(135));?>" class="deals"></a>
+       <a href="product.php?product=<?php print(deals(138));?>"><img src="<?php print(photo(138));?>" class="deals"></a>
+       <a href="product.php?product=<?php print(deals(142));?>"><img src="<?php print(photo(142));?>" class="deals"></a>
         <br>
-        <a class="dealtext" href="product.php?product=Small 9mm replacement blades 9mm">Small 9mm replacement blades</a>
-        <a class="dealtext1" href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm">Packing knife with metal insert blade (Yellow) 9mm</a>
-        <a class="dealtext2" href="product.php?product=Red and white urgent despatch tape 48mmx75m">Red and white urgent despatch</a>   
-        <br>
+        <!-- naam van product met bijhorende link-->
+        <a class="dealtext" href="product.php?product=<?php print(deals(135));?>"><?php print(deals(135));?></a>
+        <a class="dealtext" href="product.php?product=<?php print(deals(138));?>"><?php print(deals(138));?></a>
+        <a class="dealtext" href="product.php?product=<?php print(deals(142));?>"><?php print(deals(142));?></a>   
+
         </p><br><br>
       
         <?php
