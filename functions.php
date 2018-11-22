@@ -41,39 +41,54 @@ function searchontwerp($search, $zoeken, $a) {
 
 // Dit is de navigatiebalk van elke pagina
 function category() {
+    if (isset($_SESSION["logged_in"])) {
+        $loggedin = true;
+    } else {
+        $loggedin = false;
+    }
     print('<header>
         <div class="kop">
             <div class="logo">
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>
             <nav>
-                <a href="Winkelmandje.php">Winkelwagen</a>
-                <a href="inloggen.php">Account</a>
-            </nav>
+                <a href="Winkelmandje.php">Winkelwagen</a>');
+?>
+    <?php
+
+    if ($loggedin) {
+        print("<a href=\"inloggen.php\">Uitloggen</a>");
+        session_destroy();
+    } else {
+        print("<a href=\"inloggen.php\">Account</a>");
+    }
+    ?><?php
+
+    print("</nav>
             </div>
         </header>
-        <div class="category">');
-        
-        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);
-        
-        $stmt = $pdo->prepare("SELECT * FROM stockgroups");
-        $stmt->execute();
-        
-        print("<div class=\"navbar\"><ul>");
-        while($row = $stmt->fetch()){
-            $category = $row["StockGroupName"];
-            //$Catget = 0;
+        <div class=\"category\">");
+
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+
+    $stmt = $pdo->prepare("SELECT * FROM stockgroups");
+    $stmt->execute();
+
+    print("<div class=\"navbar\"><ul>");
+    while ($row = $stmt->fetch()) {
+        $category = $row["StockGroupName"];
+        //$Catget = 0;
         $categorylink = preg_replace('/\s+/', '_', $category);
         //print("<a href=\"$categorylink.php\">" . $category . "</a>");
-            $urlsub = '<a href=Subcategorie.php?category=';
-        print($urlsub . ($categorylink) . ">" .($category) . "</a>");
-        }
-        print("</ul></div>");
-        
-        print('<form method="POST" action="search.php" class="zoeken">');
+        $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
+    }
+    print("</ul></div>");
+
+    print('<form method="POST" action="search.php" class="zoeken">');
 
     $pdo = NULL;
 
@@ -118,7 +133,7 @@ function deals() {
     }
 }
 
-function footer(){
-    /*print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
-       . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
+function footer() {
+    /* print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>"); */
 }

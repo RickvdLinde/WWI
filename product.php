@@ -24,15 +24,10 @@ include "functions.php"
         
                 $naam = preg_replace('/_/', ' ', $naam);
         
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
-
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
         $stmt->execute(array("%$naam%"));
-
-        $stmt->execute(array($naam));
-
 
         while ($row = $stmt->fetch()) {
 
@@ -52,7 +47,7 @@ include "functions.php"
                     print("<div class=\"productvoorraad\">Producten op voorraad: " . $voorraad . "<br><br>");
                     ?>
                     <div class="formaantal">
-                        <form method="get" action=Toevoegen.php>
+                        <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
