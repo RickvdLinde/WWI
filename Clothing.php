@@ -8,6 +8,7 @@ include "functions.php";
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
 
@@ -124,7 +125,7 @@ include "functions.php";
         //print '<img src="'.$CitemPhoto.'"style="width:128px;height:128px">';
        //print("<li><a href=\"$items.php\">" . $category . "</a></li>"'<img src="data:image/jpeg;base64,'.base64_encode( $CitemPhoto ).'"/>';
         	//print($CitemName . "<br>");
-} 
+ 
 
 
 ?>

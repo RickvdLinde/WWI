@@ -18,6 +18,10 @@
     color: #FFFFFF;
     padding: 4px;
 }
+.disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 .zoekenproduct{
     border-bottom: solid;
     padding-bottom: 5px;
@@ -90,11 +94,22 @@
     padding: 4px;
     margin-left: 10px;
 }
+.opslaanbutton{
+    border-style: solid;
+    border-radius: 8%;
+    color: #00AEEF;
+    border-color: #00AEEF;
+    background-color: #FFFFFF;
+    padding: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
 .tabel{
     table-layout: auto;
     width: 100%;
 }
 footer{
+    margin: auto;
     border-top: solid;
     border-color: #d1d2d3;
     border-width: 2px;
@@ -108,6 +123,7 @@ footer a{
     padding-left: 8%;
     padding-right: 8%;
 }
+
 .wrapper {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -133,4 +149,8 @@ footer a{
 
 .gridtextsub {
     color: white;
+
+
+.service{
+    padding-left: 25%;
 }

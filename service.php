@@ -17,13 +17,14 @@ include "functions.php"
         
         
         <h1 class="txet">
-            Contact
+            Klantenservice
         </h1>
         
         <p class="tk borderpagina">
             Wide World Importers
         </p>
         
+        <img src="Images/kservice.jpg" alt="Klantenservice" class="service">
         
         <?php
         print(footer());

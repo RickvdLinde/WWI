@@ -48,7 +48,7 @@ function category() {
             </div>
             <nav>
                 <a href="Winkelmandje.php">Winkelwagen</a>
-                <a href="inloggen.php">Inloggen</a>
+                <a href="inloggen.php">Account</a>
             </nav>
             </div>
         </header>
@@ -119,6 +119,10 @@ function deals() {
 }
 
 function footer(){
+
     /*print("<footer><div><a href=\"#\">Over Wide World Importers</a>"
        . "<a href=\"#\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
+    /*print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+       . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");*/
+
 }

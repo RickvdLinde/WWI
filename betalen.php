@@ -9,6 +9,7 @@ session_start();
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
         <?php
@@ -55,7 +56,7 @@ session_start();
         }
         if (isset($_GET["submit"])) {
             print("</form><br>Betaling is verwerkt<br><a href=\"index.php\">Ga terug naar beginpagina</a>");
-            session_destroy();
+            unset($_SESSION['winkelwagen']);
         }
         print("</div>");
         

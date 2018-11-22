@@ -25,15 +25,13 @@ include "functions.php"
         "resultaten", FILTER_SANITIZE_NUMBER_INT);
         
                 $naam = preg_replace('/_/', ' ', $naam);
+
 $check = strstr($naam, '"');
 if($check) {        
 
-        //$stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName = ?");
-
-
-
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+
 
 
 
@@ -49,6 +47,8 @@ if($check) {
             $keyres = 0;
             $itemresultsCat = array();
             $keyresCat = 0;
+
+        $stmt->execute(array("%$naam%"));
 
         while ($row = $stmt->fetch()) {
 
@@ -77,7 +77,7 @@ if($check) {
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"contact.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
                 </div>
             
             <?php

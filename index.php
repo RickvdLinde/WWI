@@ -29,7 +29,7 @@ session_start();
         
         <br>
         <p class="tk border">
-        Exclusieve weekdeals,
+        Exclusieve weekdeals
         <br>
         <a href="product.php?product=Small 9mm replacement blades 9mm" ><img src="Images/211.jpg" class="deals"></a>
         <a href="product.php?product=Packing knife with metal insert blade (Yellow) 9mm"><img src="Images/209-210.jpg" class="deals"></a>
