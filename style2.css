@@ -109,7 +109,7 @@
     width: 100%;
 }
 footer{
-    margin: auto;
+    position: static;
     border-top: solid;
     border-color: #d1d2d3;
     border-width: 2px;
