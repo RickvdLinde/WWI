@@ -20,7 +20,14 @@ function searchontwerp($search, $zoeken, $a) {
 
 // Als de zoekbalk leeg is wordt de pagina doorgelinkt naar http://localhost/WWI/index.php
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
-        header('Location: http://localhost/WWI/index.php');
+        foreach ($search as $s) {
+            $naam = $s['StockItemName'];
+            $prijs = "€" . $s['RecommendedRetailPrice'];
+            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+
+            print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $voorraad . '</p></div>');
+        }
     } elseif ($a == NULL) {
         print("Geen resultaten");
     } elseif ($zoeken != NULL) {
@@ -57,7 +64,8 @@ function category() {
     if ($loggedin) {
         print("<a href=\"inloggen.php\">Uitloggen</a>");
     } else {
-        print("<a href=\"inloggen.php\">Account</a>");
+        print("<a href=\"inloggen.php\">Inloggen</a>");
+        print("<a href=\"registreren.php\">Registreren</a>");
     }
 
     print('</nav>

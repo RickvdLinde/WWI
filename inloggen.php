@@ -51,7 +51,7 @@ $pdo = NULL;
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="icon" href="Images/archixl-logo.png">
     </head>
-    <body class="bodi">
+    <body>
         <?php
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
