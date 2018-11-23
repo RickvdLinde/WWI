@@ -4,15 +4,7 @@ session_start();
 include "functions.php"
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Wide World Importers</title>
-        <link rel="icon" href="Images/archixl-logo.png">
-        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
-        <link rel="stylesheet" type="text/css" href="style2.css">
-    </head>
-    <body class="bodi">
+                
         <?php
         print(category());
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -36,12 +28,34 @@ include "functions.php"
             $voorraad = $row["QuantityOnHand"];
             $comment = $row["MarketingComments"];
             $leverancier = $row["SupplierName"];
-            ?>
-            <div class="productgegevens">
-                <div class="image-placeholder">
-                    <h4>image placeholder</h4>
-                </div>
-                <div class="gegevenszonderafbeeling">
+            ?>                 
+                    
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Wide World Importers</title>
+                    <link rel="icon" href="Images/archixl-logo.png">
+                    <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+                    <link rel="stylesheet" type="text/css" href="style2.css">
+                </head>
+                <body class="bodi">
+
+                <div class="slider-holder">
+                    <span id="slider-image-1"></span>
+                    <span id="slider-image-2"></span>
+                    <span id="slider-image-3"></span>
+                    <div class="image-holder">
+                        <img src="Images/1.jpg" class="slider-image" />
+                        <img src="Images/2.png" class="slider-image" />
+                        <img src="Images/3.jpg" class="slider-image" />
+                    </div>
+                    <div class="button-holder">
+                        <a href="#slider-image-1" class="slider-change"></a>
+                        <a href="#slider-image-2" class="slider-change"></a>
+                        <a href="#slider-image-3" class="slider-change"></a>
+                    </div>
+                </div>        
+        
                     <?php
                     print("<div class=\"productnaam\">" . $name . "</div>");
                     print("<div class=\"productvoorraad\">Producten op voorraad: " . $voorraad . "<br><br>");
