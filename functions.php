@@ -64,7 +64,8 @@ function category() {
     if ($loggedin) {
         print("<a href=\"inloggen.php\">Uitloggen</a>");
     } else {
-        print("<a href=\"inloggen.php\">Account</a>");
+        print("<a href=\"inloggen.php\">Inloggen</a>");
+        print("<a href=\"registreren.php\">Registreren</a>");
     }
 
     print('</nav>
