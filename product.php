@@ -44,7 +44,11 @@ include "functions.php"
                 <div class="gegevenszonderafbeeling">
                     <?php
                     print("<div class=\"productnaam\">" . $name . "</div>");
-                    print("<div class=\"productvoorraad\">Producten op voorraad: " . $voorraad . "<br><br>");
+                    if ($voorraad > 0) {
+                        print('<div class="productopvoorraad">Product is op voorraad');
+                    } else {
+                        print('<div class="productnietvoorraad">Product is niet op voorraad');
+                    }
                     ?>
                     <div class="formaantal">
                         <form method="get" action=Winkelmandje.php>
