@@ -15,7 +15,7 @@ $phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING);
 
-//Als de twee wachtwoorden hetzelfde zijn, dan wordt het watchwoord gehashd.    
+//Als de twee wachtwoorden hetzelfde zijn, dan wordt het wachtwoord gehashd.    
 $hashedpassword = hash('sha256', $password);
 
 // SQL query voor het registreren

@@ -21,7 +21,7 @@ include "functions.php"
         print(category());
         print("<div class=\"borderpagina\">");
 
-        print("<h2>Producten in Winkelwagen</h2><br>");
+        print("<h2>Shopping Cart</h2>");
 
         //Gegevens ophalen uit de tabel
         if (isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["voorraad"])) {
@@ -40,44 +40,47 @@ include "functions.php"
                 } else {
                     $_SESSION["aantal"] = $aantal;
                 }
-                if (isset($_GET["verwijderen"])) {
-                    $bedrag = null;
-                    unset($winkelwagen[$naam]);
+                if (isset($_GET["opslaan"])) {
+                    $quantity = filter_input(INPUT_GET, "quantity", FILTER_SANITIZE_STRING);
+                    $bedrag = $prijs * $quantity;
+                    $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
                 } else {
-                    if (isset($_GET["opslaan"])) {
-                        $quantity = filter_input(INPUT_GET, "quantity", FILTER_SANITIZE_STRING);
-                        $bedrag = $prijs * $quantity;
-                        $winkelwagen[$naam] = array($quantity, $bedrag);
-                    } else {
-                        // Zet een product in de array $winkelwagen
-                        $bedrag = $prijs * $aantal;
-                        $winkelwagen[$naam] = array($aantal, $bedrag);
-                    }
+                    // Zet een product in de array $winkelwagen
+                    $bedrag = $prijs * $aantal;
+                    $winkelwagen[$naam] = array($prijs, $aantal, $bedrag);
                 }
-            } else {
-                print("<strong>Aantal moet meer zijn dan 0</strong><br>");
             }
             $nummer = 0;
             //Laat gegevens van het product zien: Naam, aantal, prijs
             $totaleBedrag = 0;
-            print("<form method=\"GET\" action=\"winkelmandje.php\">");
+            print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
-                print($key . " ");
+                print("<tr><td>" . $key . "</td><td>");
                 if (is_array($value) || $value[0] > 0) {
-                    print("aantal: " . "<input type=\"text\" name=\"quantity\" value='" . $value[0] . "'>" . " Prijs: €" . $value[1] . "<button type=\"submit\" formmethod=\"GET\" name=\"verwijderen\">Verwijderen</button>");
-                    print("<br>");
+                    print("€" . number_format($value[0],2,",",".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2],2,",",".") . '</td><td><button class="deletebutton" type="submit" formmethod="GET" name="verwijderen' . $naam . '">Delete</button></td>');
+                    print('<input name="index_to_remove" type="hidden" value=' . $key . ">");
+                    print("</tr><br>");
+                    $nummer++;
+                    if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
+                        if ($key == $naam) {
+                            unset($winkelwagen[$key]);
+                            $_SESSION["winkelwagen"] = $winkelwagen;
+                            header("Refresh:0; url=Winkelmandje.php");
+                        }
+                    }
                 }
             }
+            print("</table>");
             // Berekent het totale bedrag
             foreach ($winkelwagen as $value) {
                 if (is_array($value)) {
-                    $totaleBedrag += $value[1];
+                    $totaleBedrag += $value[2];
                 }
             }
 
-            print("<br>Totale bedrag: €" . $totaleBedrag . "<br><br>");
+            print("<br>Totale bedrag: €" . number_format($totaleBedrag,2,",",".") . "<br><br>");
             print("<a href=\"javascript:history.go(-2)\">Terug naar productpagina</a>");
-            print("<input type=\"submit\" value=\"Wijzigingen opslaan\" class=\"opslaanbutton\" name=\"opslaan\"></form><br>");
+            print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
             if ($loggedin) {
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
             } else {
