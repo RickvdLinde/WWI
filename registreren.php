@@ -7,6 +7,7 @@ $pass = "";
 $pdo = new PDO($db, $user, $pass);
 
 // Gegevens registratieformulier
+if (isset($_POST['registrerenknop'])){
 $firstname = ucfirst(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING));
 $lastname = ucfirst(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
@@ -18,11 +19,18 @@ $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING)
 $hashedpassword = hash('sha256', $password);
 
 // SQL query voor het registreren
-$stmt = $pdo->prepare("INSERT IGNORE INTO people ('FullName', 'PrefferedName', 'HashedPassword', 'PhoneNumber', 'EmailAdress') VALUES ('$firstname $lastname', '$firstname', '$hashedpassword', '$phonenumber', '$email')");
+$stmt = $pdo->prepare("INSERT INTO people ('FullName', 'PrefferedName', 'HashedPassword', 'PhoneNumber', 'EmailAdress') VALUES ('$firstname $lastname', '$firstname', '$hashedpassword', '$phonenumber', '$email')");
+$user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAdress = '$email' AND HashedPassword = '$hashedpassword'");
 $stmt->execute();
+$result = $user_check->fetch(PDO::FETCH_ASSOC);
+$user_check->execute();
 if ($password != $confirmpassword) {
     print("Passwords do not match.");
 }
+if ($user) { // if user exists
+    if ($user['EmailAdress'] === $email) {
+      print("Email bestaat al");
+    }
  if ($stmt->rowCount() > 0) {
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
@@ -37,6 +45,9 @@ if ($password != $confirmpassword) {
             print('Confirm password is too short.');
         }
         }
+}
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,7 +73,7 @@ if ($password != $confirmpassword) {
             Already have an account? Log in <a href=\"inloggen.php\">here</a>");
         }
        
-        print('<input class="inloggenknop" type="submit" value="Registreren" name="inloggenknop">');
+        print('<input class="inloggenknop" type="submit" value="Registreren" name="registrerenknop">');
 
         ?>
     </form>
