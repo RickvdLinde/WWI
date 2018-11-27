@@ -51,14 +51,32 @@ function searchontwerp($search, $zoeken, $a) {
     $pdo = NULL;
 }
 
+//Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
+function welkom($logonname) {
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $logonname = array($_POST['user']); //hierin word de invoer van de gebruiker in een array gestopt
+    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
+    $welkom->execute(array("$logonname"));
+
+    while ($row = $welkom->fetch()) {
+        $user = $row["FullName"];
+        $_SESSION['user'] = $user;
+        return $user;
+    }
+}
+
+
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht= ('<h1 class="welkom">Welkom, </h1>');
+        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['user'] . '  </h1>');
     } else {
         $loggedin = false;
-        $welkombericht= ("");
+        $welkombericht = ("");
     }
     
     print('<header>
