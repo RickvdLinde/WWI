@@ -59,9 +59,9 @@ include "functions.php"
                     <?php
                     print("<div class=\"productnaam\">" . $name . "</div>");
                     if ($voorraad > 0) {
-                        print('<div class="productopvoorraad">Product is op voorraad');
+                        print('<div class="productopvoorraad">Product is op voorraad</div>');
                     } else {
-                        print('<div class="productnietvoorraad">Product is niet op voorraad');
+                        print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
                     }
                     ?>
                     <div class="formaantal">

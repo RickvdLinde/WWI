@@ -40,35 +40,44 @@ include "functions.php"
                 } else {
                     $_SESSION["aantal"] = $aantal;
                 }
-                if (isset($_GET["opslaan"])) {
-                    $quantity = filter_input(INPUT_GET, "quantity", FILTER_SANITIZE_STRING);
-                    $bedrag = $prijs * $quantity;
-                    $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
+                /* if (isset($_GET["opslaan"])) {
+                  $quantity = filter_input(INPUT_GET, "quantity", FILTER_SANITIZE_STRING);
+                  $bedrag = $prijs * $quantity;
+                  $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
+                  } else { */
+                // Zet een product in de array $winkelwagen
+                if (empty($winkelwagen)) {
+                    $id = 0;
                 } else {
-                    // Zet een product in de array $winkelwagen
-                    $bedrag = $prijs * $aantal;
-                    $winkelwagen[$naam] = array($prijs, $aantal, $bedrag);
+                    $id = count($winkelwagen);
                 }
+                $bedrag = $prijs * $aantal;
+                $winkelwagen[$id] = array($prijs, $aantal, $bedrag, $naam);
+
+
+                //}
             }
             $nummer = 0;
             //Laat gegevens van het product zien: Naam, aantal, prijs
             $totaleBedrag = 0;
             print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
-                print("<tr><td>" . $key . "</td><td>");
+                print("<tr><td>" . $value[3] . "</td><td>");
+                ksort($winkelwagen);
                 if (is_array($value) || $value[0] > 0) {
-                    print("€" . number_format($value[0],2,",",".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2],2,",",".") . '</td><td><button class="deletebutton" type="submit" formmethod="GET" name="verwijderen' . $naam . '">Delete</button></td>');
-                    print('<input name="index_to_remove" type="hidden" value=' . $key . ">");
-                    print("</tr><br>");
-                    $nummer++;
-                    if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
-                        if ($key == $naam) {
-                            unset($winkelwagen[$key]);
-                            $_SESSION["winkelwagen"] = $winkelwagen;
+                    print($key . "€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td>');
+                    print('<input name="index_to_remove" type="hidden" value=' . $nummer . ">");
+                    print('<button class="deletebutton" type="submit" formmethod="GET" name="verwijderen">Delete</button></td></tr><br>');
+                    
+                }
+                if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
+                        $key_to_delete = $_GET["index_to_remove"];
+                        if ($key_to_delete == $nummer) {
+                            unset($_SESSION["winkelwagen"]["$key_to_delete"]);
                             header("Refresh:0; url=Winkelmandje.php");
                         }
                     }
-                }
+                    $nummer++;
             }
             print("</table>");
             // Berekent het totale bedrag
@@ -78,7 +87,7 @@ include "functions.php"
                 }
             }
 
-            print("<br>Totale bedrag: €" . number_format($totaleBedrag,2,",",".") . "<br><br>");
+            print("<br>Totale bedrag: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
             print("<a href=\"javascript:history.go(-2)\">Terug naar productpagina</a>");
             print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
             if ($loggedin) {

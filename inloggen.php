@@ -49,6 +49,7 @@ $pdo = NULL;
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
         <link rel="icon" href="Images/archixl-logo.png">
     </head>
     <body>
@@ -56,22 +57,15 @@ $pdo = NULL;
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
-            <label for='user'>E-mailadres: </label><input type='text' id='user' name='user'><br>
-            <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='pass'><br>");
+            <label for='user'>E-mailadres: </label><input type='text' id='user' name='user' required><br>
+            <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='pass' required><br>");
         }
             if (isset($_SESSION['logged_in'])){
-                print("U bent ingelogd");
-                 print('<form action="inloggen.php">
-            <input class="inloggenknop" type="submit" value="Uitloggen" name="Uitlogknop">
-            </form>');
+                header("location:index.php");
             } else {
                 print('<input class="inloggenknop" type="submit" value="Inloggen" name="inloggenknop">');
             }
-            if(isset($_GET["Uitlogknop"])){
-                unset($_SESSION['logged_in']);
-                header("Location: inloggen.php");
-            }
-            
+            print(footer());
             ?>
         </form>
     </body>

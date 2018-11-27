@@ -36,10 +36,15 @@ function searchontwerp($search, $zoeken, $a) {
         foreach ($search as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
-            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+            $voorraad = $s['QuantityOnHand'];
+            if ($voorraad > 0) {
+                $opVoorraad = "Product is op voorraad<br>";
+            } else {
+                $opVoorraad = "Product is niet op voorraad<br>";
+            }
 
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $voorraad . '</p></div>');
+            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
         print($a . " resultaten<br></div>");
     }
@@ -62,7 +67,7 @@ function category() {
             <a href="Winkelmandje.php">Winkelwagen</a>');
 
     if ($loggedin) {
-        print("<a href=\"inloggen.php\">Uitloggen</a>");
+        print("<a href=\"uitloggen.php\">Uitloggen</a>");
     } else {
         print("<a href=\"inloggen.php\">Inloggen</a>");
         print("<a href=\"registreren.php\">Registreren</a>");
@@ -82,7 +87,14 @@ function category() {
     $stmt = $pdo->prepare("SELECT * FROM stockgroups");
     $stmt->execute();
 
-        print("<div class=\"navbar\"><ul>");
+    print("<div class=\"navbar\"><ul>");
+    while ($row = $stmt->fetch()) {
+        $category = $row["StockGroupName"];
+//$Catget = 0;
+        $categorylink = preg_replace('/\s+/', '_', $category);
+//print("<a href=\"$categorylink.php\">" . $category . "</a>");
+        $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
         while ($row = $stmt->fetch()) {
             $category = $row["StockGroupName"];
 //$Catget = 0;
@@ -90,29 +102,21 @@ function category() {
 //print("<a href=\"$categorylink.php\">" . $category . "</a>");
             $urlsub = '<a href=Subcategorie.php?category=';
             print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
-            while ($row = $stmt->fetch()) {
-                $category = $row["StockGroupName"];
-//$Catget = 0;
-                $categorylink = preg_replace('/\s+/', '_', $category);
-//print("<a href=\"$categorylink.php\">" . $category . "</a>");
-                $urlsub = '<a href=Subcategorie.php?category=';
-                print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
-            }
-            
-            print("</ul></div>");
+        }
 
-            print('<form method="POST" action="search.php" class="zoeken">');
+        print("</ul></div>");
 
-            $pdo = NULL;
+        print('<form method="POST" action="search.php" class="zoeken">');
 
-            print('<form method="POST" action="search.php" class="zoeken">
+        $pdo = NULL;
+
+        print('<form method="POST" action="search.php" class="zoeken">
             <input type="text" placeholder="Zoeken.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
             </form>
         </div>');
-        }
     }
-
+}
 
 function deals($deal2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -167,6 +171,6 @@ function photo($photo2) {
 }
 
 function footer() {
-    /* print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
-      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>"); */
+    //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+      //      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }
