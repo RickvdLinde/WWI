@@ -51,32 +51,14 @@ function searchontwerp($search, $zoeken, $a) {
     $pdo = NULL;
 }
 
-//Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
-function welkom($logonname) {
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-    $logonname = array($_POST['user']); //hierin word de invoer van de gebruiker in een array gestopt
-    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
-    $welkom->execute(array("$logonname"));
-
-    while ($row = $welkom->fetch()) {
-        $user = $row["FullName"];
-        $_SESSION['user'] = $user;
-        return $user;
-    }
-}
-
-
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['user'] . '  </h1>');
+        $welkombericht= ('<h1 class="welkom">Welkom, </h1>');
     } else {
         $loggedin = false;
-        $welkombericht = ("");
+        $welkombericht= ("");
     }
     
     print('<header>
@@ -169,6 +151,25 @@ function photo($photo2){
         
      }
 }
+
+//Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
+    function multiphoto($mphoto){
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $mphoto2 = $pdo->prepare("SELECT photo FROM StockItems WHERE StockItemID LIKE ?");
+    $mphoto2->execute (array("$mphoto"));
+    
+    // Vervolgens word de blob omgezet naar een werkelijke afbeelding
+     while ($row = $photo->fetch()) {
+        $item = $row["photo"];
+        print ("data:image/png;base64," . base64_encode($item));
+        
+     }
+}
+
+
 
 function footer() {
     //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
