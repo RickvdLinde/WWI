@@ -10,25 +10,32 @@ $pdo = new PDO($db, $user, $pass);
 if (isset($_POST['registrerenknop'])){
 $firstname = ucfirst(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING));
 $lastname = ucfirst(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
-$email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
-$phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+$phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_NUMBER_INT);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING);
   
 $hashedpassword = hash('sha256', $password);
 
 // SQL query voor het registreren
-$stmt = $pdo->prepare("INSERT INTO people (FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAdress)
-        VALUES ('$firstname $lastname', '$firstname', $email', '$hashedpassword', '$phonenumber', '$email')");
+$row = $pdo->prepare("SELECT max(PersonID) FROM people");
 $user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAdress = '$email' AND HashedPassword = '$hashedpassword'");
-$stmt->execute();
 $result = $user_check->fetch(PDO::FETCH_ASSOC);
 $user_check->execute();
+$row->execute();
+
+while ($row2 = $row->fetch()) {
+	$oldmaxID = $row2["max(PersonID)"];
+        $newID = $oldmaxID + 1;
+        
+}
+$stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
+$stmt->execute();
  if ($user_check->rowCount() > 0) {
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
             header("location = index.php");
- }
+ } else {
  if ($password != $confirmpassword){
      print("Passwords are not the same");
  }
@@ -38,8 +45,11 @@ $user_check->execute();
  if (strlen($confirmpassword) < 3) {
      print('Confirm password is too short.');
 }
-
-
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    print("Invalid email format.");
+}
+}
+}
 
 ?>
 <!DOCTYPE html>
