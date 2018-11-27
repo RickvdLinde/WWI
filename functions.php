@@ -55,16 +55,20 @@ function searchontwerp($search, $zoeken, $a) {
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
+        $welkombericht= ('<h1 class="welkom">Welkom, </h1>');
     } else {
         $loggedin = false;
+        $welkombericht= ("");
     }
+    
     print('<header>
         <div class="kop">
             <div class="logo">
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
-            </div>
-            <nav>
+            </div>' . $welkombericht .
+           '<nav>
             <a href="Winkelmandje.php">Winkelwagen</a>');
+
 
     if ($loggedin) {
         print("<a href=\"uitloggen.php\">Uitloggen</a>");
@@ -118,56 +122,35 @@ function category() {
     }
 }
 
+//Hier word de stockitemname opgezocht met behulp van de stockitemid
 function deals($deal2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-
     $deal = $pdo->prepare("SELECT StockItemName FROM StockItems WHERE StockItemID LIKE ?");
-    $deal->execute(array("$deal2"));
-
-
+    $deal->execute (array("$deal2"));
+    
     while ($row = $deal->fetch()) {
         $item = $row["StockItemName"];
-        print ($item);
-    }
-    $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal->execute();
-    $deal2->execute();
-    $deal3->execute();
-
-    while ($row = $deal->fetch()) {
-        $item = $row["StockItemName"];
-        $prijs = $row["RecommededRetailPrice"];
-        print $item;
-        print (" " . $prijs);
-        print("<br>");
-    }
-    while ($row = $deal2->fetch()) {
-        $item2 = $row["StockItemName"];
-        $prijs2 = $row["RecommededRetailPrice"];
-        print $item2;
-        print (" " . $prijs2);
-        print("<br>");
-    }
-    while ($row = $deal3->fetch()) {
-        $item3 = $row["StockItemName"];
-        $prijs3 = $row["RecommededRetailPrice"];
-        print $item3;
-        print (" " . $prijs3);
+	print ("$item");
     }
 }
-
-function photo($photo2) {
+//Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
+function photo($photo2){
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-
-    while ($row = $photo->fetch()) {
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $photo = $pdo->prepare("SELECT photo FROM StockItems WHERE StockItemID LIKE ?");
+    $photo->execute (array("$photo2"));
+    
+    // Vervolgens word de blob omgezet naar een werkelijke afbeelding
+     while ($row = $photo->fetch()) {
         $item = $row["photo"];
-        print $item;
-    }
+        print ("data:image/png;base64," . base64_encode($item));
+        
+     }
 }
 
 function footer() {
