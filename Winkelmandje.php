@@ -46,15 +46,13 @@ include "functions.php"
                   $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
                   } else { */
                 // Zet een product in de array $winkelwagen
-                if (empty($winkelwagen)) {
-                    $id = 0;
-                } else {
-                    $id = count($winkelwagen);
+                $id = 0;
+                
+                if (!array_key_exists($id, $winkelwagen)) {
+                    $bedrag = $prijs * $aantal;
+                    $winkelwagen[$id] = array($prijs, $aantal, $bedrag, $naam);
+                    $id++;
                 }
-                $bedrag = $prijs * $aantal;
-                $winkelwagen[$id] = array($prijs, $aantal, $bedrag, $naam);
-
-
                 //}
             }
             $nummer = 0;
@@ -68,9 +66,8 @@ include "functions.php"
                     print($key . "€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td>');
                     print('<input name="index_to_remove" type="hidden" value=' . $nummer . ">");
                     print('<button class="deletebutton" type="submit" formmethod="GET" name="verwijderen">Delete</button></td></tr><br>');
-                    
                 }
-                if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
+                if (isset($_GET["verwijderen"]) && $_GET["index_to_remove"] != "") {
                         $key_to_delete = $_GET["index_to_remove"];
                         if ($key_to_delete == $nummer) {
                             unset($_SESSION["winkelwagen"]["$key_to_delete"]);
