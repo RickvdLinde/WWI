@@ -14,31 +14,31 @@ $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
 $phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING);
-
-//Als de twee wachtwoorden hetzelfde zijn, dan wordt het wachtwoord gehashd.    
+  
 $hashedpassword = hash('sha256', $password);
 
 // SQL query voor het registreren
-$stmt = $pdo->prepare("INSERT INTO people (FullName, PrefferedName, HashedPassword, PhoneNumber, EmailAdress) VALUES ('$firstname $lastname', '$firstname', '$hashedpassword', '$phonenumber', '$email')");
+$stmt = $pdo->prepare("INSERT INTO people (FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAdress)
+        VALUES ('$firstname $lastname', '$firstname', $email', '$hashedpassword', '$phonenumber', '$email')");
 $user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAdress = '$email' AND HashedPassword = '$hashedpassword'");
 $stmt->execute();
 $result = $user_check->fetch(PDO::FETCH_ASSOC);
 $user_check->execute();
- if ($stmt->rowCount() > 0) {
+ if ($user_check->rowCount() > 0) {
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
-        } else {
-            $error = $stmt->errorInfo();
+            header("location = index.php");
+ }
+ if ($password != $confirmpassword){
+     print("Passwords are not the same");
+ }
+ if (strlen($password) < 3) {
+     print('Password is too short.');
         }
-        if (isset($_GET['inloggenknop'])){
-        if (strlen($password) < 3) {
-            print('Password is too short.');
-        }
-        if (strlen($confirmpassword) < 3) {
-            print('Confirm password is too short.');
-        }
-        }
+ if (strlen($confirmpassword) < 3) {
+     print('Confirm password is too short.');
 }
+
 
 
 ?>
