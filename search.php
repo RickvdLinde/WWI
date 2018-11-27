@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-
+session_start();
 $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
 ?>
 <!DOCTYPE html>
