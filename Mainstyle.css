@@ -271,3 +271,11 @@ label[for="email"]{
     color: black;
     text-decoration: none;
 }
+
+.welkom{
+    font-size: 28px;
+    padding-left: 10px;
+    color: #FFFFFF;
+    float: left;
+    padding-top: 30px;
+}
