@@ -74,7 +74,6 @@ function category() {
         print("<a href=\"uitloggen.php\">Uitloggen</a>");
     } else {
         print("<a href=\"inloggen.php\">Inloggen</a>");
-        print("<a href=\"registreren.php\">Registreren</a>");
     }
 
     print('</nav>

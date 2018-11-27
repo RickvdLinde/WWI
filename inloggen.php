@@ -57,13 +57,14 @@ $pdo = NULL;
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
-            <label for='user'>E-mailadres: </label><input type='text' id='user' name='user' required><br>
-            <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='pass' required><br>");
+            <label for='user'>E-mail: </label><input type='text' id='user' name='user' required><br>
+            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>");
         }
             if (isset($_SESSION['logged_in'])){
                 header("location:index.php");
             } else {
-                print('<input class="inloggenknop" type="submit" value="Inloggen" name="inloggenknop">');
+                print('<input class="inloggenknop" type="submit" value="Sign In" name="inloggenknop"><br>');
+                print('<a href="registreren.php" class="registreerknop">Register</button>');
             }
             print(footer());
             ?>
