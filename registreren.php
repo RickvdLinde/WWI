@@ -31,16 +31,17 @@ while ($row2 = $row->fetch()) {
 $stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
 
 
-if ($user_check->rowCount() == 0){
+if ($user_check->rowCount() == 0 && $password == $confirmpassword){
     $_SESSION['logged_in'] = TRUE;
     header("location = index.php");
     $stmt->execute();
 } else {
+    if ($user_check->rowCount() >= 1)
     print("E-mailadres already exists"); 
     header("location = registreren.php");
 }
  if ($password != $confirmpassword){
-     print("Passwords are not the same");
+     print('<h1 class="registreren">Passwords are not the same</h1>');
  }
  if (strlen($password) < 3) {
      print('Password is too short.');
