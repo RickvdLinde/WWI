@@ -1,7 +1,17 @@
 <?php
 include 'functions.php';
+
+
+    $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
+    
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+
 session_start();
 $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,19 +26,8 @@ $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
 
         <?php
         print(category());
-        ?>
-        <p>
-            <label>Select list</label>
-            <select id = "myList">
-               <option value = "1">Sorteer</option> 
-               <option value = "2">Prijs laag naar hoog</option> SELECT RecommendedRetailPrice FROM stockitems ORDER BY RecommendedRetailPrice ASC
-               <option value = "3">Prijs hoog naar laag</option> SELECT RecommendedRetailPrice FROM stockitems ORDER BY RecommendedRetailPrice DESC
-               <option value = "4">Naam A tot Z</option> SELECT StockItemName FROM stockitems ORDER BY StockItemName ASC
-               <option value = "5">Naam Z tot A</option> SELECT StockItemName FROM stockitems ORDER BY StockItemName DESC
-            </select>
-        </p>
-        <?php
-        zoeken($zoeken);
+        print($zoeken);
+        print(zoeken($zoeken));
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
         <?php
