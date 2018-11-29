@@ -6,21 +6,67 @@ function zoeken($zoeken) {
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
+    $sort = "";
 
-    $search = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
-    $search->execute(array("%$zoeken%"));
-    $a = $search->rowCount();
+    print($zoeken);
+    print('<form action="#" method="GET">
+            <select name="sort">
+                <option value="1">Selecteer</option>
+                <option value="2">Prijs laag naar hoog</option>
+                <option value="3">Prijs hoog naar laag</option>
+                <option value="4">Naam A tot Z</option>
+                <option value="5">Naam Z tot A</option>
+            </select>
+            <input type="submit" name="submit" value="sort" />
+        </form>');
+    $_GET["test"] = $zoeken;
+    if (isset($_GET['sort'])) {
+        $test = $_GET["test"];
+        $test = trim($test);
+        print($test);
+        $sort = $_GET['sort'];  // Storing Selected Value In Variable
+        print ($test);
+        print ($sort);
+        switch ($sort) {
+            case 1:
+                $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
+                $orderBy->execute(array("%$test%"));
+                break;
+            case 2:
+                $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice");
+                $orderBy->execute(array("%$test%"));
+                break;
+            case 3:
+                $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice DESC");
+                $orderBy->execute(array("%$test%"));
+                break;
+            case 4:
+                $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName");
+                $orderBy->execute(array("%$test%"));
+                break;
+            case 5:
+                $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName DESC");
+                $orderBy->execute(array("%$test%"));
+                break;
+        }
+    }
 
-    print(searchontwerp($search, $zoeken, $a));
+    if (!isset($_GET['submit'])) {
+        $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
+        $orderBy->execute(array("%$zoeken%"));
+    }
+    $a = $orderBy->rowCount();
+
+    print(searchontwerp($orderBy, $zoeken, $a));
 }
 
 // De resultaten uit function zoeken weergeven, dit wordt weergegeven op naam(link naar product), prijs en voorraad
-function searchontwerp($search, $zoeken, $a) {
-    $zoekresultaten = trim($_POST["zoekresultaat"]);
+function searchontwerp($orderBy, $zoeken, $a) {
+    $zoekresultaten = trim($zoeken);
 
 // Als de zoekbalk leeg is wordt de pagina doorgelinkt naar http://localhost/WWI/index.php
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
-        foreach ($search as $s) {
+        foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
@@ -33,7 +79,7 @@ function searchontwerp($search, $zoeken, $a) {
     } elseif ($zoeken != NULL) {
 // Print naamproduct, prijs en voorraad van een product vanuit de quarry.
         print("<div class='dib'>");
-        foreach ($search as $s) {
+        foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
             $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
@@ -82,7 +128,14 @@ function category() {
     $stmt = $pdo->prepare("SELECT * FROM stockgroups");
     $stmt->execute();
 
-        print("<div class=\"navbar\"><ul>");
+    print("<div class=\"navbar\"><ul>");
+    while ($row = $stmt->fetch()) {
+        $category = $row["StockGroupName"];
+//$Catget = 0;
+        $categorylink = preg_replace('/\s+/', '_', $category);
+//print("<a href=\"$categorylink.php\">" . $category . "</a>");
+        $urlsub = '<a href=Subcategorie.php?category=';
+        print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
         while ($row = $stmt->fetch()) {
             $category = $row["StockGroupName"];
 //$Catget = 0;
@@ -90,29 +143,21 @@ function category() {
 //print("<a href=\"$categorylink.php\">" . $category . "</a>");
             $urlsub = '<a href=Subcategorie.php?category=';
             print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
-            while ($row = $stmt->fetch()) {
-                $category = $row["StockGroupName"];
-//$Catget = 0;
-                $categorylink = preg_replace('/\s+/', '_', $category);
-//print("<a href=\"$categorylink.php\">" . $category . "</a>");
-                $urlsub = '<a href=Subcategorie.php?category=';
-                print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
-            }
-            
-            print("</ul></div>");
+        }
 
-            print('<form method="POST" action="search.php" class="zoeken">');
+        print("</ul></div>");
 
-            $pdo = NULL;
+        print('<form method="POST" action="search.php" class="zoeken">');
 
-            print('<form method="POST" action="search.php" class="zoeken">
+        $pdo = NULL;
+
+        print('<form method="POST" action="search.php" class="zoeken">
             <input type="text" placeholder="Zoeken.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
             </form>
         </div>');
-        }
     }
-
+}
 
 function deals($deal2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
