@@ -145,6 +145,7 @@ footer a{
 }
 
 .slider-holder{
+    display: inline-block;
     width: 225px;
     height: 225px;
     background-color: yellow;

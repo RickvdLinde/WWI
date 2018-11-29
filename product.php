@@ -29,7 +29,7 @@ include "functions.php"
             $voorraad = $row["QuantityOnHand"];
             $comment = $row["MarketingComments"];
             $leverancier = $row["SupplierName"];
-            ?>                 
+            ?>
                     
             <html>
                 <head>
