@@ -82,36 +82,62 @@ function searchontwerp($orderBy, $zoeken, $a) {
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
-            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+            $voorraad = $s['QuantityOnHand'];
+            if ($voorraad > 0) {
+                $opVoorraad = "Product is op voorraad<br>";
+            } else {
+                $opVoorraad = "Product is niet op voorraad<br>";
+            }
 
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $voorraad . '</p></div>');
+            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
         print($a . " resultaten<br></div>");
     }
     $pdo = NULL;
 }
 
+//Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
+function welkom($logonname) {
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $logonname = array($_POST['user']); //hierin word de invoer van de gebruiker in een array gestopt
+    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
+    $welkom->execute(array("$logonname"));
+
+    while ($row = $welkom->fetch()) {
+        $user = $row["FullName"];
+        $_SESSION['user'] = $user;
+        return $user;
+    }
+}
+
+
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
+        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['user'] . '  </h1>');
     } else {
         $loggedin = false;
+        $welkombericht = ("");
     }
+    
     print('<header>
         <div class="kop">
             <div class="logo">
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
-            </div>
-            <nav>
+            </div>' . $welkombericht .
+           '<nav>
             <a href="Winkelmandje.php">Winkelwagen</a>');
 
+
     if ($loggedin) {
-        print("<a href=\"inloggen.php\">Uitloggen</a>");
+        print("<a href=\"uitloggen.php\">Uitloggen</a>");
     } else {
         print("<a href=\"inloggen.php\">Inloggen</a>");
-        print("<a href=\"registreren.php\">Registreren</a>");
     }
 
     print('</nav>
@@ -159,59 +185,59 @@ function category() {
     }
 }
 
+
+//Hier word de stockitemname opgezocht met behulp van de stockitemid
+
 function deals($deal2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-
     $deal = $pdo->prepare("SELECT StockItemName FROM StockItems WHERE StockItemID LIKE ?");
-    $deal->execute(array("$deal2"));
-
-
+    $deal->execute (array("$deal2"));
+    
     while ($row = $deal->fetch()) {
         $item = $row["StockItemName"];
-        print ($item);
-    }
-    $deal = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal2 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal3 = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice FROM StockItems WHERE StockItemName LIKE ?");
-    $deal->execute();
-    $deal2->execute();
-    $deal3->execute();
-
-    while ($row = $deal->fetch()) {
-        $item = $row["StockItemName"];
-        $prijs = $row["RecommededRetailPrice"];
-        print $item;
-        print (" " . $prijs);
-        print("<br>");
-    }
-    while ($row = $deal2->fetch()) {
-        $item2 = $row["StockItemName"];
-        $prijs2 = $row["RecommededRetailPrice"];
-        print $item2;
-        print (" " . $prijs2);
-        print("<br>");
-    }
-    while ($row = $deal3->fetch()) {
-        $item3 = $row["StockItemName"];
-        $prijs3 = $row["RecommededRetailPrice"];
-        print $item3;
-        print (" " . $prijs3);
+	print ("$item");
     }
 }
-
-function photo($photo2) {
+//Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
+function photo($photo2){
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-
-    while ($row = $photo->fetch()) {
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $photo = $pdo->prepare("SELECT photo FROM StockItems WHERE StockItemID LIKE ?");
+    $photo->execute (array("$photo2"));
+    
+    // Vervolgens word de blob omgezet naar een werkelijke afbeelding
+     while ($row = $photo->fetch()) {
         $item = $row["photo"];
-        print $item;
-    }
+        print ("data:image/png;base64," . base64_encode($item));
+        
+     }
 }
+
+//Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
+    function multiphoto($mphoto){
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $mphoto2 = $pdo->prepare("SELECT photo FROM StockItems WHERE StockItemID LIKE ?");
+    $mphoto2->execute (array("$mphoto"));
+    
+    // Vervolgens word de blob omgezet naar een werkelijke afbeelding
+     while ($row = $photo->fetch()) {
+        $item = $row["photo"];
+        print ("data:image/png;base64," . base64_encode($item));
+        
+     }
+}
+
+
 
 function footer() {
-    /* print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
-      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>"); */
+    //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
+      //      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }

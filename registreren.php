@@ -10,37 +10,46 @@ $pdo = new PDO($db, $user, $pass);
 if (isset($_POST['registrerenknop'])){
 $firstname = ucfirst(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING));
 $lastname = ucfirst(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
-$email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
-$phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+$phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_NUMBER_INT);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING);
-
-//Als de twee wachtwoorden hetzelfde zijn, dan wordt het wachtwoord gehashd.    
+  
 $hashedpassword = hash('sha256', $password);
 
 // SQL query voor het registreren
-$stmt = $pdo->prepare("INSERT INTO people (FullName, PrefferedName, HashedPassword, PhoneNumber, EmailAdress) VALUES ('$firstname $lastname', '$firstname', '$hashedpassword', '$phonenumber', '$email')");
+$row = $pdo->prepare("SELECT max(PersonID) FROM people");
 $user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAdress = '$email' AND HashedPassword = '$hashedpassword'");
-$stmt->execute();
 $result = $user_check->fetch(PDO::FETCH_ASSOC);
 $user_check->execute();
- if ($stmt->rowCount() > 0) {
+$row->execute();
+
+while ($row2 = $row->fetch()) {
+	$oldmaxID = $row2["max(PersonID)"];
+        $newID = $oldmaxID + 1;
+        
+}
+$stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
+$stmt->execute();
+ if ($user_check->rowCount() > 0) {
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
-        } else {
-            $error = $stmt->errorInfo();
+            header("location = index.php");
+ } else {
+ if ($password != $confirmpassword){
+     print("Passwords are not the same");
+ }
+ if (strlen($password) < 3) {
+     print('Password is too short.');
         }
-        if (isset($_GET['inloggenknop'])){
-        if (strlen($password) < 3) {
-            print('Password is too short.');
-        }
-        if (strlen($confirmpassword) < 3) {
-            print('Confirm password is too short.');
-        }
-        }
+ if (strlen($confirmpassword) < 3) {
+     print('Confirm password is too short.');
 }
-
-
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    print("Invalid email format.");
+}
+}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,18 +65,16 @@ $user_check->execute();
         print(category());
 
         if (!isset($_SESSION['logged_in'])) {
-            print("<form method='POST' class='inloggen'>
-            <label for='firstname'>First name: </label><input type='text' id='firstname' name='firstname' required><br>
-            <label for='lastname'>Last name: </label><input type='text' id='lastname' name='lastname' required><br>
-            <label for='email'>E-mailadress: </label><input type='text' id='email' name='email' required><br>
-            <label for='phonenumber'>Phone number: </label><input type='text' id='phonenumber' name='phonenumber'><br>
-            <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='password' required><br>
-            <label for='pass2'>Wachtwoord bevestigen: </label><input type='password' id='pass2' name='password2' required><br>
-            Already have an account? Log in <a href=\"inloggen.php\">here</a>");
+            print("<table class=\"registreren\"><form method='POST' class='inloggen'>
+            <tr><td><label for='firstname'>First name: </label></td><td><input type='text' id='firstname' name='firstname' required></td></tr>
+            <tr><td><label for='lastname'>Last name: </label></td><td><input type='text' id='lastname' name='lastname' required></td></tr>
+            <tr><td><label for='email'>E-mailadress: </label></td><td><input type='text' id='email' name='email' required></td></tr>
+            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input type='text' id='phonenumber' name='phonenumber'></td></tr>
+            <tr><td><label for='pass'>Password: </label></td><td><input type='password' id='pass' name='password' required></td></tr>
+            <tr><td><label for='pass2'>Confirm password: </label></td><td><input type='password' id='pass2' name='password2' required></td></tr>
+            <tr><td></td><td>Already have an account? Log in <a href=\"inloggen.php\">here</a></td></tr>
+            <tr><td></td><td><input class=\"knopregister\" type=\"submit\" value=\"Registreren\" name=\"registrerenknop\"></td></tr></table>");
         }
-       
-        print('<input class="inloggenknop" type="submit" value="Registreren" name="registrerenknop">');
-
         ?>
     </form>
 </body>
