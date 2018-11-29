@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'functions.php';
 // Databaseconnectie
 $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -17,9 +18,8 @@ $confirmpassword = filter_input(INPUT_POST, "password2", FILTER_SANITIZE_STRING)
   
 $hashedpassword = hash('sha256', $password);
 
-// SQL query voor het registreren
 $row = $pdo->prepare("SELECT max(PersonID) FROM people");
-$user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAdress = '$email' AND HashedPassword = '$hashedpassword'");
+$user_check = $pdo->prepare("SELECT * FROM people WHERE EmailAddress = '$email'");
 $result = $user_check->fetch(PDO::FETCH_ASSOC);
 $user_check->execute();
 $row->execute();
@@ -27,15 +27,18 @@ $row->execute();
 while ($row2 = $row->fetch()) {
 	$oldmaxID = $row2["max(PersonID)"];
         $newID = $oldmaxID + 1;
-        
 }
 $stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
-$stmt->execute();
- if ($user_check->rowCount() > 0) {
-            $_SESSION['user_id'] = $user['PersonID'];
-            $_SESSION['logged_in'] = TRUE;
-            header("location = index.php");
- } else {
+
+
+if ($user_check->rowCount() == 0){
+    $_SESSION['logged_in'] = TRUE;
+    header("location = index.php");
+    $stmt->execute();
+} else {
+    print("E-mailadres already exists"); 
+    header("location = registreren.php");
+}
  if ($password != $confirmpassword){
      print("Passwords are not the same");
  }
@@ -49,7 +52,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     print("Invalid email format.");
 }
 }
-}
+
+
 ?>
 <!DOCTYPE html>
 <html>
