@@ -218,6 +218,11 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     border: 1px solid #ccc;
     margin-left: 150px;
 }
+.errorsregistreren{
+    text-align: center;
+    margin-top: 5px;
+    color: red;
+}
 .knopregister{
     width: 25%;
     padding: 10px;
