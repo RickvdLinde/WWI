@@ -41,7 +41,7 @@ if ($user_check->rowCount() == 0 && $password == $confirmpassword){
     header("location = registreren.php");
 }
  if ($password != $confirmpassword){
-     print('<h1 class="registreren">Passwords are not the same</h1>');
+    $wrongpass =('<a>Passwords are not the same</a>');
  }
  if (strlen($password) < 3) {
      print('Password is too short.');
@@ -52,6 +52,8 @@ if ($user_check->rowCount() == 0 && $password == $confirmpassword){
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     print("Invalid email format.");
 }
+} else{
+    $wrongpass = ("");
 }
 
 
@@ -70,7 +72,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         print(category());
 
         if (!isset($_SESSION['logged_in'])) {
-            print("<table class=\"registreren\"><form method='POST' class='inloggen'>
+            print($wrongpass .  "<table class=\"registreren\"><form method='POST' class='inloggen'>
             <tr><td><label for='firstname'>First name: </label></td><td><input type='text' id='firstname' name='firstname' required></td></tr>
             <tr><td><label for='lastname'>Last name: </label></td><td><input type='text' id='lastname' name='lastname' required></td></tr>
             <tr><td><label for='email'>E-mailadress: </label></td><td><input type='text' id='email' name='email' required></td></tr>
