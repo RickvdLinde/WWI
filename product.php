@@ -16,13 +16,14 @@ include "functions.php"
         
                 $naam = preg_replace('/_/', ' ', $naam);
         
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
+        $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
         $stmt->execute(array("%$naam%"));
 
         while ($row = $stmt->fetch()) {
-
+            
+            $itemID = $row["StockItemID"];
             $name = $row["StockItemName"];
             $prijs = $row["RecommendedRetailPrice"];
             $voorraad = $row["QuantityOnHand"];
@@ -86,6 +87,7 @@ include "functions.php"
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
+        $_SESSION["itemID"] = $itemID;
         $pdo = NULL;
         ?>
         <?php

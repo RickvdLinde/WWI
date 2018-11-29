@@ -24,11 +24,12 @@ include "functions.php"
         print("<h2>Shopping Cart</h2>");
 
         //Gegevens ophalen uit de tabel
-        if (isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["voorraad"])) {
+        if (isset($_SESSION["naam"]) && isset($_SESSION["winkelwagen"]) && isset($_SESSION["voorraad"]) && isset($_SESSION["itemID"])) {
             $naam = $_SESSION["naam"];
             $winkelwagen = $_SESSION["winkelwagen"];
             $prijs = $_SESSION["prijs"];
             $voorraad = $_SESSION["voorraad"];
+            $itemID = $_SESSION["itemID"];
 
             if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
                 $aantal = filter_input(INPUT_GET, "aantal", FILTER_SANITIZE_STRING);
@@ -46,13 +47,11 @@ include "functions.php"
                   $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
                   } else { */
                 // Zet een product in de array $winkelwagen
-                $id = 0;
-                
-                if (!array_key_exists($id, $winkelwagen)) {
-                    $bedrag = $prijs * $aantal;
-                    $winkelwagen[$id] = array($prijs, $aantal, $bedrag, $naam);
-                    $id++;
-                }
+
+                $id = $itemID;
+                $bedrag = $prijs * $aantal;
+                $winkelwagen[$itemID] = array($prijs, $aantal, $bedrag, $naam, $id);
+
                 //}
             }
             $nummer = 0;
@@ -61,21 +60,18 @@ include "functions.php"
             print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
                 print("<tr><td>" . $value[3] . "</td><td>");
-                ksort($winkelwagen);
                 if (is_array($value) || $value[0] > 0) {
-                    print($key . "€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td>');
-                    print('<input name="index_to_remove" type="hidden" value=' . $nummer . ">");
-                    print('<button class="deletebutton" type="submit" formmethod="GET" name="verwijderen">Delete</button></td></tr><br>');
+                    print("€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td><button class="deletebutton" type="submit" formmethod="GET" name="verwijderen' . $value[4] . '">Delete</button></td></tr><br>');
+                    print('<input name="index_to_remove" type="hidden" value=' . $value[4] . '>');
                 }
-                if (isset($_GET["verwijderen"]) && $_GET["index_to_remove"] != "") {
-                        $key_to_delete = $_GET["index_to_remove"];
-                        if ($key_to_delete == $nummer) {
-                            unset($_SESSION["winkelwagen"]["$key_to_delete"]);
-                            header("Refresh:0; url=Winkelmandje.php");
-                        }
-                    }
-                    $nummer++;
             }
+            if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
+                $key_to_delete = $_GET["index_to_remove"];
+                unset($_SESSION["winkelwagen"]["$key_to_delete"]);
+                //header("Refresh:0; url=Winkelmandje.php");
+                $nummer++;
+            }
+
             print("</table>");
             // Berekent het totale bedrag
             foreach ($winkelwagen as $value) {
