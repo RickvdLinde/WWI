@@ -170,25 +170,6 @@ function photo($photo2){
      }
 }
 
-//Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
-    function multiphoto($mphoto){
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-    $mphoto2 = $pdo->prepare("SELECT photo FROM StockItems WHERE StockItemID LIKE ?");
-    $mphoto2->execute (array("$mphoto"));
-    
-    // Vervolgens word de blob omgezet naar een werkelijke afbeelding
-     while ($row = $photo->fetch()) {
-        $item = $row["photo"];
-        print ("data:image/png;base64," . base64_encode($item));
-        
-     }
-}
-
-
-
 function footer() {
     //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
       //      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
