@@ -96,7 +96,7 @@ function searchontwerp($orderBy, $zoeken, $a) {
     }
     $pdo = NULL;
 }
-
+/*
 //Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
 function welkom($logonname) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -113,13 +113,14 @@ function welkom($logonname) {
         return $user;
     }
 }
+ */
 
 
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['user'] . '  </h1>');
+        $welkombericht = ('<h1 class="welkom">Welcome</h1>');
     } else {
         $loggedin = false;
         $welkombericht = ("");
