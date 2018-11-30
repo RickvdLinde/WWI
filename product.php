@@ -31,7 +31,15 @@ include "functions.php"
             $leverancier = $row["SupplierName"];
             ?>
 
-            <!-- Slideshow container -->
+            <head>
+            <meta charset="UTF-8">
+            <title>Wide World Importers</title>
+            <link rel="icon" href="Images/archixl-logo.png">
+            <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+            <link rel="stylesheet" type="text/css" href="style2.css">
+            </head>
+            <body>
+
             <div class="slideshow-container">
 
             <div class="mySlides fade">
@@ -42,7 +50,7 @@ include "functions.php"
               <img src="Images/2.png">
             </div>
 
-            <div class="mySlides fade">
+            <div class="mySlides fade"> 
               <img src="Images/3.jpg">
             </div>
 
@@ -57,17 +65,15 @@ include "functions.php"
               <span class="dot" onclick="currentSlide(2)"></span> 
               <span class="dot" onclick="currentSlide(3)"></span> 
             </div>
-            
+
             <script>
             var slideIndex = 1;
             showSlides(slideIndex);
 
-            // Next/previous controls
             function plusSlides(n) {
               showSlides(slideIndex += n);
             }
 
-            // Thumbnail image controls
             function currentSlide(n) {
               showSlides(slideIndex = n);
             }
@@ -76,18 +82,17 @@ include "functions.php"
               var i;
               var slides = document.getElementsByClassName("mySlides");
               var dots = document.getElementsByClassName("dot");
-              if (n > slides.length) {slideIndex = 1}
+              if (n > slides.length) {slideIndex = 1}    
               if (n < 1) {slideIndex = slides.length}
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none"; 
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";  
               }
               for (i = 0; i < dots.length; i++) {
                   dots[i].className = dots[i].className.replace(" active", "");
               }
-              slides[slideIndex-1].style.display = "block"; 
+              slides[slideIndex-1].style.display = "block";  
               dots[slideIndex-1].className += " active";
-            }    
-
+            }
             </script>
             
             <?php
