@@ -30,23 +30,23 @@ function zoeken($zoeken) {
         switch ($sort) {
             case 1:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
-                $orderBy->execute(array("%$zoeken%"));
+                $orderBy->execute(array("%$test%"));
                 break;
             case 2:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice");
-                $orderBy->execute(array("%$zoeken%"));
+                $orderBy->execute(array("%$test%"));
                 break;
             case 3:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice DESC");
-                $orderBy->execute(array("%$zoeken%"));
+                $orderBy->execute(array("%$test%"));
                 break;
             case 4:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName");
-                $orderBy->execute(array("%$zoeken%"));
+                $orderBy->execute(array("%$test%"));
                 break;
             case 5:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName DESC");
-                $orderBy->execute(array("%$zoeken%"));
+                $orderBy->execute(array("%$test%"));
                 break;
         }
     }
@@ -78,6 +78,7 @@ function searchontwerp($orderBy, $zoeken, $a) {
         print("Geen resultaten");
     } elseif ($zoeken != NULL) {
 // Print naamproduct, prijs en voorraad van een product vanuit de quarry.
+        print("<p class='zoekresultaat'> $a resultaten</p>");
         print("<div class='dib'>");
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
@@ -92,29 +93,11 @@ function searchontwerp($orderBy, $zoeken, $a) {
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
-        print($a . " resultaten<br></div>");
+      
+        print("</div>");
     }
     $pdo = NULL;
 }
-/* Would have
-//Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
-function welkom($logonname) {
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-    $logonname = array($_POST['user']); //hierin word de invoer van de gebruiker in een array gestopt
-    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
-    $welkom->execute(array("$logonname"));
-
-    while ($row = $welkom->fetch()) {
-        $user = $row["FullName"];
-        $_SESSION['user'] = $user;
-        return $user;
-    }
-}
- */
-
 
 // Dit is de navigatiebalk van elke pagina
 function category() {
