@@ -54,65 +54,41 @@ include "functions.php"
 
                 //}
             }
-            $nummer = 0;
             //Laat gegevens van het product zien: Naam, aantal, prijs
             $totaleBedrag = 0;
-            print("<table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
+            print("<br><table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
-                print("<tr><td>" . $value[3] . "</td><td>");
-                if (is_array($value) || $value[0] > 0) {
-                    print("€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . $value[1] . "</td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td>');
-                    print('<input name="index_to_remove" type="hidden" value=' . $value[4] . '>');
-                    print('<input class="deletebutton" type="submit" value="' . $value[4] . '" name="verwijderen"></td></tr><br>');
-                    if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
-                        if ($_GET[$value[4]] == $_GET["index_to_remove"]) {
-                            $key_to_delete = $_GET[$value[4]];
-                            unset($_SESSION["winkelwagen"][$key_to_delete]);
-                            //header("Refresh:0; url=Winkelmandje.php");
-                            $nummer++;
-                        }
-                    }
-                }
-            }
-
-                $a = $value[4];
-                
-                print("<tr><td>" . $value[3] . "</td><td></form>");
+                print("<tr><td>" . $value[3] . "</td></form>");
                 print('<form methode="GET" action="#">');
-                print("<input type='submit' name='$value[4]' value='Delete'></form>");
-                print($a);
-                    
-                    if (isset($_GET[$value[4]])){
-                        
-                        unset($_SESSION["winkelwagen"][$value[4]]);
-                        header("Refresh:0; url=Winkelmandje.php");
-                    }
-                
-            }
-               
-
-            print("</table>");
-            // Berekent het totale bedrag
-            foreach ($winkelwagen as $value) {
-                if (is_array($value)) {
-                    $totaleBedrag += $value[2];
+                print('<td>€' . number_format($value[0], 2, ",", ".") . '</td><td>x</td><td>' . $value[1] . '</td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
+                print("<td><input class='deletebutton' type='submit' name='$value[4]' value='Delete'></form></form>");
+                if (isset($_GET[$value[4]])) {
+                    unset($_SESSION["winkelwagen"][$value[4]]);
+                    header("Refresh:0; url=Winkelmandje.php");
                 }
             }
+        }
 
-            print("<br>Totale bedrag: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
-            
-            print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
-            if ($loggedin) {
-                print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
-            } else {
-                print("<a class=\"betaalbutton disabled\" >Naar betaalpagina</a>");
-                print("<a href=\"inloggen.php\">Inloggen</a>");
+
+        print("</table>");
+        // Berekent het totale bedrag
+        foreach ($winkelwagen as $value) {
+            if (is_array($value)) {
+                $totaleBedrag += $value[2];
             }
-            if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
-                $_SESSION["bedrag"] = $bedrag;
-                $_SESSION["winkelwagen"] = $winkelwagen;
-                $_SESSION["totalebedrag"] = $totaleBedrag;
-            }
+        }
+
+        print("<br>Subtotal: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
+        //print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
+        if ($loggedin) {
+            print("<a href=\"betalen.php\" class=\"betaalbutton\" >Proceed to Checkout</a>");
+        } else {
+            print("<a href=\"inloggen.php\" class=\"betaalbutton\">Sign In</a>");
+        }
+        if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
+            $_SESSION["bedrag"] = $bedrag;
+            $_SESSION["winkelwagen"] = $winkelwagen;
+            $_SESSION["totalebedrag"] = $totaleBedrag;
         }
         ?>
     </div>
