@@ -57,20 +57,24 @@ include "functions.php"
             $nummer = 0;
             //Laat gegevens van het product zien: Naam, aantal, prijs
             $totaleBedrag = 0;
-            print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
+            print("<table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
                 print("<tr><td>" . $value[3] . "</td><td>");
                 if (is_array($value) || $value[0] > 0) {
-                    print("€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td><button class="deletebutton" type="submit" formmethod="GET" name="verwijderen' . $value[4] . '">Delete</button></td></tr><br>');
+                    print("€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . $value[1] . "</td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td>');
                     print('<input name="index_to_remove" type="hidden" value=' . $value[4] . '>');
+                    print('<input class="deletebutton" type="submit" value="' . $value[4] . '" name="verwijderen"></td></tr><br>');
+                    if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
+                        if ($_GET[$value[4]] == $_GET["index_to_remove"]) {
+                            $key_to_delete = $_GET[$value[4]];
+                            unset($_SESSION["winkelwagen"][$key_to_delete]);
+                            //header("Refresh:0; url=Winkelmandje.php");
+                            $nummer++;
+                        }
+                    }
                 }
             }
-            if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
-                $key_to_delete = $_GET["index_to_remove"];
-                unset($_SESSION["winkelwagen"]["$key_to_delete"]);
-                //header("Refresh:0; url=Winkelmandje.php");
-                $nummer++;
-            }
+
 
             print("</table>");
             // Berekent het totale bedrag

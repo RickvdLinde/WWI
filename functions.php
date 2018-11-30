@@ -30,23 +30,23 @@ function zoeken($zoeken) {
         switch ($sort) {
             case 1:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
-                $orderBy->execute(array("%$test%"));
+                $orderBy->execute(array("%$zoeken%"));
                 break;
             case 2:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice");
-                $orderBy->execute(array("%$test%"));
+                $orderBy->execute(array("%$zoeken%"));
                 break;
             case 3:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY RecommendedRetailPrice DESC");
-                $orderBy->execute(array("%$test%"));
+                $orderBy->execute(array("%$zoeken%"));
                 break;
             case 4:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName");
-                $orderBy->execute(array("%$test%"));
+                $orderBy->execute(array("%$zoeken%"));
                 break;
             case 5:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ? ORDER BY StockItemName DESC");
-                $orderBy->execute(array("%$test%"));
+                $orderBy->execute(array("%$zoeken%"));
                 break;
         }
     }
