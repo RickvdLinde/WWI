@@ -87,15 +87,15 @@ include "functions.php"
             <div class="slideshow-container">
 
             <div class="mySlides fade">
-              <img src="Images/1.jpg">
+                <img src="Images/1.png">
             </div>
 
             <div class="mySlides fade">
-              <img src="Images/2.png">
+                <img src="Images/2.png">
             </div>
 
             <div class="mySlides fade"> 
-              <img src="Images/3.jpg">
+                <img src="Images/3.png">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
