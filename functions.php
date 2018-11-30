@@ -96,7 +96,7 @@ function searchontwerp($orderBy, $zoeken, $a) {
     }
     $pdo = NULL;
 }
-/*
+/* Would have
 //Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
 function welkom($logonname) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -120,10 +120,10 @@ function welkom($logonname) {
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome</h1>');
+        $welkombericht = ('<h1 class="welkom">Welcome</h1>'); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
-        $welkombericht = ("");
+        $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
     }
     
     print('<header>
@@ -202,6 +202,7 @@ function deals($deal2) {
 	print ("$item");
     }
 }
+/* Dit is een functie als je de afbeelding uit de database haalt.
 //Hier word foto uit de database gehaald die hij vergelijkt met de stockitemid
 function photo($photo2){
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -217,7 +218,7 @@ function photo($photo2){
         print ("data:image/png;base64," . base64_encode($item));
         
      }
-}
+}*/
 
 function footer() {
     //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
