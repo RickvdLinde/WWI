@@ -51,20 +51,20 @@ if (isset($_POST['registrerenknop'])) {
     } else {
         //Als het email format fout is, bijvoorbeeld geen @.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $wrongemailformat = ('<p class="errorsregistreren"><strong>Invalid email format.</strong></p><br>');
+            $wrongemailformat = ('<p class="errorsregistreren"><strong>Invalid email format.</strong></p>');
         } else {
             //Als het emailadres dat is ingevuld al in de database staat.
             if ($user_check->rowCount() > 0) {
-                $emailexists = ('<p class="errorsregistreren"><strong>E-mailadres already exists</strong></p><br>');
+                $emailexists = ('<p class="errorsregistreren"><strong>E-mailadres already exists</strong></p>');
             }
         }
         //Als de 2 wachtwoorden niet gelijk zijn.
         if ($password != $confirmpassword) {
-            $wrongpass = ('<p class="errorsregistreren"><strong>Passwords are not the same</strong></p><br>');
+            $wrongpass = ('<p class="errorsregistreren"><strong>Passwords are not the same</strong></p>');
         }
         if (strlen($password) < 6) {
             //Als het wachtwoord korter dan 6 is.
-            $passwordshort = ('<p class="errorsregistreren"><strong>Password is too short.</strong></p><br>');
+            $passwordshort = ('<p class="errorsregistreren"><strong>Password is too short.</strong></p>');
         }
     }
 }

@@ -115,13 +115,13 @@ function category() {
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>' . $welkombericht .
            '<nav>
-            <a href="Winkelmandje.php">Winkelwagen</a>');
+            <a href="Winkelmandje.php">Shopping Cart</a>');
 
 
     if ($loggedin) {
-        print("<a href=\"uitloggen.php\">Uitloggen</a>");
+        print("<a href=\"uitloggen.php\">Sign Out</a>");
     } else {
-        print("<a href=\"inloggen.php\">Inloggen</a>");
+        print("<a href=\"inloggen.php\">Sign In</a>");
     }
 
     print('</nav>
