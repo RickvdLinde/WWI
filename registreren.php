@@ -8,6 +8,12 @@ $pass = "";
 $pdo = new PDO($db, $user, $pass);
 
 // Gegevens registratieformulier
+
+$wrongpass = ("");
+$wrongemailformat = ("");
+$emailexists = ("");
+$passwordshort = ("");
+
 if (isset($_POST['registrerenknop'])){
 $firstname = ucfirst(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING));
 $lastname = ucfirst(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
@@ -31,27 +37,29 @@ while ($row2 = $row->fetch()) {
 $stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
 
 
-if ($user_check->rowCount() == 0){
+if ($user_check->rowCount() == 0 && $password == $confirmpassword){
     $_SESSION['logged_in'] = TRUE;
     header("location = index.php");
     $stmt->execute();
 } else {
-    print("E-mailadres already exists"); 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $wrongemailformat = ('<p class="errorsregistreren"><strong>Invalid email format.</strong></p><br>');
+} else {
+    if ($user_check->rowCount() > 0){
+    $emailexists = ('<p class="errorsregistreren"><strong>E-mailadres already exists</strong></p><br>'); 
     header("location = registreren.php");
 }
+}
  if ($password != $confirmpassword){
-     print("Passwords are not the same");
- }
+    $wrongpass =('<p class="errorsregistreren"><strong>Passwords are not the same</strong></p><br>');
+}
  if (strlen($password) < 3) {
-     print('Password is too short.');
+     $passwordshort = ('<p class="errorsregistreren"><strong>Password is too short.</strong></p><br>');
         }
- if (strlen($confirmpassword) < 3) {
-     print('Confirm password is too short.');
-}
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    print("Invalid email format.");
 }
 }
+
+
 
 
 ?>
@@ -77,7 +85,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             <tr><td><label for='pass'>Password: </label></td><td><input class=\"field\" type='password' id='pass' name='password' required></td></tr>
             <tr><td><label for='pass2'>Confirm password: </label></td><td><input class=\"field\" type='password' id='pass2' name='password2' required></td></tr>
             <tr><td></td><td>Already have an account? Log in <a href=\"inloggen.php\">here</a></td></tr>
-            <tr><td></td><td><input class=\"knopregister\" type=\"submit\" value=\"Registreren\" name=\"registrerenknop\"></td></tr></table>");
+            <tr><td></td><td><input class=\"knopregister\" type=\"submit\" value=\"Registreren\" name=\"registrerenknop\"></td></tr></table>" . $wrongpass . $wrongemailformat . $emailexists . $passwordshort);
         }
         ?>
     </form>

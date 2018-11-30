@@ -31,15 +31,21 @@ session_start();
         <p class="tk border">
             Exclusieve weekdeals
             <br>
+            <?php
+            //Zodra de variabel veranderd gaat de foto's en tekst mee, maar de foto's moetem wel beschikbaar zijn.
+            $product1 = 135;
+            $product2 = 138;
+            $product3 = 142;
+            ?>
             <!--foto's van deals met aanklikbare link -->
-            <a href="product.php?product=<?php print(deals(135)); ?>"><img src="<?php print(photo(135)); ?>" class="deals"></a>
-            <a href="product.php?product=<?php print(deals(138)); ?>"><img src="<?php print(photo(138)); ?>" class="deals"></a>
-            <a href="product.php?product=<?php print(deals(142)); ?>"><img src="<?php print(photo(142)); ?>" class="deals"></a>
+            <a href="product.php?product=<?php print(deals($product1)); ?>"><img src="Images/<?php print ($product1); ?>.png" class="deals"></a>
+            <a href="product.php?product=<?php print(deals($product2)); ?>"><img src="Images/<?php print ($product2); ?>.png" class="deals"></a>
+            <a href="product.php?product=<?php print(deals($product3)); ?>"><img src="Images/<?php print ($product3); ?>.png" class="deals"></a>
             <br>
             <!-- naam van product met bijhorende link-->
-            <a class="dealtext" href="product.php?product=<?php print(deals(135)); ?>"><?php print(deals(135)); ?></a>
-            <a class="dealtext" href="product.php?product=<?php print(deals(138)); ?>"><?php print(deals(138)); ?></a>
-            <a class="dealtext" href="product.php?product=<?php print(deals(142)); ?>"><?php print(deals(142)); ?></a>    
+            <a class="dealtext" href="product.php?product=<?php print(deals($product1)); ?>"><?php print(deals($product1)); ?></a>
+            <a class="dealtext" href="product.php?product=<?php print(deals($product2)); ?>"><?php print(deals($product2)); ?></a>
+            <a class="dealtext" href="product.php?product=<?php print(deals($product3)); ?>"><?php print(deals($product3)); ?></a>    
             <br>
         </p><br><br>
 
