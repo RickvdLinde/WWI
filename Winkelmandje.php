@@ -59,18 +59,23 @@ include "functions.php"
             $totaleBedrag = 0;
             print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
-                print("<tr><td>" . $value[3] . "</td><td>");
-                if (is_array($value) || $value[0] > 0) {
-                    print("€" . number_format($value[0], 2, ",", ".") . "</td><td>x</td><td>" . "<input type=\"text\" name=\"quantity\" value='" . $value[1] . "'></td><td>" . "€" . number_format($value[2], 2, ",", ".") . '</td><td><button class="deletebutton" type="submit" formmethod="GET" name="verwijderen' . $value[4] . '">Delete</button></td></tr><br>');
-                    print('<input name="index_to_remove" type="hidden" value=' . $value[4] . '>');
-                }
+                $a = $value[4];
+                
+                print("<tr><td>" . $value[3] . "</td><td></form>");
+                print('<form methode="GET" action="#">');
+                print("<input type='submit' name='$value[4]' value='Delete'></form>");
+                print($a);
+                    
+                    if (isset($_GET[$value[4]])){
+                        
+                        unset($_SESSION["winkelwagen"][$value[4]]);
+                        header("Refresh:0; url=Winkelmandje.php");
+                    }
+                
             }
-            if (isset($_GET["index_to_remove"]) && $_GET["index_to_remove"] != "") {
-                $key_to_delete = $_GET["index_to_remove"];
-                unset($_SESSION["winkelwagen"]["$key_to_delete"]);
-                //header("Refresh:0; url=Winkelmandje.php");
-                $nummer++;
-            }
+               
+            
+            
 
             print("</table>");
             // Berekent het totale bedrag
@@ -81,7 +86,7 @@ include "functions.php"
             }
 
             print("<br>Totale bedrag: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
-            print("<a href=\"javascript:history.go(-2)\">Terug naar productpagina</a>");
+            
             print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
             if ($loggedin) {
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
