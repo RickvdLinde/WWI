@@ -58,7 +58,8 @@ include "functions.php"
                 </div>        
         
                     <?php
-                    print("<div class=\"productnaam\">" . $name . "</div>");
+                    print("<div class='productnaamprijs'><div class=\"productnaam\">" . $name . "</div>");
+                    print("<div class=\"productprijs\">€" . $prijs) . "</div></div>";
                     if ($voorraad > 0) {
                         print('<div class="productopvoorraad">Product is op voorraad</div>');
                     } else {
@@ -75,7 +76,6 @@ include "functions.php"
                 </div>
             </div>
             <?php
-            print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
         }
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {

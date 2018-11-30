@@ -67,28 +67,29 @@ include "functions.php"
                     header("Refresh:0; url=Winkelmandje.php");
                 }
             }
-        }
-
-
-        print("</table>");
-        // Berekent het totale bedrag
-        foreach ($winkelwagen as $value) {
-            if (is_array($value)) {
-                $totaleBedrag += $value[2];
+            print("</table>");
+            // Berekent het totale bedrag
+            foreach ($winkelwagen as $value) {
+                if (is_array($value)) {
+                    $totaleBedrag += $value[2];
+                }
             }
-        }
 
-        print("<br>Subtotal: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
-        //print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
-        if ($loggedin) {
-            print("<a href=\"betalen.php\" class=\"betaalbutton\" >Proceed to Checkout</a>");
-        } else {
-            print("<a href=\"inloggen.php\" class=\"betaalbutton\">Sign In</a>");
-        }
-        if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
-            $_SESSION["bedrag"] = $bedrag;
-            $_SESSION["winkelwagen"] = $winkelwagen;
-            $_SESSION["totalebedrag"] = $totaleBedrag;
+
+            print("<br>Subtotal: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
+            //print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
+            if ($loggedin && sizeof($winkelwagen) > 0) {
+                print("<a href=\"betalen.php\" class=\"betaalbutton\" >Proceed to Checkout</a>");
+            } elseif ($loggedin && sizeof($winkelwagen) < 1) {
+                print("<a class=\"betaalbutton disabled\">Proceed to Checkout</a>");
+            } else {
+                print("<a href=\"inloggen.php\" class=\"betaalbutton\">Sign In</a>");
+            }
+            if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
+                $_SESSION["bedrag"] = $bedrag;
+                $_SESSION["winkelwagen"] = $winkelwagen;
+                $_SESSION["totalebedrag"] = $totaleBedrag;
+            }
         }
         ?>
     </div>
