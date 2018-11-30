@@ -74,8 +74,88 @@ include "functions.php"
                     </div>
                     <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
                 </div>
+
+            <head>
+            <meta charset="UTF-8">
+            <title>Wide World Importers</title>
+            <link rel="icon" href="Images/archixl-logo.png">
+            <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+            <link rel="stylesheet" type="text/css" href="style2.css">
+            </head>
+            <body>
+
+            <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="Images/1.jpg">
             </div>
+
+            <div class="mySlides fade">
+              <img src="Images/2.png">
+            </div>
+
+            <div class="mySlides fade"> 
+              <img src="Images/3.jpg">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              if (n > slides.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+            }
+            </script>
+            
             <?php
+            print("<div class=\"productnaam\">" . $name . "</div>");
+            if ($voorraad > 0) {
+                print('<div class="productopvoorraad">Product is op voorraad</div>');
+            } else {
+                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+            }
+            ?>
+            <div class="formaantal">
+                <form method="get" action=Winkelmandje.php>
+                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" value=1 name="aantal">
+                    <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                </form>
+            </div>
+            <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; 
+
+            print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
         }
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {
