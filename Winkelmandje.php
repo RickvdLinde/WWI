@@ -75,6 +75,21 @@ include "functions.php"
                 }
             }
 
+                $a = $value[4];
+                
+                print("<tr><td>" . $value[3] . "</td><td></form>");
+                print('<form methode="GET" action="#">');
+                print("<input type='submit' name='$value[4]' value='Delete'></form>");
+                print($a);
+                    
+                    if (isset($_GET[$value[4]])){
+                        
+                        unset($_SESSION["winkelwagen"][$value[4]]);
+                        header("Refresh:0; url=Winkelmandje.php");
+                    }
+                
+            }
+               
 
             print("</table>");
             // Berekent het totale bedrag
@@ -85,7 +100,7 @@ include "functions.php"
             }
 
             print("<br>Totale bedrag: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
-            print("<a href=\"javascript:history.go(-2)\">Terug naar productpagina</a>");
+            
             print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
             if ($loggedin) {
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
