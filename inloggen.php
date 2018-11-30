@@ -6,6 +6,9 @@ $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
+    
+    $false = "";
+    
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
@@ -27,7 +30,7 @@ if (isset($_POST['inloggenknop'])) {
     
     // Als de inloggegevens fout zijn
     if ($user === false) {
-        print('Verkeerd E-mail of wachtwoord.');
+        $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
         if ($passwordhash == $user['HashedPassword'] && $username == $user['LogonName']) {
@@ -36,7 +39,7 @@ if (isset($_POST['inloggenknop'])) {
             $_SESSION['logged_in'] = TRUE;
         } else {
             // Bij eventuele andere errors
-            print('Verkeerd E-mail of wachtwoord.');
+            $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
         }
     }
 }
@@ -58,7 +61,7 @@ $pdo = NULL;
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
             <label for='user'>E-mail: </label><input type='text' id='user' name='user' required><br>
-            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>");
+            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>$false");
         }
             if (isset($_SESSION['logged_in'])){
                 header("location:index.php");

@@ -105,7 +105,7 @@ include "functions.php"
             ?>
             <div class="formaantal">
                 <form method="get" action=Winkelmandje.php>
-                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
+                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" value=1 name="aantal">
                     <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                 </form>
             </div>

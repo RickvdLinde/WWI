@@ -78,8 +78,9 @@ header a{
     margin-top: 0.2%;
 }
 .inloggen{
+    display: center;
     margin-top: 150px;
-    margin-left: 32%;
+    margin-left: 35%;
     color: black;
 }
 .inloggen label{
@@ -216,6 +217,13 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
 }
 .errorsregistreren{
     text-align: center;
+    margin-right: 25%;
+    margin-top: 5px;
+    color: red;
+}
+.errorsinloggen{
+    text-align: center;
+    margin-right: 43%;
     margin-top: 5px;
     color: red;
 }
@@ -225,6 +233,11 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     cursor: pointer;
     padding: 10px 80px;
     border: 0;
+    width: 74%;
+}
+.zoekresultaat{
+    text-align: center;
+    font-size: 120%;
 }
 .slider-holder
         {
