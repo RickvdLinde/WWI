@@ -31,69 +31,6 @@ include "functions.php"
             $leverancier = $row["SupplierName"];
             ?>
 
-
-            <head>
-            <meta charset="UTF-8">
-            <title>Wide World Importers</title>
-            <link rel="icon" href="Images/archixl-logo.png">
-            <link rel="stylesheet" type="text/css" href="Mainstyle.css">
-            <link rel="stylesheet" type="text/css" href="style2.css">
-            </head>
-            <body>
-
-            <div class="slideshow-container">
-
-            <div class="mySlides fade">
-                <img src="Images/1.png">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="Images/2.png">
-            </div>
-
-            <div class="mySlides fade"> 
-                <img src="Images/3.png">
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            </div>
-            <br>
-
-            <div style="text-align:center">
-              <span class="dot" onclick="currentSlide(1)"></span> 
-              <span class="dot" onclick="currentSlide(2)"></span> 
-              <span class="dot" onclick="currentSlide(3)"></span> 
-            </div>  
-            
-            <div class="formaantal">
-                <form method="get" action=Winkelmandje.php>
-                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                    <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
-                </form>
-            </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
-                </div>
-                
-            <?php
-                    print("<div class='productnaamprijs'><div class=\"productnaam\">" . $name . "</div>");
-                    print("<div class=\"productprijs\">€" . $prijs) . "</div></div>";
-                    if ($voorraad > 0) {
-                        print('<div class="productopvoorraad">Product is op voorraad</div>');
-                    } else {
-                        print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
-                    }
-                    ?>
-                    <div class="formaantal">
-                        <form method="get" action=Winkelmandje.php>
-                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
-                        </form>
-                    </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; ?>
-                </div>
-
             <head>
             <meta charset="UTF-8">
             <title>Wide World Importers</title>
