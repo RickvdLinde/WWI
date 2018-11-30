@@ -70,12 +70,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         if (!isset($_SESSION['logged_in'])) {
             print("<table class=\"registreren\"><form method='POST' class='inloggen'>
-            <tr><td><label for='firstname'>First name: </label></td><td><input type='text' id='firstname' name='firstname' required></td></tr>
-            <tr><td><label for='lastname'>Last name: </label></td><td><input type='text' id='lastname' name='lastname' required></td></tr>
-            <tr><td><label for='email'>E-mailadress: </label></td><td><input type='text' id='email' name='email' required></td></tr>
-            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input type='text' id='phonenumber' name='phonenumber'></td></tr>
-            <tr><td><label for='pass'>Password: </label></td><td><input type='password' id='pass' name='password' required></td></tr>
-            <tr><td><label for='pass2'>Confirm password: </label></td><td><input type='password' id='pass2' name='password2' required></td></tr>
+            <tr><td><label for='firstname'>First name: </label></td><td><input class=\"field\" type='text' id='firstname' name='firstname' required></td></tr>
+            <tr><td><label for='lastname'>Last name: </label></td><td><input class=\"field\" type='text' id='lastname' name='lastname' required></td></tr>
+            <tr><td><label for='email'>E-mailadress: </label></td><td><input class=\"field\" type='text' id='email' name='email' required></td></tr>
+            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input class=\"field\" type='text' id='phonenumber' name='phonenumber'></td></tr>
+            <tr><td><label for='pass'>Password: </label></td><td><input class=\"field\" type='password' id='pass' name='password' required></td></tr>
+            <tr><td><label for='pass2'>Confirm password: </label></td><td><input class=\"field\" type='password' id='pass2' name='password2' required></td></tr>
             <tr><td></td><td>Already have an account? Log in <a href=\"inloggen.php\">here</a></td></tr>
             <tr><td></td><td><input class=\"knopregister\" type=\"submit\" value=\"Registreren\" name=\"registrerenknop\"></td></tr></table>");
         }
