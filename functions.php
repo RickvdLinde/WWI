@@ -64,7 +64,7 @@ function zoeken($zoeken) {
 function searchontwerp($orderBy, $zoeken, $a) {
     $zoekresultaten = trim($zoeken);
 
-// Als de zoekbalk leeg is wordt de pagina doorgelinkt naar http://localhost/WWI/index.php
+// Als de zoekbalk leeg is worden alle producten weergegeven.
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
