@@ -56,6 +56,7 @@ include "functions.php"
                 $winkelwagen[$itemID] = array($prijs, $aantal, $bedrag, $naam, $id);
             }
             //Laat gegevens van het product zien: Naam, aantal, prijs
+
             print("<table class=\"tabel\"><form method=\"GET\" action=\"winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value) {
                 
@@ -74,12 +75,24 @@ include "functions.php"
                 #    $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
                 } 
 
+
+            $totaleBedrag = 0;
+            print("<br><table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
+            foreach ($winkelwagen as $key => $value) {
+                print("<tr><td>" . $value[3] . "</td></form>");
+                print('<form methode="GET" action="#">');
+                print('<td>€' . number_format($value[0], 2, ",", ".") . '</td><td>x</td><td>' . $value[1] . '</td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
+                print("<td><input class='deletebutton' type='submit' name='$value[4]' value='Delete'></form></form>");
+
                 if (isset($_GET[$value[4]])) {
                     unset($_SESSION["winkelwagen"][$value[4]]);
                     header("Refresh:0; url=Winkelmandje.php");
                 }
+
             print("aantal:".$_SESSION["aantal"][$value[1]] );
                     print("GET" . $_GET["quantity"]);
+
+
             }
             print("</table>");
 
@@ -90,14 +103,23 @@ include "functions.php"
                 }
             }
 
+
             print("<br>Totale bedrag: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
 
             print("<form methode ='GET' action='#'><input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"change\"></form><br><br>");
             if ($loggedin) {
                 print("<a href=\"betalen.php\" class=\"betaalbutton\" >Naar betaalpagina</a>");
+
+
+            print("<br>Subtotal: €" . number_format($totaleBedrag, 2, ",", ".") . "<br><br>");
+            //print("<input type=\"submit\" value=\"Save Changes\" class=\"opslaanbutton\" name=\"opslaan\"></form><br><br>");
+            if ($loggedin && sizeof($winkelwagen) > 0) {
+                print("<a href=\"betalen.php\" class=\"betaalbutton\" >Proceed to Checkout</a>");
+            } elseif ($loggedin && sizeof($winkelwagen) < 1) {
+                print("<a class=\"betaalbutton disabled\">Proceed to Checkout</a>");
+
             } else {
-                print("<a class=\"betaalbutton disabled\" >Naar betaalpagina</a>");
-                print("<a href=\"inloggen.php\">Inloggen</a>");
+                print("<a href=\"inloggen.php\" class=\"betaalbutton\">Sign In</a>");
             }
             if (isset($_GET["aantal"]) && $_GET["aantal"] > 0) {
                 $_SESSION["bedrag"] = $bedrag;

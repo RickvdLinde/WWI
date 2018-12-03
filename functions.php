@@ -64,7 +64,7 @@ function zoeken($zoeken) {
 function searchontwerp($orderBy, $zoeken, $a) {
     $zoekresultaten = trim($zoeken);
 
-// Als de zoekbalk leeg is wordt de pagina doorgelinkt naar http://localhost/WWI/index.php
+// Als de zoekbalk leeg is worden alle producten weergegeven.
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
@@ -78,6 +78,7 @@ function searchontwerp($orderBy, $zoeken, $a) {
         print("Geen resultaten");
     } elseif ($zoeken != NULL) {
 // Print naamproduct, prijs en voorraad van een product vanuit de quarry.
+        print("<p class='zoekresultaat'> $a resultaten</p>");
         print("<div class='dib'>");
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
@@ -92,29 +93,11 @@ function searchontwerp($orderBy, $zoeken, $a) {
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
-        print($a . " resultaten<br></div>");
+      
+        print("</div>");
     }
     $pdo = NULL;
 }
-/* Would have
-//Dit zorgt ervoor dat de volledige naam word opgehaald d.m.v. invoer van de inloggen
-function welkom($logonname) {
-    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-    $user = "root";
-    $pass = "";
-    $pdo = new PDO($db, $user, $pass);
-    $logonname = array($_POST['user']); //hierin word de invoer van de gebruiker in een array gestopt
-    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
-    $welkom->execute(array("$logonname"));
-
-    while ($row = $welkom->fetch()) {
-        $user = $row["FullName"];
-        $_SESSION['user'] = $user;
-        return $user;
-    }
-}
- */
-
 
 // Dit is de navigatiebalk van elke pagina
 function category() {
@@ -132,13 +115,13 @@ function category() {
                 <a href="index.php"><img src="Images/WWIlogo.png"></a>
             </div>' . $welkombericht .
            '<nav>
-            <a href="Winkelmandje.php">Winkelwagen</a>');
+            <a href="Winkelmandje.php">Shopping Cart</a>');
 
 
     if ($loggedin) {
-        print("<a href=\"uitloggen.php\">Uitloggen</a>");
+        print("<a href=\"uitloggen.php\">Sign Out</a>");
     } else {
-        print("<a href=\"inloggen.php\">Inloggen</a>");
+        print("<a href=\"inloggen.php\">Sign In</a>");
     }
 
     print('</nav>
