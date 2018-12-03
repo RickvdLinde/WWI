@@ -7,8 +7,7 @@ function zoeken($zoeken) {
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
-
-    print($zoeken);
+    
     print('<form action="#" method="GET">
             <select name="sort">
                 <option value="1">Selecteer</option>
@@ -27,6 +26,9 @@ function zoeken($zoeken) {
         $sort = $_GET['sort'];  // Storing Selected Value In Variable
         print ($test);
         print ($sort);
+        
+        print($test);
+        
         switch ($sort) {
             case 1:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
@@ -162,8 +164,8 @@ function category() {
         $pdo = NULL;
 
         print('<form method="POST" action="search.php" class="zoeken">
-            <input type="text" placeholder="Zoeken.." name="zoekresultaat">
-            <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
+            <input type="text" placeholder="Search.." name="zoekresultaat">
+            <input type="submit" placeholder="Zoeken.."value="Search" name="Zoeken">
             </form>
         </div>');
     }

@@ -26,7 +26,6 @@ $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
 
         <?php
         print(category());
-        print($zoeken);
         print(zoeken($zoeken));
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>

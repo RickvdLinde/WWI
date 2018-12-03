@@ -24,7 +24,7 @@ session_start();
         $betalen->execute();
         $bezorgen->execute();
 
-        if (isset($_SESSION["winkelwagen"])) {
+        if (!empty($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
 
 
@@ -64,6 +64,7 @@ session_start();
                     print("<strong>Selecteer een betaalmethode en een bezorgmethode</strong>");
                 }
             }
+            
         }
         print("</div>");
         ?>
