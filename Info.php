@@ -17,7 +17,7 @@ include "functions.php"
         
         
         <h1 class="txet">
-            Over Wide World Importers
+            About Wide World Importers
         </h1>
         
         <p class="tk borderpagina">

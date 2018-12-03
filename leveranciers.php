@@ -16,7 +16,7 @@ include "functions.php"
         ?>
         
         <h1 class="borderpagina">
-            Contactgegevens leveranciers
+            Contact information suppliers 
         </h1>
         
         <p class="te borderpagina">
