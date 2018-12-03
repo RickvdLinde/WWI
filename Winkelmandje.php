@@ -74,7 +74,7 @@ include "functions.php"
                 #    $bedrag = $prijs * $quantity;
                 #    $winkelwagen[$naam] = array($prijs, $quantity, $bedrag);
                 } 
-
+            }
 
             $totaleBedrag = 0;
             print("<br><table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
@@ -126,6 +126,7 @@ include "functions.php"
                 $_SESSION["winkelwagen"] = $winkelwagen;
                 $_SESSION["totalebedrag"] = $totaleBedrag;
             }
+        }
         }
         ?>
     </div>
