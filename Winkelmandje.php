@@ -89,9 +89,9 @@ include "functions.php"
                     header("Refresh:0; url=Winkelmandje.php");
                 }
 
-            print("aantal:".$_SESSION["aantal"][$value[1]] );
+            print("aantal:".$aantal );
                     print("GET" . $_GET["quantity"]);
-
+                    print($_SESSION["aantal"][$value[1]]);
 
             }
             print("</table>");
