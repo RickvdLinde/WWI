@@ -194,6 +194,8 @@ print('<form id="s" method="post">');
                 
 
             ?>
+        <!--De slider met de images-->
+        <div class="slider">
            <div class="slideshow-container">
 
             <div class="mySlides fade">
@@ -219,6 +221,7 @@ print('<form id="s" method="post">');
               <span class="dot" onclick="currentSlide(2)"></span> 
               <span class="dot" onclick="currentSlide(3)"></span> 
             </div>
+        </div>
 
             <script>
             var slideIndex = 1;
