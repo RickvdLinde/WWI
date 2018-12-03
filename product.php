@@ -104,7 +104,7 @@ $dropdowncount = $_POST["small"];
                 print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
             }
                     ?>
-                    <div class="formaantal">
+                    <div class="formaantal" action="winkelmandje.php">
                         <form method="get" action=Toevoegen.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
@@ -180,7 +180,7 @@ print('<form id="s" method="post">');
             }
                     ?>
                     <div class="formaantal">
-                        <form method="get" action=Toevoegen.php>
+                        <form method="get" action="winkelmandje.php">
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>

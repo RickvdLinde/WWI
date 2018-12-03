@@ -68,7 +68,7 @@ include "functions.php"
                 print("<input type='submit' name='$value[4]' value='Delete'></form>");
 
                 if (isset($_GET["change"])) {
-                $_SESSION["aantal"][$value[1]] = $_GET["quantity"];
+                
                 #filter_input (INPUT_GET, "quantity", FILTER_SANITIZE_STRING);
                     header("Refresh:0; url=Winkelmandje.php");
                 #    $bedrag = $prijs * $quantity;
@@ -90,8 +90,8 @@ include "functions.php"
                 }
 
             print("aantal:".$aantal );
-                    print("GET" . $_GET["quantity"]);
-                    print($_SESSION["aantal"][$value[1]]);
+                    
+                   
 
             }
             print("</table>");
