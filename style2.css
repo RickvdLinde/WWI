@@ -17,10 +17,21 @@
     border-color: #18b703;
     color: #FFFFFF;
     padding: 4px;
+    font-weight: bold;
 }
 .disabled{
     opacity: 0.6;
     cursor: not-allowed;
+}
+.deletebutton{
+    text-decoration: none;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 8%;
+    background: red;
+    border-color: red;
+    color: #FFFFFF;
+    padding: 4px;
 }
 .zoekenproduct{
     border-bottom: solid;
@@ -43,7 +54,7 @@
 .voorraadproduct{
     font-size: 16px;
 }
-.image-placeholder {
+/*.image-placeholder {
     background-color: #eee;
     display: flex;
     height: 180px;
@@ -56,7 +67,7 @@
     align-self: center;
     text-align: center;
     width: 100%;
-}
+}*/
 .productgegevens{
     margin-top: 20px;
 }
@@ -67,14 +78,23 @@
 .productnaam{
     font-size: 30px;
     float: left;
+    margin-top: 10px;
+}
+.productleverancier{
+    text-decoration: none;
+    color: black;
 }
 .productprijs{
     font-size: 32px;
     color: #00AEEF;
     float: right;
-    margin-right: 20%;
+    margin-right: 30%;
+    margin-top: 10px;
 }
-.productvoorraad{
+.productopvoorraad{
+    margin-top: 60px;
+}
+.productnietvoorraad{
     margin-top: 60px;
 }
 .formaantal{
@@ -93,6 +113,7 @@
     color: #FFFFFF;
     padding: 4px;
     margin-left: 10px;
+    font-weight: bold;
 }
 .opslaanbutton{
     border-style: solid;
@@ -103,13 +124,14 @@
     padding: 4px;
     margin-left: 10px;
     cursor: pointer;
+    font-weight: bold;
 }
 .tabel{
     table-layout: auto;
     width: 100%;
 }
 footer{
-    position: static;
+    margin: auto;
     border-top: solid;
     border-color: #d1d2d3;
     border-width: 2px;
@@ -124,33 +146,94 @@ footer a{
     padding-right: 8%;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  row-gap: 50px;
-  column-gap: 10px;
-  background-color: #fff;
-  color: #444;
-  padding: 20px;
+.service{
+    padding-left: 25%;
 }
 
-.grid {
-  background-color: #00AEEF;
-  color: #fff;
-  border-radius: 5px;
-  padding: 50px;
-  font-size: 100%;  
-}
+            * {box-sizing: border-box}
 
-.wrapperproducts {
-       display: grid;
-   grid-template-columns: auto-fix 1fr;
-}
+            /* Slideshow container */
+            .slideshow-container {
+              max-width: 225px;
+              position: relative;
+              margin: auto;
+            }
+
 
 .gridtextsub {
     color: white;
 }
 
-.service{
-    padding-left: 25%;
+            /* Next & previous buttons */
+            .prev, .next {
+              cursor: pointer;
+              position: absolute;
+              top: 50%;
+              width: auto;
+              padding: 16px;
+              margin-top: -22px;
+              color: white;
+              font-weight: bold;
+              font-size: 18px;
+              transition: 0.6s ease;
+              border-radius: 0 3px 3px 0;
+              user-select: none;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+              right: 0;
+              border-radius: 3px 0 0 3px;
+            }
+
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover, .next:hover {
+              background-color: rgba(0,0,0,0.8);
+            }
+
+            /* The dots/bullets/indicators */
+            .dot {
+              cursor: pointer;
+              height: 15px;
+              width: 15px;
+              margin: 0 2px;
+              background-color: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+              transition: background-color 0.6s ease;
+            }
+
+            .active, .dot:hover {
+              background-color: #717171;
+            }
+
+            /* Fading animation */
+            .fade {
+              -webkit-animation-name: fade;
+              -webkit-animation-duration: 1.5s;
+              animation-name: fade;
+              animation-duration: 1.5s;
+            }
+
+            @-webkit-keyframes fade {
+              from {opacity: .4} 
+              to {opacity: 1}
+            }
+
+            @keyframes fade {
+              from {opacity: .4} 
+              to {opacity: 1}
+            }
+
+            /* On smaller screens, decrease text size */
+            @media only screen and (max-width: 300px) {
+              .prev, .next,.text {font-size: 11px}
+            }
+
+.productopvoorraad{
+    color: green;
+}
+.productnietvoorraad{
+    color: red;
 }

@@ -1,7 +1,14 @@
 <?php
 session_start();
-include 'connect.php';
 include 'functions.php';
+// Databaseconnectie
+$db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    
+    $false = "";
+    
 // Als inlogknop is ingedrukt
 if (isset($_POST['inloggenknop'])) {
     // Haal E-mailadres en wachtwoord uit de textvelden
@@ -23,19 +30,16 @@ if (isset($_POST['inloggenknop'])) {
     
     // Als de inloggegevens fout zijn
     if ($user === false) {
-        print('Verkeerd E-mail of wachtwoord.');
+        $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
-        $_SESSION['logged_in'] = false;
         // Als inloggegevens overeenkomen met de inloggegevens in de database
         if ($passwordhash == $user['HashedPassword'] && $username == $user['LogonName']) {
             // Variabele session wordt aangemaakt en je wordt doorgestuurd naar de homepagina
             $_SESSION['user_id'] = $user['PersonID'];
             $_SESSION['logged_in'] = TRUE;
-            header("location: index.php");
-            exit;
         } else {
             // Bij eventuele andere errors
-            print('Verkeerd E-mail of wachtwoord.');
+            $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
         }
     }
 }
@@ -48,29 +52,24 @@ $pdo = NULL;
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
         <link rel="icon" href="Images/archixl-logo.png">
     </head>
-    <body class="bodi">
+    <body>
         <?php
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
-            <label for='user'>E-mailadres: </label><input type='text' id='user' name='user'><br>
-            <label for='pass'>Wachtwoord: </label><input type='password' id='pass' name='pass'><br>");
+            <label for='user'>E-mail: </label><input type='text' id='user' name='user' required><br>
+            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>$false");
         }
             if (isset($_SESSION['logged_in'])){
-                print("U bent ingelogd");
-                 print('<form action="inloggen.php">
-            <input class="inloggenknop" type="submit" value="Uitloggen" name="Uitlogknop">
-            </form>');
+                header("location:index.php");
             } else {
-                print('<input class="inloggenknop" type="submit" value="Inloggen" name="inloggenknop">');
+                print('<input class="inloggenknop" type="submit" value="Sign In" name="inloggenknop"><br>');
+                print('<a href="registreren.php" class="registreerknop">Register</button>');
             }
-            if(isset($_GET["Uitlogknop"])){
-                unset($_SESSION['logged_in']);
-                header("Location: inloggen.php");
-            }
-            
+            print(footer());
             ?>
         </form>
     </body>

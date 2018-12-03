@@ -4,6 +4,10 @@
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
+    min-height: 100%;
+}
+html, body{
+    height: 100%;
 }
 /*
 .bodi{
@@ -31,7 +35,16 @@ body{
 .kop nav a{
     font-size: 28px;
     padding-right: 10px;
+    padding-left: 30px;
     color: #FFFFFF;
+}
+.uitloggen{
+    font-size: 28px;
+    padding-right: 10px;
+    color: #FFFFFF;
+    border: none;
+    background-color: Transparent;
+    outline: none;
 }
 header{
     background-color: #FFFFFF;
@@ -66,8 +79,9 @@ header a{
     margin-top: 0.2%;
 }
 .inloggen{
+    display: center;
     margin-top: 150px;
-    margin-left: 32%;
+    margin-left: 35%;
     color: black;
 }
 .inloggen label{
@@ -155,9 +169,10 @@ label[for="user"], [for="pass"]{
     margin: 15px 0;
 }
 
-input[name="user"], input[name="pass"]{
+input[name="user"], input[name="pass"], input[name='firstname'], input[name='lastname'], input[name='email'], input[name='phonenumber'],
+input[name='password'], input[name='password2']{
     
-    width: 25%;
+    width: 230px;
     padding: 10px;
     margin: 8px 0;
     display: inline-block;
@@ -166,7 +181,7 @@ input[name="user"], input[name="pass"]{
     
 }
 
-input[class="inloggenknop"] , input[class="registrerenknop"]{
+input[class="inloggenknop"] , input[class="inlogknop"]{
     background-color: #00AEEF;
     color: white;
     padding: 10px;
@@ -176,20 +191,67 @@ input[class="inloggenknop"] , input[class="registrerenknop"]{
     width: 25%;
     margin-left: 161px;
 }
-
-label[for="email"]{
-    float: right;  
+.registreerknop{
+    width: 25%;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #00AEEF;
+    color: white;
+    margin-left: 161px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+}
+.registreren{
+    display: center;
+    table-layout: auto;
+    margin-top: 110px;
+    margin-left: 35%;
+}
+/*.field{
+    width: 25%;
+    padding: 10px 150px 10px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 2px;
+}*/
+.errorsregistreren{
+    text-align: center;
+    margin-right: 25%;
+    margin-top: 5px;
+    color: red;
+}
+.errorsinloggen{
+    text-align: center;
+    margin-right: 43%;
+    margin-top: 5px;
+    color: red;
+}
+.knopregister{
+    background-color: #00AEEF;
+    color: white;
+    cursor: pointer;
+    padding: 10px 80px;
+    border: 0;
+    width: 74%;
+}
+.zoekresultaat{
+    text-align: center;
+    font-size: 120%;
 }
 .slider-holder
         {
             width: 800px;
             height: 400px;
             background-color: yellow;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 50px;
+            margin-right: 100px;
             margin-top: 0px;
             text-align: center;
             overflow: hidden;
+            float: left;
         }
         
         .image-holder
@@ -253,17 +315,14 @@ label[for="email"]{
 .dealtext{
     font-size: 100%;
     display: inline;
-    margin: 60px;
+    margin: 90px;
     color: black;
     text-decoration: none;
 }
-
-/* Opmaak tekst deals die op de index pagina staan. Er veranderd het volgende met de tekst: grote, tekst op een regel blijft, 
-afstand tussen de regels, de kleur en verwijderd de opmaak die bij een link word bijgeleverd */
 .dealtext1{
     font-size: 100%;
     display: inline;
-    margin: 80px;
+    margin: 90px;
     color: black;
     text-decoration: none;
 }
@@ -273,4 +332,12 @@ afstand tussen de regels, de kleur en verwijderd de opmaak die bij een link word
     margin: 60px;
     color: black;
     text-decoration: none;
+}
+
+.welkom{
+    font-size: 28px;
+    padding-left: 10px;
+    color: #FFFFFF;
+    float: left;
+    padding-top: 30px;
 }

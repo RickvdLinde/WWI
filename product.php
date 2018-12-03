@@ -8,11 +8,11 @@ include "functions.php"
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
-        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
-    <body class="bodi">
+    <body>                
         <?php
         print(category());
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
@@ -21,10 +21,9 @@ include "functions.php"
         $pdo = new PDO($db, $user, $pass);      
         $naam = filter_input(INPUT_GET,
         "product", FILTER_SANITIZE_STRING);
-        $resultatenCounts = filter_input(INPUT_GET,
-        "resultaten", FILTER_SANITIZE_NUMBER_INT);
         
                 $naam = preg_replace('/_/', ' ', $naam);
+
 
 $check = strstr($naam, '"');
 $query = "'%";
@@ -57,13 +56,22 @@ if($naam == $check) {
             $keyresSupplier = 0;
 
 
-        while ($row = $stmt->fetch()) {
+        
+        $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
+        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
+        $stmt->execute(array("%$naam%"));
+
+
+        while ($row = $stmt->fetch()) {
+            
+            $itemID = $row["StockItemID"];
             $name = $row["StockItemName"];
             $prijs = $row["RecommendedRetailPrice"];
             $voorraad = $row["QuantityOnHand"];
             $comment = $row["MarketingComments"];
             $leverancier = $row["SupplierName"];
+
 
             $itemresults[$keyres] = $name;
 $keyres++;
@@ -174,6 +182,82 @@ print('<form id="s" method="post">');
         <?php
                     }
                 
+
+            ?>
+           <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <img src="Images/1.png">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="Images/2.png">
+            </div>
+
+            <div class="mySlides fade"> 
+                <img src="Images/3.png">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              if (n > slides.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+            }
+            </script>
+            
+            <?php
+            print("<div class=\"productnaam\">" . $name . "</div>");
+            if ($voorraad > 0) {
+                print('<div class="productopvoorraad">Product is op voorraad</div>');
+            } else {
+                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+            }
+            ?>
+            <div class="formaantal">
+                <form method="get" action=Winkelmandje.php>
+                    <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" value=1 name="aantal">
+                    <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                </form>
+            </div>
+            <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $leverancier) . "</a>"; 
+
+            print("<div class=\"productprijs\">€" . $prijs) . "</div><br><br><br>";
+        
+
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
@@ -184,6 +268,7 @@ print('<form id="s" method="post">');
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
+        $_SESSION["itemID"] = $itemID;
         $pdo = NULL;
         ?>
         
