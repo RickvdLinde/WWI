@@ -73,6 +73,28 @@ include "functions.php";
         $urlproduct1 = '<a href=product.php?product=';
         $urlproduct2 = '<a href=product2.php?product=';
 //$productlink = preg_replace('/\s+/', '_', $loneproducts);
+
+$usedproducts = array();
+if (count($DuplicateCats) > 0){
+print("<div class=\"wrapper\">");
+    foreach ($arraydups as $cats => $counts) {
+    
+            $productlink = preg_replace('/\s+/', '_', $cats);
+            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . $urlresultaten . $counts . "><div class='productview'>" .($cats) . "</div>" . $counts . "</a></div>");
+            //print("<br>");
+}
+print("</div>");
+    }
+    //print($cats);
+/*    if($counts > 1){
+            $productlink = preg_replace('/\s+/', '_', $cats);
+            print($urlproduct2 . ($productlink) . ">" .($cats) . "</a>");
+} else {
+    foreach ($loneproducts as $a) {
+        if($a == $cats){
+            $productlink = preg_replace('/\s+/', '_', $a);
+            print($urlproduct1 . ($productlink) . ">" .($a) . "</a>");
+
         $usedproducts = array();
         if (count($DuplicateCats) > 0) {
             foreach ($arraydups as $cats => $counts) {
@@ -81,6 +103,7 @@ include "functions.php";
                 print($urlproduct1 . ($productlink) . ">" . ($cats) . "</a>");
                 print("<br>");
             }
+
         }
         //print($cats);
         /*    if($counts > 1){
