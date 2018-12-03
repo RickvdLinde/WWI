@@ -150,6 +150,9 @@ footer a{
     padding-left: 25%;
 }
 
+.gridtextsub {
+    color: white;
+}
             * {box-sizing: border-box}
 
             /* Slideshow container */
@@ -158,12 +161,7 @@ footer a{
               position: relative;
               margin: auto;
             }
-
-
-.gridtextsub {
-    color: white;
-}
-
+            
             /* Next & previous buttons */
             .prev, .next {
               cursor: pointer;
