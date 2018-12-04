@@ -108,7 +108,7 @@ $keysizeANDcolor = 0;
 
                 if(array_key_exists(1, $arraydropdowns)){
  //de dropdownlist       
-print('<form id="s" method="post">');
+print('<div class=drop> <form id="s" method="post">');
                 print("<select name='small'>");
 
                 foreach ($arraydropdowns as $ADDown) {
@@ -117,7 +117,7 @@ print('<form id="s" method="post">');
                 }
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
-                print("</form>");
+                print("</form></div>");
                 }
                     //print($keydropdowns[$keysizeANDcolor]);
                     if(!isset($_POST['small'])) {
@@ -150,11 +150,7 @@ print('<form id="s" method="post">');
                     ?>
                 </div>
             </div>
-        <?php
-                    }
-                
 
-            ?>
         <!--De slider met de images-->
         <div class="slider">
            <div class="slideshow-container">
@@ -221,7 +217,7 @@ print('<form id="s" method="post">');
         }
         if (empty($winkelwagen)) {
             $winkelwagen = array();
-        }
+                    }}
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
@@ -229,7 +225,7 @@ print('<form id="s" method="post">');
         $pdo = NULL;
         ?>
         
-        <?php
+        <?php   
         print(footer());
         ?>
     </body>
