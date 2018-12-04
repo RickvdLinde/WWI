@@ -106,7 +106,8 @@ function welkom($logonname) {
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker in een array gestopt
+    if (isset($_SESSION['logged_in'])){
+    $logonname = $_SESSION['LogonName'];}//hierin word de invoer van de gebruiker in een array gestopt
     $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
     $welkom->execute(array("$logonname"));
 
