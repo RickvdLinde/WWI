@@ -33,9 +33,6 @@ if($naam == $check) {
         $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
-
-
-
             $stmt->execute(array("%$naam%"));
 } else {
             $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
@@ -55,8 +52,6 @@ if($naam == $check) {
             $Suplierresults = array();
             $keyresSupplier = 0;
 
-
-        
         $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
