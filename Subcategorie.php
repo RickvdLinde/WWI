@@ -10,6 +10,7 @@ include "functions.php";
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
 
@@ -80,7 +81,7 @@ print("<div class=\"wrapper\">");
     foreach ($arraydups as $cats => $counts) {
     
             $productlink = preg_replace('/\s+/', '_', $cats);
-            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div>" . $counts . "</a></div>");
+            print("<div class=\"grid\">" . $urlproduct2 . ($productlink) . "><div class='productview'>" .($cats) . "</div><br>" . $counts . " Products</a></div>");
             //print("<br>");
 }
 print("</div>");

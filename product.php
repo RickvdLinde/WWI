@@ -105,7 +105,7 @@ $dropdowncount = $_POST["small"];
             }
                     ?>
                     <div class="formaantal" action="winkelmandje.php">
-                        <form method="get" action=Toevoegen.php>
+                        <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
@@ -250,10 +250,6 @@ print('<form id="s" method="post">');
             </script>
             
             <?php
-
-
-
-        
 
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {
