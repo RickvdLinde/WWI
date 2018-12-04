@@ -7,8 +7,9 @@ function zoeken($zoeken) {
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
-    
+
     print($zoeken);
+    
     print('<form action="#" method="GET">
             <select name="sort">
                 <option value="1">Selecteer</option>
@@ -27,6 +28,9 @@ function zoeken($zoeken) {
         $sort = $_GET['sort'];  // Storing Selected Value In Variable
         print ($test);
         print ($sort);
+        
+        print($test);
+        
         switch ($sort) {
             case 1:
                 $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
@@ -104,14 +108,35 @@ function searchontwerp($orderBy, $zoeken, $a) {
     $pdo = NULL;
 }
 
+function welkom() {
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    if (isset($_SESSION['logged_in'])){ // Wanneer de gebruiker ingelogd is,
+    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker (emailadres) in een variable gestopt
+    } else{
+    $logonname = NULL; // Wanneer de gebruiker niet is ingelogd is de variable niks
+    }
+    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
+    $welkom->execute(array("$logonname"));
+
+    while ($row = $welkom->fetch()) {
+        $user = $row["FullName"];
+            return ($user);
+        
+    }
+}
+ 
+
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome</h1>'); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+        $welkombericht = ('<h1 class="welkom">Welcome ' . welkom() . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
-        $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
+        $welkombericht = ("");//als hij niet ingelogd is dan is de variabel niks zodat het niet undefined is.
     }
     if (isset($_SESSION["logged_in_admin"])){
         $loggedinadmin = true;
@@ -171,13 +196,13 @@ if (empty($_SESSION['logged_in']) && empty($_SESSION['logged_in_admin'])) {
 
         print("</ul></div>");
 
-        print('<form method="POST" action="search.php" class="zoeken">');
+        print('<form method="GET" action="search.php" class="zoeken">');
 
         $pdo = NULL;
 
-        print('<form method="POST" action="search.php" class="zoeken">
-            <input type="text" placeholder="Zoeken.." name="zoekresultaat">
-            <input type="submit" placeholder="Zoeken.."value="Zoeken" name="Zoeken">
+        print('<form method="GET" action="search.php" class="zoeken">
+            <input type="text" placeholder="Search.." name="zoekresultaat">
+            <input type="submit" placeholder="Zoeken.."value="Search" name="Zoeken">
             </form>
         </div>');
     }
@@ -218,6 +243,6 @@ function photo($photo2){
 }*/
 
 function footer() {
-    //print("<footer><div><a href=\"info.php\">Over Wide World Importers</a>"
-      //      . "<a href=\"service.php\">Klantenservice</a><a href=\"leveranciers.php\">Leveranciers</a><a href=\"contact.php\">Contact</a></div></footer>");
+    //print("<footer><div><a href=\"info.php\">About Wide World Importers</a>"
+    //        . "<a href=\"service.php\">Customer support</a><a href=\"leveranciers.php\">Suppliers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }

@@ -2,7 +2,7 @@
 include 'functions.php';
 
 
-    $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
+    $zoeken = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
     
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
@@ -10,7 +10,7 @@ include 'functions.php';
     $pdo = new PDO($db, $user, $pass);
 
 session_start();
-$zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
+$zoeken = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,6 @@ $zoeken = filter_input(INPUT_POST, "zoekresultaat", FILTER_SANITIZE_STRING);
 
         <?php
         print(category());
-        print($zoeken);
         print(zoeken($zoeken));
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>

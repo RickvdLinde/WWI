@@ -1,6 +1,6 @@
 <?php
-include "functions.php";
 session_start();
+include "functions.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,12 +24,12 @@ session_start();
         <br/>
 
         <p class="tk border">
-            Welkom bij onze webshop!
+            Welcome to our website!
         </p>
 
         <br>
         <p class="tk border">
-            Exclusieve weekdeals
+            Weekly exclusive deals
             <br>
             <?php
             //Zodra de variabel veranderd gaat de foto's en tekst mee, maar de foto's moetem wel beschikbaar zijn.

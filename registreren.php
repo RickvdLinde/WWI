@@ -46,6 +46,7 @@ if (isset($_POST['registrerenknop'])) {
     //Als er nog niemand is geregistreerd op dat account en de 2 wachtwoorden zijn hetzelfde, statement wordt uitgevoerd en je wordt ingelogd.
     if ($user_check->rowCount() == 0 && $password == $confirmpassword) {
         $_SESSION['logged_in'] = TRUE;
+        $_SESSION['LogonName'] = $email;
         header("location = index.php");
         $stmt->execute();
     } else {

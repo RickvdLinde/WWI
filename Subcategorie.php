@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "functions.php";
 ?>
 <!DOCTYPE html>
@@ -10,6 +11,7 @@ include "functions.php";
         <link rel="stylesheet" type="text/css" href="Mainstyle.css">
         <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
     </head>
     <body>
 
@@ -80,52 +82,11 @@ print("<div class=\"wrapper\">");
     foreach ($arraydups as $cats => $counts) {
     
             $productlink = preg_replace('/\s+/', '_', $cats);
-            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div>" . $counts . "</a></div>");
+            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div></a><br><div class'productlink'>" . $counts . " Product(s)</div></div>");
             //print("<br>");
 }
 print("</div>");
     }
-    //print($cats);
-/*    if($counts > 1){
-            $productlink = preg_replace('/\s+/', '_', $cats);
-            print($urlproduct2 . ($productlink) . ">" .($cats) . "</a>");
-} else {
-    foreach ($loneproducts as $a) {
-        if($a == $cats){
-            $productlink = preg_replace('/\s+/', '_', $a);
-            print($urlproduct1 . ($productlink) . ">" .($a) . "</a>");
-
-        $usedproducts = array();
-        if (count($DuplicateCats) > 0) {
-            foreach ($arraydups as $cats => $counts) {
-
-                $productlink = preg_replace('/\s+/', '_', $cats);
-                print($urlproduct1 . ($productlink) . ">" . ($cats) . "</a>");
-                print("<br>");
-            }
-
-        }
-        //print($cats);
-        /*    if($counts > 1){
-          $productlink = preg_replace('/\s+/', '_', $cats);
-          print($urlproduct2 . ($productlink) . ">" .($cats) . "</a>");
-          } else {
-          foreach ($loneproducts as $a) {
-          if($a == $cats){
-          $productlink = preg_replace('/\s+/', '_', $a);
-          print($urlproduct1 . ($productlink) . ">" .($a) . "</a>");
-
-          }
-          }
-          if ($counts = 1 && $a != $cats){
-          print("test");
-          }
-          }
-          print("<br>");
-          }
-          } else {
-          print("Geen resultaten");
-          } */
         $pdo = NULL;
         print(footer());
         ?>

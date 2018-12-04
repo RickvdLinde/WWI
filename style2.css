@@ -69,11 +69,11 @@
     width: 100%;
 }*/
 .productgegevens{
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .gegevenszonderafbeeling{
-    margin-left: 20px;
-    float: left;
+    margin-left: 350px;
+    padding-top: 80px;
 }
 .productnaam{
     font-size: 30px;
@@ -87,9 +87,9 @@
 .productprijs{
     font-size: 32px;
     color: #00AEEF;
-    float: right;
-    margin-right: 30%;
-    margin-top: 10px;
+    padding-left: 750px;
+    padding-top: 50px;
+    position: absolute;
 }
 .productopvoorraad{
     margin-top: 60px;
@@ -154,6 +154,12 @@ footer a{
     color: white;
 }
             * {box-sizing: border-box}
+            
+            .slider{
+                float: left;
+                margin-top: -250px;
+                padding-left: 60px;
+            }
 
             /* Slideshow container */
             .slideshow-container {
@@ -234,4 +240,10 @@ footer a{
 }
 .productnietvoorraad{
     color: red;
+}
+
+.drop{
+    padding-top: 160px;
+    padding-left: 350px;
+    position: fixed;
 }

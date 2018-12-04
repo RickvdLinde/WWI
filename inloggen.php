@@ -43,7 +43,7 @@ if (isset($_POST['inloggenknop'])) {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
         if ($passwordhash == $user['HashedPassword'] && $username == $user['LogonName']) {
             // Variabele session wordt aangemaakt en je wordt doorgestuurd naar de homepagina
-            $_SESSION['user_id'] = $user['PersonID'];
+            $_SESSION['LogonName'] = $user['LogonName'];
             $_SESSION['logged_in'] = TRUE;
         } else {
             // Bij eventuele andere errors
