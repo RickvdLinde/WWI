@@ -2,6 +2,9 @@
     padding: 0px;
     margin: 0px;
 }
+a {
+    text-decoration: none;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100%;
@@ -340,4 +343,20 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     color: #FFFFFF;
     float: left;
     padding-top: 30px;
+}
+.wrapper{
+    margin: 25px 15%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(25%, 1fr));
+}
+.wrapper > div{
+    border: #00AEEF solid 2px;
+    margin: 0.5px;
+    padding-top: 50px;
+    padding-bottom: 45px;
+    font-size: 18px;
+    text-align: center;
+}
+.productview {
+    color: #00AEEF;
 }
