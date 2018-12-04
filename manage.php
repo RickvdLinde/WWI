@@ -2,7 +2,6 @@
 session_start();
 include 'functions.php';
 print(category());
-print(footer());
 ?>
 <!DOCTYPE html>
 <html>
