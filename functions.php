@@ -7,7 +7,7 @@ function zoeken($zoeken) {
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
-
+    
     print($zoeken);
     print('<form action="#" method="GET">
             <select name="sort">
@@ -69,10 +69,15 @@ function searchontwerp($orderBy, $zoeken, $a) {
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
-            $voorraad = " Voorraad: " . $s['QuantityOnHand'] . "<br>";
+            $voorraad = $s['QuantityOnHand'];
+            if ($voorraad > 0) {
+                $opVoorraad = "Product is op voorraad<br>";
+            } else {
+                $opVoorraad = "Product is niet op voorraad<br>";
+            }
 
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $voorraad . '</p></div>');
+            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
     } elseif ($a == NULL) {
         print("Geen resultaten");
@@ -108,7 +113,13 @@ function category() {
         $loggedin = false;
         $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
     }
-    
+    if (isset($_SESSION["logged_in_admin"])){
+        $loggedinadmin = true;
+        $welkombericht = ('<h1 class="welkom">Welcome</h1>'); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+    } else {
+        $loggedinadmin = false;
+        $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
+    }
     print('<header>
         <div class="kop">
             <div class="logo">
@@ -117,13 +128,16 @@ function category() {
            '<nav>
             <a href="Winkelmandje.php">Shopping Cart</a>');
 
-
+   if ($loggedinadmin){
+       print("<a href=\"manage.php\">Manage</a>");
+       print("<a href=\"uitloggen.php\">Sign Out</a>");
+   }
     if ($loggedin) {
         print("<a href=\"uitloggen.php\">Sign Out</a>");
-    } else {
+    }
+if (empty($_SESSION['logged_in']) && empty($_SESSION['logged_in_admin'])) {
         print("<a href=\"inloggen.php\">Sign In</a>");
     }
-
     print('</nav>
             </div>
         </header>

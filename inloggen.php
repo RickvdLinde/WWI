@@ -21,15 +21,23 @@ if (isset($_POST['inloggenknop'])) {
     // Inloggegevens uit database
     $sql = "SELECT PersonID, LogonName, HashedPassword FROM people WHERE LogonName = :LogonName AND HashedPassword = :HashedPassword";
     $stmt = $pdo->prepare($sql);
+    $beheerder = $pdo->prepare("SELECT id, LogonName, HashedPassword FROM admin WHERE LogonName = :LogonName AND HashedPassword = :HashedPassword");
     
     // De inloggegevens worden gebind met de inloggegevens uit de database
     $stmt->bindValue(':LogonName', $username);
     $stmt->bindValue(':HashedPassword', $passwordhash);
+    $beheerder->bindValue(':LogonName', $username);
+    $beheerder->bindValue(':HashedPassword', $passwordhash);
+    $beheerder->execute();
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $admin = $beheerder->fetch(PDO::FETCH_ASSOC);
     
-    // Als de inloggegevens fout zijn
-    if ($user === false) {
+    if ($passwordhash == $admin['HashedPassword'] && $username == $admin['LogonName']){
+        $_SESSION['user_id'] = $admin['id'];
+        $_SESSION['logged_in_admin'] = TRUE;
+    } else {
+    if ($user === false || $beheerder === false) {
         $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
@@ -42,6 +50,7 @@ if (isset($_POST['inloggenknop'])) {
             $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
         }
     }
+}
 }
 $pdo = NULL;
 ?>
@@ -68,6 +77,9 @@ $pdo = NULL;
             } else {
                 print('<input class="inloggenknop" type="submit" value="Sign In" name="inloggenknop"><br>');
                 print('<a href="registreren.php" class="registreerknop">Register</button>');
+            }
+            if (isset($_SESSION['logged_in_admin'])){
+                header("location:index.php");
             }
             print(footer());
             ?>
