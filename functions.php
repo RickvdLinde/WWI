@@ -101,19 +101,22 @@ function searchontwerp($orderBy, $zoeken, $a) {
     $pdo = NULL;
 }
 
-function welkom($logonname) {
+function welkom() {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
     if (isset($_SESSION['logged_in'])){
-    $logonname = $_SESSION['LogonName'];}//hierin word de invoer van de gebruiker in een array gestopt
+    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker in een array gestopt
+    } else{
+    $logonname = NULL;
+    }
     $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
     $welkom->execute(array("$logonname"));
 
     while ($row = $welkom->fetch()) {
         $user = $row["FullName"];
-            return $user;
+            return ($user);
         
     }
 }
@@ -123,7 +126,7 @@ function welkom($logonname) {
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['LogonName'] . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+        $welkombericht = ('<h1 class="welkom">Welcome ' . welkom() . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
         $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
@@ -177,11 +180,11 @@ function category() {
 
         print("</ul></div>");
 
-        print('<form method="POST" action="search.php" class="zoeken">');
+        print('<form method="GET" action="search.php" class="zoeken">');
 
         $pdo = NULL;
 
-        print('<form method="POST" action="search.php" class="zoeken">
+        print('<form method="GET" action="search.php" class="zoeken">
             <input type="text" placeholder="Search.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Search" name="Zoeken">
             </form>

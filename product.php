@@ -79,39 +79,6 @@ if($productExist == FALSE){
 }
         }
 
-        //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist
-if(isset($_POST['small'])) {
-$dropdowncount = $_POST["small"];
-
-            ?>
-          <div class="productgegevens">
-                <div class="image-placeholder">
-
-                </div>
-                <div class="gegevenszonderafbeeling">
-                    <?php
-                    print("<div class=\"productnaam\">" . $itemresults[$dropdowncount] . "</div>");
-                    print("<div class=\"productprijs\">€" . $priceresults[$dropdowncount]) . "</div><br><br><br>";
-                    //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[$dropdowncount] . "<br><br>");
-                                if ($voorraad > 0) {
-                print('<div class="productopvoorraad">Product is op voorraad</div>');
-            } else {
-                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
-            }
-                    ?>
-                    <div class="formaantal">
-                        <form method="get" action=Winkelmandje.php>
-                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
-                        </form>
-                    </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[$dropdowncount]) . "</a>";
-                    ?>
-                </div>
-            </div>   
-<?php
-} 
-
 // om tot een dropdownlist te komen, moet er bepaald worden wat het verschil is tussen de categorienaam en de volledige naam. Dit gebeurt in de volgende code.         
 $arraynumitemres = array();
             $keyresnum = 0;
@@ -146,7 +113,7 @@ $keysizeANDcolor = 0;
 
                 if(array_key_exists(1, $arraydropdowns)){
  //de dropdownlist       
-print('<form id="s" method="post">');
+print('<div class=drop> <form id="s" method="post">');
                 print("<select name='small'>");
 
                 foreach ($arraydropdowns as $ADDown) {
@@ -155,7 +122,7 @@ print('<form id="s" method="post">');
                 }
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
-                print("</form>");
+                print("</form></div>");
                 }
                     //print($keydropdowns[$keysizeANDcolor]);
                     if(!isset($_POST['small'])) {
@@ -178,10 +145,6 @@ print('<form id="s" method="post">');
                     ?>
                     <div class="formaantal">
 
-                        <form method="get" action=Winkelmandje.php>
-                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
-
                         <form method="get" action="winkelmandje.php">
                             <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Add to shopping cart">
@@ -192,11 +155,7 @@ print('<form id="s" method="post">');
                     ?>
                 </div>
             </div>
-        <?php
-                    }
-                
 
-            ?>
         <!--De slider met de images-->
         <div class="slider">
            <div class="slideshow-container">
@@ -263,7 +222,7 @@ print('<form id="s" method="post">');
         }
         if (empty($winkelwagen)) {
             $winkelwagen = array();
-        }
+                    }}
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
@@ -271,7 +230,7 @@ print('<form id="s" method="post">');
         $pdo = NULL;
         ?>
         
-        <?php
+        <?php   
         print(footer());
         ?>
     </body>
