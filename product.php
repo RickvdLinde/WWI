@@ -15,32 +15,19 @@ include "functions.php"
     <body>                
         <?php
         print(category());
-        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);      
-        $naam = filter_input(INPUT_GET,
-        "product", FILTER_SANITIZE_STRING);
-        
+
+$naam = $_GET["product"];
+
+$Hasquotations = strpos($naam, '" ');
+                $naam = preg_replace('/_/',' ', $naam);
+            if ($Hasquotations) {
+            $newnaam = strstr($naam, '" ');
+                            $newnaam = preg_replace('/"/', ' ', $newnaam);
+} else {
+                $newnaam = $naam;
+            }
                 $naam = preg_replace('/_/', ' ', $naam);
 
-
-$check = strstr($naam, '"');
-$query = "'%";
-$query1 = "%'";
-if($naam == $check) {        
-
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
-
-            $stmt->execute(array("%$naam%"));
-} else {
-            $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
-
-        $stmt->execute(array("%$naam%"));
-}
-        //$stmt->execute(array($naam));
             $itemresults = array();
             $keyres = 0;
             $itemresultsCat = array();
@@ -52,10 +39,17 @@ if($naam == $check) {
             $Suplierresults = array();
             $keyresSupplier = 0;
 
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);      
+
+        
+
         $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
-        $stmt->execute(array("%$naam%"));
+        $stmt->execute(array("%$newnaam%"));
 
 
         while ($row = $stmt->fetch()) {
@@ -79,7 +73,7 @@ $keyresStock++;
             $Suplierresults[$keyresSupplier] = $leverancier;
 $keyresSupplier++;
         }
- 
+
 // om tot een dropdownlist te komen, moet er bepaald worden wat het verschil is tussen de categorienaam en de volledige naam. Dit gebeurt in de volgende code.         
 $arraynumitemres = array();
             $keyresnum = 0;
@@ -112,10 +106,11 @@ $arraynumitemresCat = array();
 }
 $keysizeANDcolor = 0;
 
-
+                if(array_key_exists(1, $arraydropdowns)){
  //de dropdownlist       
 print('<form id="s" method="post">');
                 print("<select name='small'>");
+
                 foreach ($arraydropdowns as $ADDown) {
                     print("<option value=" . $keysizeANDcolor . " selected>" .  trim($ADDown) . "</option>");
                     $keysizeANDcolor++;
@@ -123,7 +118,7 @@ print('<form id="s" method="post">');
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
                 print("</form>");
-                
+                }
                     //print($keydropdowns[$keysizeANDcolor]);
                     if(!isset($_POST['small'])) {
                     
@@ -144,9 +139,11 @@ print('<form id="s" method="post">');
             }
                     ?>
                     <div class="formaantal">
+
                         <form method="get" action="winkelmandje.php">
                             <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Add to shopping cart">
+
                         </form>
                     </div>
                     <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[0]) . "</a>";
