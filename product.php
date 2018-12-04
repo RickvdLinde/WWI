@@ -15,6 +15,7 @@ include "functions.php"
     <body>                
         <?php
         print(category());
+
 $naam = $_GET["product"];
 
 $Hasquotations = strpos($naam, '" ');
@@ -25,10 +26,8 @@ $Hasquotations = strpos($naam, '" ');
 } else {
                 $newnaam = $naam;
             }
+                $naam = preg_replace('/_/', ' ', $naam);
 
-
-
-        //$stmt->execute(array($naam));
             $itemresults = array();
             $keyres = 0;
             $itemresultsCat = array();
@@ -39,12 +38,14 @@ $Hasquotations = strpos($naam, '" ');
             $keyresStock = 0;
             $Suplierresults = array();
             $keyresSupplier = 0;
+
         $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
         $user = "root";
         $pass = "";
         $pdo = new PDO($db, $user, $pass);      
 
         
+
         $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
@@ -72,6 +73,7 @@ $keyresStock++;
             $Suplierresults[$keyresSupplier] = $leverancier;
 $keyresSupplier++;
         }
+
         //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist
 if(isset($_POST['small'])) {
 $dropdowncount = $_POST["small"];
@@ -104,6 +106,7 @@ $dropdowncount = $_POST["small"];
             </div>   
 <?php
 } 
+
 // om tot een dropdownlist te komen, moet er bepaald worden wat het verschil is tussen de categorienaam en de volledige naam. Dit gebeurt in de volgende code.         
 $arraynumitemres = array();
             $keyresnum = 0;
@@ -153,7 +156,7 @@ print('<form id="s" method="post">');
                     if(!isset($_POST['small'])) {
                     
   ?> 
-                  <div class="productgegevens">
+            <div class="productgegevens">
                 <div class="image-placeholder">
 
                 </div>
@@ -163,18 +166,24 @@ print('<form id="s" method="post">');
                                 print("<div class=\"productprijs\">€" . $priceresults[0]) . "</div><br><br><br>";
                     //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[0] . "<br><br>");
                                 if ($voorraad > 0) {
-                print('<div class="productopvoorraad">Product is op voorraad</div>');
+                print('<div class="productopvoorraad">Product is available</div>');
             } else {
-                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+                print('<div class="productnietvoorraad">Product is not available</div>');
             }
                     ?>
                     <div class="formaantal">
+
                         <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+
+                        <form method="get" action="winkelmandje.php">
+                            <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Add to shopping cart">
+
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[0]) . "</a>";
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[0]) . "</a>";
                     ?>
                 </div>
             </div>
@@ -183,6 +192,8 @@ print('<form id="s" method="post">');
                 
 
             ?>
+        <!--De slider met de images-->
+        <div class="slider">
            <div class="slideshow-container">
 
             <div class="mySlides fade">
@@ -208,6 +219,7 @@ print('<form id="s" method="post">');
               <span class="dot" onclick="currentSlide(2)"></span> 
               <span class="dot" onclick="currentSlide(3)"></span> 
             </div>
+        </div>
 
             <script>
             var slideIndex = 1;
@@ -239,10 +251,6 @@ print('<form id="s" method="post">');
             </script>
             
             <?php
-
-
-
-        
 
         $_SESSION["naam"] = $naam;
         if (isset($_SESSION["winkelwagen"])) {
