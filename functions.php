@@ -123,7 +123,7 @@ function welkom($logonname) {
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['LogonName2'] . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['LogonName'] . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
         $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.

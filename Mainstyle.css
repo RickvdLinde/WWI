@@ -345,18 +345,17 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     padding-top: 30px;
 }
 .wrapper{
-    margin: 25px 15%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(25%, 1fr));
+    margin: 55px 15%;
 }
-.wrapper > div{
-    border: #00AEEF solid 2px;
-    margin: 0.5px;
-    padding-top: 50px;
-    padding-bottom: 45px;
-    font-size: 18px;
-    text-align: center;
+.grid{
+    border-bottom: #ccc solid 2px;
+    width: 50%;
+    float: left;
 }
 .productview {
     color: #00AEEF;
+    font-size: 21px;
+}
+.productlink {
+    color: black;
 }

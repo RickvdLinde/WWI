@@ -2,7 +2,7 @@
 session_start();
 include "functions.php";
 $logonname = "";
-$_SESSION['LogonName2'] = welkom($logonname);
+$_SESSION['LogonName'] = welkom($logonname);
 ?>
 <!DOCTYPE html>
 <html>
