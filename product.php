@@ -148,7 +148,7 @@ $keysizeANDcolor = 0;
 
                 if(array_key_exists(1, $arraydropdowns)){
  //de dropdownlist       
-print('<div class=drop> <form id="s" method="post">');
+print('<div class="drop"> <form id="s" method="post">');
                 print("<select name='small'>");
 
                 foreach ($arraydropdowns as $ADDown) {

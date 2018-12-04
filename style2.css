@@ -69,8 +69,7 @@
     width: 100%;
 }*/
 .productgegevens{
-    margin-top: 20px;
-    position: absolute;
+    margin-top: 0px;
 }
 .gegevenszonderafbeeling{
     margin-left: 350px;
@@ -158,9 +157,8 @@ footer a{
             
             .slider{
                 float: left;
-                margin-top: 100px;
+                margin-top: -250px;
                 padding-left: 60px;
-                position: absolute;
             }
 
             /* Slideshow container */
@@ -247,5 +245,5 @@ footer a{
 .drop{
     padding-top: 160px;
     padding-left: 350px;
-    position: absolute;
+    position: fixed;
 }
