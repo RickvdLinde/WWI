@@ -72,8 +72,8 @@
     margin-top: 20px;
 }
 .gegevenszonderafbeeling{
-    margin-left: 20px;
-    float: left;
+    margin-left: 350px;
+    padding-top: 80px;
 }
 .productnaam{
     font-size: 30px;
@@ -154,6 +154,12 @@ footer a{
     color: white;
 }
             * {box-sizing: border-box}
+            
+            .slider{
+                float: left;
+                margin-top: -220px;
+                padding-left: 60px;
+            }
 
             /* Slideshow container */
             .slideshow-container {
@@ -234,4 +240,8 @@ footer a{
 }
 .productnietvoorraad{
     color: red;
+}
+
+.drop{
+    padding-bottom: 0px;
 }

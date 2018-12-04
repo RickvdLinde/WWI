@@ -60,12 +60,14 @@ include "functions.php"
             foreach ($winkelwagen as $key => $value) {
                 print("<tr><td>" . $value[3] . "</td></form>");
                 print('<form methode="GET" action="#">');
-                print('<td>€' . number_format($value[0], 2, ",", ".") . '</td><td>x</td><td>' . $value[1] . '</td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
-                print("<td><input class='deletebutton' type='submit' name='$value[4]' value='Delete'></form></form>");
+                print('<td>€' . number_format($value[0], 2, ",", ".") . '</td><td>x</td><td><form><input type="text" name=p'.$value[4].' value='.$value[1].'></form></td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
+                print('<form methode="GET" action="#"><td><input class="deletebutton" type="submit" name='.$value[4].' value="Delete"></form></form>');
                 if (isset($_GET[$value[4]])) {
                     unset($_SESSION["winkelwagen"][$value[4]]);
                     header("Refresh:0; url=Winkelmandje.php");
                 }
+              
+                
             }
             print("</table>");
             // Berekent het totale bedrag

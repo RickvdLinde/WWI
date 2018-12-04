@@ -17,12 +17,12 @@ include "functions.php"
         
         
         <h1 class="txet">
-            Over Wide World Importers
+            About Wide World Importers
         </h1>
         
         <p class="tk borderpagina">
-            World Wide Importers is een importeur en groothandel die producten levert aan verschillende warenhuizen en supermarkten in de Verenigde Staten.
-            We hebben als ambitie om onze activiteiten uit te breiden in Europa, dat doen we door producten rechtstreeks te gaan verkopen aan de Nederlandse consument.
+            Wide World Importers is an importer and wholesaler that supplies products to various department stores and supermarkets in the United States.
+            We have the ambition to expand our activities in Europe, which we do by selling products directly to the Dutch consumer.
         </p>
         
         
