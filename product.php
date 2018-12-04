@@ -15,34 +15,19 @@ include "functions.php"
     <body>                
         <?php
         print(category());
-        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO($db, $user, $pass);      
-        $naam = filter_input(INPUT_GET,
-        "product", FILTER_SANITIZE_STRING);
-        
-                $naam = preg_replace('/_/', ' ', $naam);
+$naam = $_GET["product"];
 
-
-$check = strstr($naam, '"');
-$query = "'%";
-$query1 = "%'";
-if($naam == $check) {        
-
-        $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
-
-
-
-
-            $stmt->execute(array("%$naam%"));
+$Hasquotations = strpos($naam, '" ');
+                $naam = preg_replace('/_/',' ', $naam);
+            if ($Hasquotations) {
+            $newnaam = strstr($naam, '" ');
+                            $newnaam = preg_replace('/"/', ' ', $newnaam);
 } else {
-            $stmt = $pdo->prepare("SELECT StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+                $newnaam = $naam;
+            }
 
-        $stmt->execute(array("%$naam%"));
-}
+
+
         //$stmt->execute(array($naam));
             $itemresults = array();
             $keyres = 0;
@@ -54,13 +39,16 @@ if($naam == $check) {
             $keyresStock = 0;
             $Suplierresults = array();
             $keyresSupplier = 0;
-
+        $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+        $user = "root";
+        $pass = "";
+        $pdo = new PDO($db, $user, $pass);      
 
         
         $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
         ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
 
-        $stmt->execute(array("%$naam%"));
+        $stmt->execute(array("%$newnaam%"));
 
 
         while ($row = $stmt->fetch()) {
@@ -105,7 +93,7 @@ $dropdowncount = $_POST["small"];
             }
                     ?>
                     <div class="formaantal">
-                        <form method="get" action=Toevoegen.php>
+                        <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
@@ -148,10 +136,11 @@ $arraynumitemresCat = array();
 }
 $keysizeANDcolor = 0;
 
-
+                if(array_key_exists(1, $arraydropdowns)){
  //de dropdownlist       
 print('<form id="s" method="post">');
                 print("<select name='small'>");
+
                 foreach ($arraydropdowns as $ADDown) {
                     print("<option value=" . $keysizeANDcolor . " selected>" .  trim($ADDown) . "</option>");
                     $keysizeANDcolor++;
@@ -159,7 +148,7 @@ print('<form id="s" method="post">');
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
                 print("</form>");
-                
+                }
                     //print($keydropdowns[$keysizeANDcolor]);
                     if(!isset($_POST['small'])) {
                     
@@ -180,7 +169,7 @@ print('<form id="s" method="post">');
             }
                     ?>
                     <div class="formaantal">
-                        <form method="get" action=Toevoegen.php>
+                        <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
                         </form>
