@@ -69,8 +69,8 @@ $pdo = NULL;
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
-            <label for='user'>E-mail: </label><input type='text' id='user' name='user' required><br>
-            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>$false");
+            <label for='user'>E-mail: </label><input type='text' id='user' name='user' maxlength='50' required><br>
+            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' maxlength='50' required><br>$false");
         }
             if (isset($_SESSION['logged_in'])){
                 header("location:index.php");
