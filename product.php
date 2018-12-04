@@ -72,12 +72,47 @@ $keyresprice++;
 $keyresStock++;
             $Suplierresults[$keyresSupplier] = $leverancier;
 $keyresSupplier++;
-$productExist = array_keys($itemresults);
+/*$productExist = array_keys($itemresults);
 print_r($productExist);
 if($productExist == FALSE){
     print("No products available");
+        }*/
+        
 }
-        }
+        //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist
+if(isset($_POST['small'])) {
+$dropdowncount = $_POST["small"];
+
+            ?>
+          <div class="productgegevens">
+                <div class="image-placeholder">
+
+                </div>
+                <div class="gegevenszonderafbeeling">
+                    <?php
+                    print("<div class=\"productnaam\">" . $itemresults[$dropdowncount] . "</div>");
+                    print("<div class=\"productprijs\">€" . $priceresults[$dropdowncount]) . "</div><br><br><br>";
+                    //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[$dropdowncount] . "<br><br>");
+                                if ($voorraad > 0) {
+                print('<div class="productopvoorraad">Product is op voorraad</div>');
+            } else {
+                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+            }
+                    ?>
+                    <div class="formaantal">
+                        <form method="get" action=Winkelmandje.php>
+                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                        </form>
+                    </div>
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[$dropdowncount]) . "</a>";
+                    ?>
+                </div>
+            </div>   
+<?php
+} 
+
+        
 
 // om tot een dropdownlist te komen, moet er bepaald worden wat het verschil is tussen de categorienaam en de volledige naam. Dit gebeurt in de volgende code.         
 $arraynumitemres = array();
@@ -152,7 +187,7 @@ print('<div class=drop> <form id="s" method="post">');
                         </form>
                     </div>
                     <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[0]) . "</a>";
-                    ?>
+                    }?>
                 </div>
             </div>
 
@@ -222,7 +257,7 @@ print('<div class=drop> <form id="s" method="post">');
         }
         if (empty($winkelwagen)) {
             $winkelwagen = array();
-                    }}
+                    }
         $_SESSION["winkelwagen"] = $winkelwagen;
         $_SESSION["prijs"] = $prijs;
         $_SESSION["voorraad"] = $voorraad;
