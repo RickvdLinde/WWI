@@ -210,18 +210,30 @@ if (empty($_SESSION['logged_in']) && empty($_SESSION['logged_in_admin'])) {
 
 
 //Hier word de stockitemname opgezocht met behulp van de stockitemid
-
-function deals($deal2) {
+function recommend($recom2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-    $deal = $pdo->prepare("SELECT StockItemName FROM StockItems WHERE StockItemID LIKE ?");
-    $deal->execute (array("$deal2"));
+    $recom = $pdo->prepare("SELECT StockItemName FROM StockItems WHERE StockItemID LIKE ?");
+    $recom->execute (array("$recom2"));
     
-    while ($row = $deal->fetch()) {
+    while ($row = $recom->fetch()) {
         $item = $row["StockItemName"];
 	print ("$item");
+    }
+}
+function price($price2) {
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $price = $pdo->prepare("SELECT RecommendedRetailPrice FROM StockItems WHERE StockItemID LIKE ?");
+    $price->execute (array("$price2"));
+    
+    while ($row = $price->fetch()) {
+        $price3 = $row["RecommendedRetailPrice"];
+	print (" €" . "$price3");
     }
 }
 /* Dit is een functie als je de afbeelding uit de database haalt.
