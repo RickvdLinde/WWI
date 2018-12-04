@@ -17,7 +17,7 @@ include "functions.php"
         
         
         <h1 class="txet">
-            Customer service
+            Customer support
         </h1>
         
         <p class="tk borderpagina">
