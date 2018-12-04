@@ -21,13 +21,10 @@ include "functions.php"
         </h1>
         
         <p class="tk borderpagina">
-            If you any questions or complains regarding our products or services, please contact the customer support.
+            If you have any questions or complains regarding our products or services, please contact the customer support.
         </p>
         
         <img src="Images/kservice.jpg" alt="Klantenservice" class="service">
-        
-        <?php
-        print(footer());
-        ?>
+
     </body>
 </html>
