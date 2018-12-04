@@ -130,7 +130,8 @@
     table-layout: auto;
     width: 100%;
 }
-footer{
+/*footer{
+    padding-top: 220px;
     margin: auto;
     border-top: solid;
     border-color: #d1d2d3;
@@ -144,7 +145,7 @@ footer a{
     display: inline-block;
     padding-left: 8%;
     padding-right: 8%;
-}
+}*/
 
 .service{
     padding-left: 25%;
