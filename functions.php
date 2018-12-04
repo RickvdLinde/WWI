@@ -106,10 +106,10 @@ function welkom() {
     $user = "root";
     $pass = "";
     $pdo = new PDO($db, $user, $pass);
-    if (isset($_SESSION['logged_in'])){
-    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker in een array gestopt
+    if (isset($_SESSION['logged_in'])){ // Wanneer de gebruiker ingelogd is,
+    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker (emailadres) in een variable gestopt
     } else{
-    $logonname = NULL;
+    $logonname = NULL; // Wanneer de gebruiker niet is ingelogd is de variable niks
     }
     $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
     $welkom->execute(array("$logonname"));
@@ -129,7 +129,7 @@ function category() {
         $welkombericht = ('<h1 class="welkom">Welcome ' . welkom() . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
-        $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
+        $welkombericht = ("");//als hij niet ingelogd is dan is de variabel niks zodat het niet undefined is.
     }
     
     print('<header>
