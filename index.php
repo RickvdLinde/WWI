@@ -55,8 +55,5 @@ include "functions.php";
             <br>
         </p><br><br>
 
-        <?php
-        print(footer());
-        ?>
     </body>
 </html>
