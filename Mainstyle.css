@@ -349,8 +349,10 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
 }
 .grid{
     border-bottom: #ccc solid 2px;
+    border-right: #ccc solid 2px;
     width: 50%;
     float: left;
+    padding: 5px 0 5px 20px;
 }
 .productview {
     color: #00AEEF;

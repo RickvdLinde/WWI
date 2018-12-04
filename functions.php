@@ -177,11 +177,11 @@ function category() {
 
         print("</ul></div>");
 
-        print('<form method="POST" action="search.php" class="zoeken">');
+        print('<form method="GET" action="search.php" class="zoeken">');
 
         $pdo = NULL;
 
-        print('<form method="POST" action="search.php" class="zoeken">
+        print('<form method="GET" action="search.php" class="zoeken">
             <input type="text" placeholder="Search.." name="zoekresultaat">
             <input type="submit" placeholder="Zoeken.."value="Search" name="Zoeken">
             </form>
