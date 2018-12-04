@@ -24,7 +24,7 @@ session_start();
         <br/>
 
         <p class="tk border">
-            Welcome on our website!
+            Welcome to our website!
         </p>
 
         <br>
