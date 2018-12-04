@@ -164,7 +164,7 @@ print('<form id="s" method="post">');
                     if(!isset($_POST['small'])) {
                     
   ?> 
-                  <div class="productgegevens">
+            <div class="productgegevens">
                 <div class="image-placeholder">
 
                 </div>
