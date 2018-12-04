@@ -24,5 +24,9 @@ include "functions.php"
             Wide World Importers
         </p>
         
+        
+        <?php
+        print(footer());
+        ?>
     </body>
 </html>

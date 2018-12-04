@@ -88,5 +88,6 @@ print("<div class=\"wrapper\">");
 print("</div>");
     }
         $pdo = NULL;
+        print(footer());
         ?>
 </html>

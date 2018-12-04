@@ -157,13 +157,11 @@ print('<div class="drop"> <form id="s" method="post">');
                 }
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
-                print("</form>");
-                } print("</div>");
+                print("</form></div>");
+                }
                     //print($keydropdowns[$keysizeANDcolor]);
+                    if(!isset($_POST['small'])) {
                     
-                
-                
-                if(!isset($_POST['small'])) {               
   ?> 
             <div class="productgegevens">
                 <div class="image-placeholder">
@@ -267,5 +265,8 @@ print('<div class="drop"> <form id="s" method="post">');
         $pdo = NULL;
         ?>
         
+        <?php   
+        print(footer());
+        ?>
     </body>
 </html>

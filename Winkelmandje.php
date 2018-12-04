@@ -94,5 +94,9 @@ include "functions.php"
             }
         }
         ?>
+    </div>
+    <?php
+    print(footer());
+    ?>
 </body>
 </html>

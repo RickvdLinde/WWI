@@ -41,6 +41,10 @@ include "functions.php"
                     "Phone number | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"] . "<br>" . "Website | " . $row["WebsiteURL"] . "<br>" . "<br>";
         }
         ?>
+        <?php
+        print(footer());
+        ?>
+            
         </p>
     </body>
 </html>

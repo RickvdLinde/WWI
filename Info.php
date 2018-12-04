@@ -24,5 +24,10 @@ include "functions.php"
             Wide World Importers is an importer and wholesaler that supplies products to various department stores and supermarkets in the United States. We have the ambition to expand our activities in Europe, which we do by selling products directly to the Dutch consumer.
         </p>
         
+        
+        <?php
+        print(footer());
+        ?>
+        
     </body>
 </html>
