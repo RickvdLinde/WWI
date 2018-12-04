@@ -72,6 +72,11 @@ $keyresprice++;
 $keyresStock++;
             $Suplierresults[$keyresSupplier] = $leverancier;
 $keyresSupplier++;
+$productExist = array_keys($itemresults);
+print_r($productExist);
+if($productExist == FALSE){
+    print("No products available");
+}
         }
 
         //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist

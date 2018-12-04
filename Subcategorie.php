@@ -82,7 +82,7 @@ print("<div class=\"wrapper\">");
     foreach ($arraydups as $cats => $counts) {
     
             $productlink = preg_replace('/\s+/', '_', $cats);
-            print("<div class=\"grid\">" . $urlproduct2 . ($productlink) . "><div class='productview'>" .($cats) . "</div></a><br><div class'productlink'>" . $counts . " Product(s)</div></div>");
+            print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div></a><br><div class'productlink'>" . $counts . " Product(s)</div></div>");
             //print("<br>");
 }
 print("</div>");
