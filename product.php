@@ -94,18 +94,18 @@ $dropdowncount = $_POST["small"];
                     print("<div class=\"productprijs\">€" . $priceresults[$dropdowncount]) . "</div><br><br><br>";
                     //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[$dropdowncount] . "<br><br>");
                                 if ($voorraad > 0) {
-                print('<div class="productopvoorraad">Product is op voorraad</div>');
+                print('<div class="productopvoorraad">Product is available</div>');
             } else {
-                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+                print('<div class="productnietvoorraad">Product is not available</div>');
             }
                     ?>
                     <div class="formaantal">
                         <form method="get" action=Winkelmandje.php>
                             <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Add to shoppingcart">
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[$dropdowncount]) . "</a>";
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Suppliers: " . $Suplierresults[$dropdowncount]) . "</a>";
                     ?>
                 </div>
             </div>   

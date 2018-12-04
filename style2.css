@@ -88,9 +88,9 @@
 .productprijs{
     font-size: 32px;
     color: #00AEEF;
-    float: right;
-    margin-right: 30%;
-    margin-top: 10px;
+    padding-left: 750px;
+    padding-top: 50px;
+    position: absolute;
 }
 .productopvoorraad{
     margin-top: 60px;
