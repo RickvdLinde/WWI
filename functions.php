@@ -180,16 +180,12 @@ if (empty($_SESSION['logged_in']) && empty($_SESSION['logged_in_admin'])) {
     print("<div class=\"navbar\"><ul>");
     while ($row = $stmt->fetch()) {
         $category = $row["StockGroupName"];
-//$Catget = 0;
         $categorylink = preg_replace('/\s+/', '_', $category);
-//print("<a href=\"$categorylink.php\">" . $category . "</a>");
         $urlsub = '<a href=Subcategorie.php?category=';
         print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
         while ($row = $stmt->fetch()) {
             $category = $row["StockGroupName"];
-//$Catget = 0;
             $categorylink = preg_replace('/\s+/', '_', $category);
-//print("<a href=\"$categorylink.php\">" . $category . "</a>");
             $urlsub = '<a href=Subcategorie.php?category=';
             print($urlsub . ($categorylink) . ">" . ($category) . "</a>");
         }
@@ -201,7 +197,7 @@ if (empty($_SESSION['logged_in']) && empty($_SESSION['logged_in_admin'])) {
         $pdo = NULL;
 
         print('<form method="GET" action="search.php" class="zoeken">
-            <input type="text" placeholder="Search.." name="zoekresultaat">
+            <input type="text" placeholder="Search.." name="zoekresultaat" maxlenght="50">
             <input type="submit" placeholder="Zoeken.."value="Search" name="Zoeken">
             </form>
         </div>');

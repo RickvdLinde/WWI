@@ -85,12 +85,12 @@ if (isset($_POST['registrerenknop'])) {
         //Als je niet bent ingelogd, print het formulier.
         if (!isset($_SESSION['logged_in'])) {
             print("<table class=\"registreren\"><form method='POST' class='inloggen'>
-            <tr><td><label for='firstname'>First name: </label></td><td><input class=\"field\" type='text' id='firstname' name='firstname' required></td></tr>
-            <tr><td><label for='lastname'>Last name: </label></td><td><input class=\"field\" type='text' id='lastname' name='lastname' required></td></tr>
-            <tr><td><label for='email'>E-mailadress: </label></td><td><input class=\"field\" type='text' id='email' name='email' required></td></tr>
-            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input class=\"field\" type='text' id='phonenumber' name='phonenumber'></td></tr>
-            <tr><td><label for='pass'>Password: </label></td><td><input class=\"field\" type='password' id='pass' name='password' required></td></tr>
-            <tr><td><label for='pass2'>Confirm password: </label></td><td><input class=\"field\" type='password' id='pass2' name='password2' required></td></tr>
+            <tr><td><label for='firstname'>First name: </label></td><td><input class=\"field\" type='text' id='firstname' name='firstname' maxlength='50' required></td></tr>
+            <tr><td><label for='lastname'>Last name: </label></td><td><input class=\"field\" type='text' id='lastname' name='lastname' maxlength='50' required></td></tr>
+            <tr><td><label for='email'>E-mailadress: </label></td><td><input class=\"field\" type='text' id='email' name='email' maxlength='50' required></td></tr>
+            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input class=\"field\" type='text' id='phonenumber' name='phonenumber' maxlength='50'></td></tr>
+            <tr><td><label for='pass'>Password: </label></td><td><input class=\"field\" type='password' id='pass' name='password' maxlength='50' required></td></tr>
+            <tr><td><label for='pass2'>Confirm password: </label></td><td><input class=\"field\" type='password' id='pass2' name='password2' maxlength='50' required></td></tr>
             <tr><td></td><td>Already have an account? Log in <a href=\"inloggen.php\">here</a></td></tr>
             <tr><td></td><td><input class=\"knopregister\" type=\"submit\" value=\"Register\" name=\"registrerenknop\"></td></tr>
             <tr><td></td><td>$wrongemailformat$emailexists$wrongpass$passwordshort</tr></td></table>");
