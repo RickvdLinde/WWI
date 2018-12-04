@@ -1,6 +1,8 @@
 <?php
-include "functions.php";
 session_start();
+include "functions.php";
+$logonname = "";
+$_SESSION['LogonName2'] = welkom($logonname);
 ?>
 <!DOCTYPE html>
 <html>

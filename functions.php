@@ -101,11 +101,28 @@ function searchontwerp($orderBy, $zoeken, $a) {
     $pdo = NULL;
 }
 
+function welkom($logonname) {
+    $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
+    $user = "root";
+    $pass = "";
+    $pdo = new PDO($db, $user, $pass);
+    $logonname = $_SESSION['LogonName']; //hierin word de invoer van de gebruiker in een array gestopt
+    $welkom = $pdo->prepare("SELECT FullName FROM people WHERE LogonName LIKE ?");
+    $welkom->execute(array("$logonname"));
+
+    while ($row = $welkom->fetch()) {
+        $user = $row["FullName"];
+            return $user;
+        
+    }
+}
+ 
+
 // Dit is de navigatiebalk van elke pagina
 function category() {
     if (isset($_SESSION["logged_in"])) {
         $loggedin = true;
-        $welkombericht = ('<h1 class="welkom">Welcome</h1>'); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+        $welkombericht = ('<h1 class="welkom">Welcome ' . $_SESSION['LogonName2'] . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
     } else {
         $loggedin = false;
         $welkombericht = ("");//als hij niet ingelogd is dan gebeurd er niks.
