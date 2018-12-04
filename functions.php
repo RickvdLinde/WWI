@@ -206,6 +206,6 @@ function photo($photo2){
 }*/
 
 function footer() {
-    print("<footer><div><a href=\"info.php\">About Wide World Importers</a>"
-            . "<a href=\"service.php\">Customer support</a><a href=\"leveranciers.php\">Suppliers</a><a href=\"contact.php\">Contact</a></div></footer>");
+    //print("<footer><div><a href=\"info.php\">About Wide World Importers</a>"
+    //        . "<a href=\"service.php\">Customer support</a><a href=\"leveranciers.php\">Suppliers</a><a href=\"contact.php\">Contact</a></div></footer>");
 }
