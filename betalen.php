@@ -68,8 +68,5 @@ session_start();
         }
         print("</div>");
         ?>
-        <?php
-        print(footer());
-        ?>
     </body>
 </html>
