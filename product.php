@@ -174,18 +174,18 @@ print('<form id="s" method="post">');
                                 print("<div class=\"productprijs\">€" . $priceresults[0]) . "</div><br><br><br>";
                     //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[0] . "<br><br>");
                                 if ($voorraad > 0) {
-                print('<div class="productopvoorraad">Product is op voorraad</div>');
+                print('<div class="productopvoorraad">Product is available</div>');
             } else {
-                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+                print('<div class="productnietvoorraad">Product is not available</div>');
             }
                     ?>
                     <div class="formaantal">
                         <form method="get" action="winkelmandje.php">
-                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                            <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Add to shopping cart">
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[0]) . "</a>";
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[0]) . "</a>";
                     ?>
                 </div>
             </div>
