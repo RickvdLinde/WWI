@@ -3,7 +3,7 @@ session_start();
 include "functions.php";
 ?>
 <!DOCTYPE html>
-
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -71,6 +71,7 @@ include "functions.php";
             $arraydups = array_count_values($DuplicateCats);
             $UniqueCats = array_unique($DuplicateCats);
         }
+
 //print_r($arraydups);
         $urlproduct1 = '<a href=product.php?product=';
         $urlproduct2 = '<a href=product2.php?product=';
@@ -81,13 +82,14 @@ if (count($DuplicateCats) > 0){
 print("<div class=\"wrapper\">");
     foreach ($arraydups as $cats => $counts) {
     
-            $productlink = preg_replace('/\s+/', '_', $cats);
+            $productlink = preg_replace('/\s/', '_', $cats);
             print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div></a><br><div class'productlink'>" . $counts . " Product(s)</div></div>");
             //print("<br>");
 }
 print("</div>");
+    } else {
+        print("No results available");
     }
         $pdo = NULL;
-        print(footer());
         ?>
 </html>
