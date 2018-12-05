@@ -28,6 +28,7 @@ session_start();
         if (!empty($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
 
+            //Wanneer winkelwagen leeg is niks weergeven
             if (!empty($winkelwagen)) {
                 print("<div class=\"borderpagina\">");
                 print("Totale bedrag: €");

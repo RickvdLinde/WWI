@@ -8,7 +8,6 @@ function zoeken($zoeken) {
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
 
-    print($zoeken);
 
     print('<form action="#" method="GET">
             <select name="sort">
