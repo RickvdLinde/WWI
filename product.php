@@ -26,7 +26,7 @@ $Hasquotations = strpos($naam, '" ');
 } else {
                 $newnaam = $naam;
             }
-                $naam = preg_replace('/_/', ' ', $naam);
+//                $naam = preg_replace('/_/', ' ', $naam);
 
             $itemresults = array();
             $keyres = 0;
@@ -47,7 +47,7 @@ $Hasquotations = strpos($naam, '" ');
         
 
         $stmt = $pdo->prepare("SELECT s.StockItemID, StockItemName, RecommendedRetailPrice, QuantityOnHand, MarketingComments, SupplierName FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID JOIN suppliers l
-        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ?");
+        ON s.SupplierID = l.SupplierID WHERE StockItemName LIKE ? ");
 
         $stmt->execute(array("%$newnaam%"));
 
@@ -72,12 +72,7 @@ $keyresprice++;
 $keyresStock++;
             $Suplierresults[$keyresSupplier] = $leverancier;
 $keyresSupplier++;
-/*$productExist = array_keys($itemresults);
-print_r($productExist);
-if($productExist == FALSE){
-    print("No products available");
-        }*/
-        
+
 }
         //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist
 if(isset($_POST['small'])) {
@@ -112,8 +107,6 @@ $dropdowncount = $_POST["small"];
 <?php
 } 
 
-        
-
 // om tot een dropdownlist te komen, moet er bepaald worden wat het verschil is tussen de categorienaam en de volledige naam. Dit gebeurt in de volgende code.         
 $arraynumitemres = array();
             $keyresnum = 0;
@@ -147,21 +140,32 @@ $arraynumitemresCat = array();
 $keysizeANDcolor = 0;
 
                 if(array_key_exists(1, $arraydropdowns)){
+
  //de dropdownlist       
 print('<div class=drop> <form id="s" method="post">');
                 print("<select name='small'>");
-
+                                if(!isset($_POST['small'])) {
                 foreach ($arraydropdowns as $ADDown) {
-                    print("<option value=" . $keysizeANDcolor . " selected>" .  trim($ADDown) . "</option>");
+                    print("<option value=" . $keysizeANDcolor . " selected>" .  trim($ADDown, " - ") . "</option>");
                     $keysizeANDcolor++;
-                }
+                }}
+                                if(isset($_POST['small'])) {
+                                                    foreach ($arraydropdowns as $ADDown) {
+                                                        if($keysizeANDcolor != $dropdowncount){
+                                                        print("<option value=" . $keysizeANDcolor . " selected>" .  trim($ADDown, " - ") . "</option>");}
+                    $keysizeANDcolor++;
+                                                    }
+                print("<option value=" . $dropdowncount . " selected>" .  trim($arraydropdowns[$dropdowncount], " - ") . "</option>");}
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
                 print("</form></div>");
                 }
                     //print($keydropdowns[$keysizeANDcolor]);
+                $setkey = 0;
                     if(!isset($_POST['small'])) {
-                    
+                        $setkey = count($arraydropdowns) -1;                                            
+
+
   ?> 
             <div class="productgegevens">
                 <div class="image-placeholder">
@@ -169,8 +173,8 @@ print('<div class=drop> <form id="s" method="post">');
                 </div>
                 <div class="gegevenszonderafbeeling">
                     <?php
-                    print("<div class=\"productnaam\">" . $itemresults[0] . "</div>");
-                                print("<div class=\"productprijs\">€" . $priceresults[0]) . "</div><br><br><br>";
+                    print("<div class=\"productnaam\">" . $itemresults[$setkey] . "</div>");
+                                print("<div class=\"productprijs\">€" . $priceresults[$setkey]) . "</div><br><br><br>";
                     //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[0] . "<br><br>");
                                 if ($voorraad > 0) {
                 print('<div class="productopvoorraad">Product is available</div>');
@@ -186,7 +190,7 @@ print('<div class=drop> <form id="s" method="post">');
 
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[0]) . "</a>";
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Supplier: " . $Suplierresults[$setkey]) . "</a>";
                     }?>
                 </div>
             </div>
@@ -251,17 +255,26 @@ print('<div class=drop> <form id="s" method="post">');
             
             <?php
 
-        $_SESSION["naam"] = $naam;
+
         if (isset($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
         }
         if (empty($winkelwagen)) {
             $winkelwagen = array();
                     }
+                    if(isset($_POST['small'])) {
         $_SESSION["winkelwagen"] = $winkelwagen;
-        $_SESSION["prijs"] = $prijs;
-        $_SESSION["voorraad"] = $voorraad;
+                $_SESSION["naam"] = $itemresults[$dropdowncount];
+        $_SESSION["prijs"] = $priceresults[$dropdowncount];
+        $_SESSION["voorraad"] = $Stockresults[$dropdowncount];
         $_SESSION["itemID"] = $itemID;
+                    } else {
+                                $_SESSION["winkelwagen"] = $winkelwagen;
+                                        $_SESSION["naam"] = $itemresults[0];
+        $_SESSION["prijs"] = $priceresults[0];
+        $_SESSION["voorraad"] = $Stockresults[0];
+        $_SESSION["itemID"] = $itemID;
+                    }
         $pdo = NULL;
         ?>
         
