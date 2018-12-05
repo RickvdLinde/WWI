@@ -28,7 +28,7 @@ if (isset($_POST['inloggenknop'])) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($passwordhash == '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918' && $username == 'admin@wideworldimporters.com'){
-        $_SESSION['user_id'] = $admin['id'];
+        $_SESSION['user_id'] = $user['PersonID'];
         $_SESSION['logged_in_admin'] = TRUE;
     } else {
     if ($user === false || $beheerder === false) {
