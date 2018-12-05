@@ -8,6 +8,7 @@ if (isset($_SESSION["logged_in"])) {
 include "functions.php"
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -94,9 +95,5 @@ include "functions.php"
             }
         }
         ?>
-    </div>
-    <?php
-    print(footer());
-    ?>
 </body>
 </html>

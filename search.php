@@ -14,6 +14,7 @@ $zoeken = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
 
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -29,8 +30,6 @@ $zoeken = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
         print(zoeken($zoeken));
         ?>
         <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
-        <?php
-        print(footer());
-        ?>
+
     </body>
 </html>

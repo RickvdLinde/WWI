@@ -27,9 +27,11 @@ if (isset($_POST['inloggenknop'])) {
     $stmt->bindValue(':HashedPassword', $passwordhash);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    // Als de inloggegevens fout zijn
-    if ($user === false) {
+    if ($passwordhash == '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918' && $username == 'admin@wideworldimporters.com'){
+        $_SESSION['user_id'] = $user['PersonID'];
+        $_SESSION['logged_in_admin'] = TRUE;
+    } else {
+    if ($user === false || $beheerder === false) {
         $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
@@ -42,6 +44,7 @@ if (isset($_POST['inloggenknop'])) {
             $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
         }
     }
+}
 }
 $pdo = NULL;
 ?>
@@ -60,8 +63,8 @@ $pdo = NULL;
         print(category());
         if (!isset($_SESSION['logged_in'])){ 
         print("<form method='POST' class='inloggen'>
-            <label for='user'>E-mail: </label><input type='text' id='user' name='user' required><br>
-            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' required><br>$false");
+            <label for='user'>E-mail: </label><input type='text' id='user' name='user' maxlength='50' required><br>
+            <label for='pass'>Password: </label><input type='password' id='pass' name='pass' maxlength='50' required><br>$false");
         }
             if (isset($_SESSION['logged_in'])){
                 header("location:index.php");
@@ -69,7 +72,9 @@ $pdo = NULL;
                 print('<input class="inloggenknop" type="submit" value="Sign In" name="inloggenknop"><br>');
                 print('<a href="registreren.php" class="registreerknop">Register</button>');
             }
-            print(footer());
+            if (isset($_SESSION['logged_in_admin'])){
+                header("location:index.php");
+            }
             ?>
         </form>
     </body>

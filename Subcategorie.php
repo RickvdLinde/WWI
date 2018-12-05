@@ -3,7 +3,7 @@ session_start();
 include "functions.php";
 ?>
 <!DOCTYPE html>
-
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -91,6 +91,5 @@ print("</div>");
         print("No results available");
     }
         $pdo = NULL;
-        print(footer());
         ?>
 </html>

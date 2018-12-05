@@ -4,11 +4,12 @@ session_start();
 include "functions.php"
 ?>
 <!DOCTYPE html>
-<html>
+<!-- Link de styling pagina's aan de html/php pagina-->
+<html> 
     <head>
         <meta charset="UTF-8">
         <title>Wide World Importers</title>
-        <link rel="stylesheet" type="text/css" href="Mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="Mainstyle.css"> 
         <link rel="icon" href="Images/archixl-logo.png">
         <link rel="stylesheet" type="text/css" href="style2.css">
     </head>
@@ -26,7 +27,6 @@ $Hasquotations = strpos($naam, '" ');
 } else {
                 $newnaam = $naam;
             }
-//                $naam = preg_replace('/_/', ' ', $naam);
 
             $itemresults = array();
             $keyres = 0;
@@ -87,20 +87,19 @@ $dropdowncount = $_POST["small"];
                     <?php
                     print("<div class=\"productnaam\">" . $itemresults[$dropdowncount] . "</div>");
                     print("<div class=\"productprijs\">€" . $priceresults[$dropdowncount]) . "</div><br><br><br>";
-                    //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[$dropdowncount] . "<br><br>");
                                 if ($voorraad > 0) {
-                print('<div class="productopvoorraad">Product is op voorraad</div>');
+                print('<div class="productopvoorraad">Product is available</div>');
             } else {
-                print('<div class="productnietvoorraad">Product is niet op voorraad</div>');
+                print('<div class="productnietvoorraad">Product is not available</div>');
             }
                     ?>
                     <div class="formaantal">
                         <form method="get" action=Winkelmandje.php>
-                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal">
-                            <input class="toevoegenbutton" type="submit" name="submit" value="Toevoegen aan Winkelmandje">
+                            <label for="aantal">Aantal Producten: </label><input type="number" id="aantal" name="aantal" value="1">
+                            <input class="toevoegenbutton" type="submit" name="submit" value="Add to shoppingcart">
                         </form>
                     </div>
-                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Leverancier: " . $Suplierresults[$dropdowncount]) . "</a>";
+                    <?php print("<br><br><a href=\"leveranciers.php\" class=\"productleverancier\">Suppliers: " . $Suplierresults[$dropdowncount]) . "</a>";
                     ?>
                 </div>
             </div>   
@@ -142,7 +141,7 @@ $keysizeANDcolor = 0;
                 if(array_key_exists(1, $arraydropdowns)){
 
  //de dropdownlist       
-print('<div class=drop> <form id="s" method="post">');
+print('<div class="drop"> <form id="s" method="post">');
                 print("<select name='small'>");
                                 if(!isset($_POST['small'])) {
                 foreach ($arraydropdowns as $ADDown) {
@@ -158,14 +157,14 @@ print('<div class=drop> <form id="s" method="post">');
                 print("<option value=" . $dropdowncount . " selected>" .  trim($arraydropdowns[$dropdowncount], " - ") . "</option>");}
                 print("</select>");
                 print('<input type="submit" name="Submit" value="Confirm">');
-                print("</form></div>");
-                }
-                    //print($keydropdowns[$keysizeANDcolor]);
+                print("</form>");
+                } print("</div>");
+
+
                 $setkey = 0;
                     if(!isset($_POST['small'])) {
                         $setkey = count($arraydropdowns) -1;                                            
-
-
+         
   ?> 
             <div class="productgegevens">
                 <div class="image-placeholder">
@@ -185,7 +184,7 @@ print('<div class=drop> <form id="s" method="post">');
                     <div class="formaantal">
 
                         <form method="get" action="winkelmandje.php">
-                            <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal">
+                            <label for="aantal">Number of products: </label><input type="number" id="aantal" name="aantal" value="1">
                             <input class="toevoegenbutton" type="submit" name="submit" value="Add to shopping cart">
 
                         </form>
@@ -270,16 +269,13 @@ print('<div class=drop> <form id="s" method="post">');
         $_SESSION["itemID"] = $itemID;
                     } else {
                                 $_SESSION["winkelwagen"] = $winkelwagen;
-                                        $_SESSION["naam"] = $itemresults[0];
-        $_SESSION["prijs"] = $priceresults[0];
-        $_SESSION["voorraad"] = $Stockresults[0];
+                                        $_SESSION["naam"] = $itemresults[$setkey];
+        $_SESSION["prijs"] = $priceresults[$setkey];
+        $_SESSION["voorraad"] = $Stockresults[$setkey];
         $_SESSION["itemID"] = $itemID;
                     }
         $pdo = NULL;
         ?>
         
-        <?php   
-        print(footer());
-        ?>
     </body>
 </html>
