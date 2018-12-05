@@ -3,6 +3,7 @@ include "functions.php";
 session_start();
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">

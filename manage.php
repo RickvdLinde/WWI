@@ -4,6 +4,7 @@ include 'functions.php';
 print(category());
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
