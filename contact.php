@@ -2,6 +2,7 @@
 include "functions.php"
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -24,9 +25,5 @@ include "functions.php"
             Wide World Importers
         </p>
         
-        
-        <?php
-        print(footer());
-        ?>
     </body>
 </html>

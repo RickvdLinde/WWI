@@ -2,6 +2,7 @@
 include "functions.php"
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -37,14 +38,10 @@ include "functions.php"
             $PhoneNumber = $row["PhoneNumber"];
             $FaxNumber = $row["FaxNumber"];
             $WebsiteURL = $row["WebsiteURL"];
-            echo "Naam leverancier | " . $row["SupplierName"]. "<br>" . "Postcode | " . $row["PostalCityID"]. "<br>" . 
-                    "Telefoonnummer | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"] . "<br>" . "Website | " . $row["WebsiteURL"] . "<br>" . "<br>";
+            echo "Supplier name | " . $row["SupplierName"]. "<br>" . "Postal code | " . $row["PostalCityID"]. "<br>" . 
+                    "Phone number | " . $row["PhoneNumber"] . "<br>" . "Fax | " . $row["FaxNumber"] . "<br>" . "Website | " . $row["WebsiteURL"] . "<br>" . "<br>";
         }
         ?>
-        <?php
-        print(footer());
-        ?>
-            
         </p>
     </body>
 </html>

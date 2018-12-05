@@ -2,6 +2,7 @@
 include "functions.php"
 ?>
 <!DOCTYPE html>
+<!-- Link de styling pagina's aan de html/php pagina-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -21,14 +22,8 @@ include "functions.php"
         </h1>
         
         <p class="tk borderpagina">
-            Wide World Importers is an importer and wholesaler that supplies products to various department stores and supermarkets in the United States.
-            We have the ambition to expand our activities in Europe, which we do by selling products directly to the Dutch consumer.
+            Wide World Importers is an importer and wholesaler that supplies products to various department stores and supermarkets in the United States. We have the ambition to expand our activities in Europe, which we do by selling products directly to the Dutch consumer.
         </p>
-        
-        
-        <?php
-        print(footer());
-        ?>
         
     </body>
 </html>
