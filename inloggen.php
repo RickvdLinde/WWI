@@ -20,6 +20,7 @@ if (isset($_POST['inloggenknop'])) {
     
     // Inloggegevens uit database
     $sql = "SELECT PersonID, LogonName, HashedPassword FROM people WHERE LogonName = :LogonName AND HashedPassword = :HashedPassword";
+    $admin = $pdo->prepare("SELECT * FROM people WHERE EmailAddress = 'admin@wideworldimporters.com'");
     $stmt = $pdo->prepare($sql);
     
     // De inloggegevens worden gebind met de inloggegevens uit de database
@@ -27,8 +28,8 @@ if (isset($_POST['inloggenknop'])) {
     $stmt->bindValue(':HashedPassword', $passwordhash);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($passwordhash == '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918' && $username == 'admin@wideworldimporters.com'){
-        $_SESSION['user_id'] = $user['PersonID'];
+    $rowcount = $admin->rowCount();
+    if ($rowcount > 0){
         $_SESSION['logged_in_admin'] = TRUE;
     } else {
     if ($user === false || $beheerder === false) {
@@ -37,7 +38,6 @@ if (isset($_POST['inloggenknop'])) {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
         if ($passwordhash == $user['HashedPassword'] && $username == $user['LogonName']) {
             // Variabele session wordt aangemaakt en je wordt doorgestuurd naar de homepagina
-            $_SESSION['LogonName'] = $user['LogonName'];
             $_SESSION['logged_in'] = TRUE;
         } else {
             // Bij eventuele andere errors

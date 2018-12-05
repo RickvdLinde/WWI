@@ -6,26 +6,6 @@ if (!isset($_SESSION['logged_in_admin'])) {
 } else {
     print(category());
     ?>
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Wide World Importers</title>
-            <link rel="stylesheet" type="text/css" href="Mainstyle.css">
-            <link rel="stylesheet" type="text/css" href="style2.css">
-            <link rel="icon" href="Images/archixl-logo.png">
-        </head>
-        <body>
-            <form method ="POST" class='inloggen'>
-                <label for='user'>StockItemID: </label><input  type='text' id='itemid' name='itemid' required><br>
-                <label for='pass'>Prijs: </label><input type='text' id='prijs' name='prijs' required><br>
-                <input class='updateknop' type='submit' id='submit' name='submit' value='Updaten'<br>
-            </form>
-        </body>
-    </html>
-    <?php
-print(category());
-?>
 <!DOCTYPE html>
 <!-- Link de styling pagina's aan de html/php pagina-->
 <html>
