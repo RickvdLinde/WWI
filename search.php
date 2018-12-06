@@ -24,13 +24,13 @@ $_SESSION['zoekenvalue'] = $zoeken;
         <?php
         print(category());
 
-        print('<form action="search.php" method="GET">
+        print('<form action="search.php" method="GET" class="filter">
             <select name="sort">
-                <option value="1">Selecteer</option>
-                <option value="2">Prijs laag naar hoog</option>
-                <option value="3">Prijs hoog naar laag</option>
-                <option value="4">Naam A tot Z</option>
-                <option value="5">Naam Z tot A</option>
+                <option value="1">Select</option>
+                <option value="2">Price: low to high</option>
+                <option value="3">Price: high to low</option>
+                <option value="4">Name: A to Z</option>
+                <option value="5">Name: Z to A</option>
             </select>
             <input type="submit" name="submit" value="sort" />
         </form>');
