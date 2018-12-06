@@ -86,7 +86,7 @@ $dropdowncount = $_POST["small"];
                 <div class="gegevenszonderafbeeling">
                     <?php
                     print("<div class=\"productnaam\">" . $itemresults[$dropdowncount] . "</div>");
-                    print("<div class=\"productprijs\">€" . $priceresults[$dropdowncount]) . "</div><br><br><br>";
+                    print("<div class=\"productprijs\">€" . number_format($priceresults[$dropdowncount], 2, ",", ".")) . "</div><br><br><br>";
                                 if ($voorraad > 0) {
                 print('<div class="productopvoorraad">Product is available</div>');
             } else {
@@ -173,7 +173,7 @@ print('<div class="drop"> <form id="s" method="post">');
                 <div class="gegevenszonderafbeeling">
                     <?php
                     print("<div class=\"productnaam\">" . $itemresults[$setkey] . "</div>");
-                                print("<div class=\"productprijs\">€" . $priceresults[$setkey]) . "</div><br><br><br>";
+                                print("<div class=\"productprijs\">€" . number_format($priceresults[$setkey], 2, ",", ".")) . "</div><br><br><br>";
                     //print("<div class=\"productvoorraad\">Producten op voorraad: " . $Stockresults[0] . "<br><br>");
                                 if ($voorraad > 0) {
                 print('<div class="productopvoorraad">Product is available</div>');
