@@ -62,7 +62,7 @@ include "functions.php"
 
                 // veranderen hoeveelheid invoegveld en knop
                 print('<td>€' . number_format($value[0], 2, ",", ".") . '</td><td>x</td><td><form methode="GET" action="#"><input type="text" name=' . $productname . ' value=' . $value[1] . '>'
-                        . '<input type="submit" class="opslaanbutton" value=' . $productname . ' ></form></td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
+                        . '<input type="submit" class="opslaanbutton" value="Update" ></form></td><td>€' . number_format($value[2], 2, ",", ".") . '</td>');
                 
                 if (isset($_GET[$productname])) {
                     $_SESSION["winkelwagen"][$value[4]][1] = $_GET[$productname];
