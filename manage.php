@@ -18,7 +18,7 @@ if (!isset($_SESSION['logged_in_admin'])) {
     </head>
     <body>
         <form method ="POST" class='inloggen'>
-            <label for='user'>StockItemID: </label><input  type='text' id='itemid' name='itemid' required><br>
+            <label for='user'>StockItemID: </label><input  type='number' id='itemid' name='itemid' required><br>
             <label for='pass'>Prijs: </label><input type='text' id='prijs' name='prijs' required><br>
             <input class='updateknop' type='submit' id='submit' name='submit' value='Updaten'<br>
         </form>
