@@ -11,11 +11,11 @@ function zoeken($zoeken) {
 
     print('<form action="#" method="GET">
             <select name="sort">
-                <option value="1">Selecteer</option>
-                <option value="2">Prijs laag naar hoog</option>
-                <option value="3">Prijs hoog naar laag</option>
-                <option value="4">Naam A tot Z</option>
-                <option value="5">Naam Z tot A</option>
+                <option value="1">Select</option>
+                <option value="2">Price: low to high</option>
+                <option value="3">Price: high to low</option>
+                <option value="4">Name: A to Z</option>
+                <option value="5">Name: Z to A</option>
             </select>
             <input type="submit" name="submit" value="sort" />
         </form>');
@@ -66,7 +66,7 @@ function zoeken($zoeken) {
 // De resultaten uit function zoeken weergeven, dit wordt weergegeven op naam(link naar product), prijs en voorraad
 function searchontwerp($orderBy, $zoeken, $a) {
     $zoekresultaten = trim($zoeken);
-    print("<p class='zoekresultaat'> $a resultaten</p>");
+    print("<p class='zoekresultaat'> $a results</p>");
     print("<div class='dib'>");
 // Als de zoekbalk leeg is worden alle producten weergegeven.
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
@@ -76,16 +76,16 @@ function searchontwerp($orderBy, $zoeken, $a) {
             $prijs = "€" . $s['RecommendedRetailPrice'];
             $voorraad = $s['QuantityOnHand'];
             if ($voorraad > 0) {
-                $opVoorraad = "Product is op voorraad<br>";
+                $opVoorraad = "Product is available<br>";
             } else {
-                $opVoorraad = "Product is niet op voorraad<br>";
+                $opVoorraad = "Product is not available<br>";
             }
 
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
     } elseif ($a == NULL) {
-        print("Geen resultaten");
+        print("No results");
     } elseif ($zoeken != NULL) {
 // Print naamproduct, prijs en voorraad van een product vanuit de quarry.
         
