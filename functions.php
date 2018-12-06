@@ -191,7 +191,6 @@ function category() {
 
         print("</ul></div>");
 
-        print('<form method="GET" action="search.php" class="zoeken">');
 
         $pdo = NULL;
 

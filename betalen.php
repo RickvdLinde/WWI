@@ -25,7 +25,7 @@ session_start();
         $betalen->execute();
         $bezorgen->execute();
 
-        if (!empty($_SESSION["winkelwagen"])) {
+        if (!empty($_SESSION["winkelwagen"]) && !empty($_SESSION['logged_in'])) {
             $winkelwagen = $_SESSION["winkelwagen"];
 
             //Wanneer winkelwagen leeg is niks weergeven
@@ -41,7 +41,7 @@ session_start();
                 $betaalarray = array();
                 $betaalkey = 0;
                 print("<br><br><form method=\"GET\ action=\"#\">");
-                print("Betaalmethode: <select name=\"betaalmethode\"><option>Selecteer betaalmethode</option>");
+                print("Betaalmethode: <select name=\"betaalmethode\"><option>Select Paymentmethod</option>");
                 while ($row = $betalen->fetch()) {
                     $Betaalmethode = $row["PaymentMethodName"];
                     print("<option>" . $Betaalmethode . "</option>");
@@ -53,7 +53,7 @@ session_start();
                 //select voor bezorgmethode
                 $bezorgarray = array();
                 $bezorgkey = 0;
-                print("Bezorgmethode: <select name=\"bezorgmethode\"><option>Selecteer bezorgmethode</option>");
+                print("Bezorgmethode: <select name=\"bezorgmethode\"><option>Select Deliverymethod</option>");
                 while ($row = $bezorgen->fetch()) {
                     $Bezorgmethode = $row["DeliveryMethodName"];
                     print("<option>" . $Bezorgmethode . "</option>");
