@@ -52,7 +52,7 @@ include "functions.php"
                 $productname = NULL;
             }
 
-            // Laat gegevens van het product zien: Naam, aantal, prijs
+            // Laat gegevens van het product zien
             $totaleBedrag = 0;
             print("<br><table class=\"tabel\"><form method=\"GET\" action=\"Winkelmandje.php\"><tr><th>Product</th><th>Price per Unit</th><th></th><th>Quantity</th><th>Price</th></tr>");
             foreach ($winkelwagen as $key => $value){
@@ -70,6 +70,7 @@ include "functions.php"
                     $_SESSION["winkelwagen"][$value[4]][1] = $int;
                     $_SESSION["winkelwagen"][$value[4]][2] = $_SESSION["winkelwagen"][$value[4]][1] * $_SESSION["winkelwagen"][$value[4]][0];
                     
+                    //als je het aantal naar 0 of minder doet, wordt het verwijdert uit de winkelwagen
                     if ($_SESSION["winkelwagen"][$value[4]][1] <= 0) {
                         unset($_SESSION["winkelwagen"][$value[4]]);
                     }

@@ -25,6 +25,7 @@ session_start();
         $betalen->execute();
         $bezorgen->execute();
 
+        //controle of klant ingelogd is en of er minimaal 1 product in de winkelwagen zit
         if (!empty($_SESSION["winkelwagen"]) && !empty($_SESSION['logged_in'])) {
             $winkelwagen = $_SESSION["winkelwagen"];
 
