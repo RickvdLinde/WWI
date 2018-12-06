@@ -16,8 +16,8 @@ $passwordshort = ("");
 
 // Gegevens registratieformulier
 if (isset($_POST['registrerenknop'])) {
-    $firstname = ucfirst(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING));
-    $lastname = ucfirst(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
+    $firstname = ucfirst(strtolower(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING)));
+    $lastname = ucfirst(strtolower(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING)));
     $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
     $phonenumber = filter_input(INPUT_POST, "phonenumber", FILTER_SANITIZE_NUMBER_INT);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
@@ -56,7 +56,7 @@ if (isset($_POST['registrerenknop'])) {
         } else {
             //Als het emailadres dat is ingevuld al in de database staat.
             if ($user_check->rowCount() > 0) {
-                $emailexists = ('<p class="errorsregistreren"><strong>E-mailadres already exists</strong></p>');
+                $emailexists = ('<p class="errorsregistreren"><strong>E-mailaddress already exists</strong></p>');
             }
         }
         //Als de 2 wachtwoorden niet gelijk zijn.
@@ -88,7 +88,7 @@ if (isset($_POST['registrerenknop'])) {
             <tr><td><label for='firstname'>First name: </label></td><td><input class=\"field\" type='text' id='firstname' name='firstname' maxlength='50' required></td></tr>
             <tr><td><label for='lastname'>Last name: </label></td><td><input class=\"field\" type='text' id='lastname' name='lastname' maxlength='50' required></td></tr>
             <tr><td><label for='email'>E-mailadress: </label></td><td><input class=\"field\" type='text' id='email' name='email' maxlength='50' required></td></tr>
-            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input class=\"field\" type='text' id='phonenumber' name='phonenumber' maxlength='50'></td></tr>
+            <tr><td><label for='phonenumber'>Phone number: </label></td><td><input class=\"field\" type='number' id='phonenumber' name='phonenumber' minlength='10' maxlength='14'></td></tr>
             <tr><td><label for='pass'>Password: </label></td><td><input class=\"field\" type='password' id='pass' name='password' maxlength='50' required></td></tr>
             <tr><td><label for='pass2'>Confirm password: </label></td><td><input class=\"field\" type='password' id='pass2' name='password2' maxlength='50' required></td></tr>
             <tr><td></td><td>Already have an account? Log in <a href=\"inloggen.php\">here</a></td></tr>

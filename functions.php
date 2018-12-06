@@ -8,7 +8,6 @@ function zoeken($zoeken) {
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
 
-    print($zoeken);
 
     print('<form action="#" method="GET">
             <select name="sort">
@@ -81,7 +80,7 @@ function searchontwerp($orderBy, $zoeken, $a) {
             }
 
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
+            print('<p class="prijsproduct">' . number_format($prijs, 2, ",", ".") . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
     } elseif ($a == NULL) {
         print("Geen resultaten");

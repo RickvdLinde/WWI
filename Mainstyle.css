@@ -173,6 +173,7 @@ label[for="user"], [for="pass"]{
 }
 
 input[name="user"], input[name="pass"], input[name='firstname'], input[name='lastname'], input[name='email'], input[name='phonenumber'],
+input[name='password'], input[name='password2']
 input[name='password'], input[name='password2'], input[name='itemid'], input[name='prijs']{
 
     width: 230px;
@@ -191,11 +192,11 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 23%;
+    width: 19%;
     margin-left: 161px;
 }
 .registreerknop{
-    width: 23%;
+    width: 19%;
     padding: 10px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -324,8 +325,7 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     background-color: #1E90FF;
 }
 
-
-.recommend{
+.deals{
     width: 25%;
     border-radius: 8px;
     margin: 50px;   

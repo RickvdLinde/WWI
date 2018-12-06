@@ -20,18 +20,25 @@ if (isset($_POST['inloggenknop'])) {
     
     // Inloggegevens uit database
     $sql = "SELECT PersonID, LogonName, HashedPassword FROM people WHERE LogonName = :LogonName AND HashedPassword = :HashedPassword";
+    $admin = $pdo->prepare("SELECT * FROM people WHERE EmailAddress = 'admin@wideworldimporters.com'");
     $stmt = $pdo->prepare($sql);
     
     // De inloggegevens worden gebind met de inloggegevens uit de database
     $stmt->bindValue(':LogonName', $username);
     $stmt->bindValue(':HashedPassword', $passwordhash);
     $stmt->execute();
+    $admin->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($passwordhash == '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918' && $username == 'admin@wideworldimporters.com'){
+    
+     while ($row = $admin->fetch()) {
+         $admingegevens = $row['EmailAddress'];
+     }
+    
+    if ($username == $admingegevens){
         $_SESSION['user_id'] = $user['PersonID'];
         $_SESSION['logged_in_admin'] = TRUE;
     } else {
-    if ($user === false || $beheerder === false) {
+    if ($user === false) {
         $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
         // Als inloggegevens overeenkomen met de inloggegevens in de database
