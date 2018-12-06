@@ -191,11 +191,11 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 23%;
+    width: 19%;
     margin-left: 161px;
 }
 .registreerknop{
-    width: 23%;
+    width: 19%;
     padding: 10px;
     display: inline-block;
     border: 1px solid #ccc;
