@@ -70,7 +70,7 @@ session_start();
                     print("</form><br>Payment processed<br><br><a class='betaalbutton' href=\"index.php\">Return to homepage</a>");
                     unset($_SESSION['winkelwagen']);
                 } else {
-                    print("<strong>Selecteer een betaalmethode en een bezorgmethode</strong>");
+                    print("<strong>Select payment method and delivery method</strong>");
                 }
             }
         }
