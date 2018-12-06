@@ -70,7 +70,7 @@ include "functions.php"
                     $_SESSION["winkelwagen"][$value[4]][1] = $int;
                     $_SESSION["winkelwagen"][$value[4]][2] = $_SESSION["winkelwagen"][$value[4]][1] * $_SESSION["winkelwagen"][$value[4]][0];
                     
-                    if ($_SESSION["winkelwagen"][$value[4]][1] == 0) {
+                    if ($_SESSION["winkelwagen"][$value[4]][1] <= 0) {
                         unset($_SESSION["winkelwagen"][$value[4]]);
                     }
                     header("Refresh:0; url=Winkelmandje.php");
