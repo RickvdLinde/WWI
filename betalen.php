@@ -67,7 +67,7 @@ session_start();
             //kijkt of mensen een bezorg- en betaalmethode gekozen hebben
             if (isset($_GET["submit"])) {
                 if (in_array($_GET['betaalmethode'], $betaalarray) && in_array($_GET['bezorgmethode'], $bezorgarray)) {
-                    print("</form><br>Betaling is verwerkt<br><br><a class='betaalbutton' href=\"index.php\">Ga terug naar beginpagina</a>");
+                    print("</form><br>Payment processed<br><br><a class='betaalbutton' href=\"index.php\">Return to homepage</a>");
                     unset($_SESSION['winkelwagen']);
                 } else {
                     print("<strong>Selecteer een betaalmethode en een bezorgmethode</strong>");
