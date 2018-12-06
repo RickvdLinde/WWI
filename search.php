@@ -79,7 +79,7 @@ $_SESSION['zoekenvalue'] = $zoeken;
         $a = $orderBy->rowCount();
         print(searchontwerp($orderBy, $zoeken, $a));
         ?>
-        <a href="http://localhost/WWI/index.php">Terug naar homepagina</a>
+        <a href="http://localhost/WWI/index.php">Return to homepage</a>
 
     </body>
 </html>
