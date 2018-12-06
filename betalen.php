@@ -31,7 +31,7 @@ session_start();
             //Wanneer winkelwagen leeg is niks weergeven
             if (!empty($winkelwagen)) {
                 print("<div class=\"borderpagina\">");
-                print("Totale bedrag: €");
+                print("Total price: €");
                 if (isset($_SESSION["totalebedrag"])) {
                     $totaleBedrag = $_SESSION["totalebedrag"];
                     print(number_format($totaleBedrag, 2, ",", "."));
@@ -41,7 +41,7 @@ session_start();
                 $betaalarray = array();
                 $betaalkey = 0;
                 print("<br><br><form method=\"GET\ action=\"#\">");
-                print("Betaalmethode: <select name=\"betaalmethode\"><option>Select Paymentmethod</option>");
+                print("Payment method: <select name=\"betaalmethode\"><option>Select Paymentmethod</option>");
                 while ($row = $betalen->fetch()) {
                     $Betaalmethode = $row["PaymentMethodName"];
                     print("<option>" . $Betaalmethode . "</option>");
@@ -53,7 +53,7 @@ session_start();
                 //select voor bezorgmethode
                 $bezorgarray = array();
                 $bezorgkey = 0;
-                print("Bezorgmethode: <select name=\"bezorgmethode\"><option>Select Deliverymethod</option>");
+                print("Delivery method: <select name=\"bezorgmethode\"><option>Select Deliverymethod</option>");
                 while ($row = $bezorgen->fetch()) {
                     $Bezorgmethode = $row["DeliveryMethodName"];
                     print("<option>" . $Bezorgmethode . "</option>");
@@ -61,7 +61,7 @@ session_start();
                     $bezorgkey++;
                 }
                 print("</select><br><br>");
-                print("<input class=\"betaalbutton\" type=\"submit\" name=\"submit\" value=\"Betalen\"<br><br><br>");
+                print("<input class=\"betaalbutton\" type=\"submit\" name=\"submit\" value=\"Confirm\"<br><br><br>");
             }
 
             //kijkt of mensen een bezorg- en betaalmethode gekozen hebben
