@@ -66,10 +66,11 @@ function zoeken($zoeken) {
 // De resultaten uit function zoeken weergeven, dit wordt weergegeven op naam(link naar product), prijs en voorraad
 function searchontwerp($orderBy, $zoeken, $a) {
     $zoekresultaten = trim($zoeken);
-
+    print("<p class='zoekresultaat'> $a resultaten</p>");
+    print("<div class='dib'>");
 // Als de zoekbalk leeg is worden alle producten weergegeven.
     if (empty($zoekresultaten) || ctype_space($zoekresultaten)) {
-        foreach ($orderBy as $s) {
+         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
             $voorraad = $s['QuantityOnHand'];
@@ -78,16 +79,13 @@ function searchontwerp($orderBy, $zoeken, $a) {
             } else {
                 $opVoorraad = "Product is niet op voorraad<br>";
             }
-
+        }
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
-        }
     } elseif ($a == NULL) {
         print("Geen resultaten");
     } elseif ($zoeken != NULL) {
 // Print naamproduct, prijs en voorraad van een product vanuit de quarry.
-        print("<p class='zoekresultaat'> $a resultaten</p>");
-        print("<div class='dib'>");
         foreach ($orderBy as $s) {
             $naam = $s['StockItemName'];
             $prijs = "€" . $s['RecommendedRetailPrice'];
@@ -97,7 +95,6 @@ function searchontwerp($orderBy, $zoeken, $a) {
             } else {
                 $opVoorraad = "Product is niet op voorraad<br>";
             }
-
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }

@@ -50,7 +50,7 @@ $_SESSION['zoekenvalue'] = $zoeken;
                 case 1:
                     $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
                     $a = $_SESSION['zoekenvalue'];
-                    $orderBy->execute(array("%($a)%"));
+                    $orderBy->execute(array("%{$a}%"));
                     break;
                 case 2:
                     $a = $_SESSION['zoekenvalue'];
