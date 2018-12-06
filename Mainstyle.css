@@ -364,6 +364,8 @@ input[class="inloggenknop"] , input[class="inlogknop"]{
     margin: 55px 15%;
 }
 .grid{
+    box-sizing: border-box;
+    height: 100px;
     border-bottom: #ccc solid 2px;
     border-right: #ccc solid 2px;
     width: 50%;

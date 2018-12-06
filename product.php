@@ -16,7 +16,7 @@ include "functions.php"
     <body>                
         <?php
         print(category());
-
+if(isset($_GET["product"])) {
 $naam = $_GET["product"];
 
 $Hasquotations = strpos($naam, '" ');
@@ -64,7 +64,7 @@ $Hasquotations = strpos($naam, '" ');
 
             $itemresults[$keyres] = $name;
 $keyres++;
-            $itemresultsCat[$keyresCat] = $naam;
+            $itemresultsCat[$keyresCat] = $newnaam;
 $keyresCat++;
             $priceresults[$keyresprice] = $prijs;
 $keyresprice++;
@@ -74,6 +74,11 @@ $keyresStock++;
 $keyresSupplier++;
 
 }
+//check of product bestaat en of de lengte van de get niet kleiner is dan 2 IVM verkeerde invoer get
+if(!$itemresults || strlen($newnaam) < 2) {
+    print("product does not exist");
+} else {
+
         //als er een keuze is gemaakt uit de dropdownlist is deze if true, hij laadt het product zien met de value van de dropdownlist
 if(isset($_POST['small'])) {
 $dropdowncount = $_POST["small"];
@@ -274,7 +279,9 @@ print('<div class="drop"> <form id="s" method="post">');
         $_SESSION["voorraad"] = $Stockresults[$setkey];
         $_SESSION["itemID"] = $itemID;
                     }
-        $pdo = NULL;
+$pdo = NULL;}} else {
+    print("It seems like this page does not exist! ");
+}
         ?>
         
     </body>

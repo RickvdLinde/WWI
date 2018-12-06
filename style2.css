@@ -87,7 +87,8 @@
 .productprijs{
     font-size: 32px;
     color: #00AEEF;
-    padding-left: 750px;
+    padding-left: 30px;
+    left: 70%;
     padding-top: 50px;
     position: absolute;
 }
@@ -154,7 +155,7 @@ footer a{
 .gridtextsub {
     color: white;
 }
-            * {box-sizing: border-box}
+            * 
             
             .slider{
                 float: left;
@@ -246,5 +247,6 @@ footer a{
 .drop{
     padding-top: 160px;
     padding-left: 350px;
+    top: 120px;
     position: fixed;
 }
