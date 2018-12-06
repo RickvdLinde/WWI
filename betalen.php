@@ -28,7 +28,7 @@ session_start();
         if (!empty($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
 
-
+            //Wanneer winkelwagen leeg is niks weergeven
             if (!empty($winkelwagen)) {
                 print("<div class=\"borderpagina\">");
                 print("Totale bedrag: €");
@@ -36,21 +36,29 @@ session_start();
                     $totaleBedrag = $_SESSION["totalebedrag"];
                     print(number_format($totaleBedrag, 2, ",", "."));
                 }
-
+                
                 //select voor betaalmethode
+                $betaalarray = array();
+                $betaalkey = 0;
                 print("<br><br><form method=\"GET\ action=\"#\">");
                 print("Betaalmethode: <select name=\"betaalmethode\"><option>Selecteer betaalmethode</option>");
                 while ($row = $betalen->fetch()) {
                     $Betaalmethode = $row["PaymentMethodName"];
                     print("<option>" . $Betaalmethode . "</option>");
+                    $betaalarray[$betaalkey] = $Betaalmethode;
+                    $betaalkey++;
                 }
                 print("</select><br><br>");
 
                 //select voor bezorgmethode
+                $bezorgarray = array();
+                $bezorgkey = 0;
                 print("Bezorgmethode: <select name=\"bezorgmethode\"><option>Selecteer bezorgmethode</option>");
                 while ($row = $bezorgen->fetch()) {
                     $Bezorgmethode = $row["DeliveryMethodName"];
                     print("<option>" . $Bezorgmethode . "</option>");
+                    $bezorgarray[$bezorgkey] = $Bezorgmethode;
+                    $bezorgkey++;
                 }
                 print("</select><br><br>");
                 print("<input class=\"betaalbutton\" type=\"submit\" name=\"submit\" value=\"Betalen\"<br><br><br>");
@@ -58,14 +66,13 @@ session_start();
 
             //kijkt of mensen een bezorg- en betaalmethode gekozen hebben
             if (isset($_GET["submit"])) {
-                if ($_GET['betaalmethode'] !== "Selecteer betaalmethode" && $_GET['bezorgmethode'] !== "Selecteer bezorgmethode") {
+                if (in_array($_GET['betaalmethode'], $betaalarray) && in_array($_GET['bezorgmethode'], $bezorgarray)) {
                     print("</form><br>Betaling is verwerkt<br><br><a class='betaalbutton' href=\"index.php\">Ga terug naar beginpagina</a>");
                     unset($_SESSION['winkelwagen']);
                 } else {
                     print("<strong>Selecteer een betaalmethode en een bezorgmethode</strong>");
                 }
             }
-            
         }
         print("</div>");
         ?>
