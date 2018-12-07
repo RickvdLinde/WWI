@@ -19,13 +19,13 @@ include "functions.php";
         ?>
 
         <h1 class="txet">
-            <a href="http://localhost/WWI/info.php">Wide World Importers</a>
+            <a2 href="http://localhost/WWI/info.php">Wide World Importers</a2>
         </h1>
 
         <br/>
 
         <p class="tk border">
-            Krijg allemaal bloedkanker!
+            Welkom lieve vriendjes en vriendinnetjes
         </p>
 
         <br>
