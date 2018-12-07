@@ -17,18 +17,14 @@ function zoeken($zoeken) {
                 <option value="4">Naam A tot Z</option>
                 <option value="5">Naam Z tot A</option>
             </select>
-            <input type="submit" name="submit" value="sort" />
-        </form>');
+            <input type="submit" name="submit" value="sort" >
+            <input type="hidden" name="zoekresultaat" value="' . $zoeken . '"
+        ></form>');
     $_GET["test"] = $zoeken;
-    if (isset($_GET['sort'])) {
-        $test = $_GET["test"];
-        $test = trim($test);
-        print($test);
+    if (isset($_GET['sort'])) {      
+        $test = $_GET["zoekresultaat"];
         $sort = $_GET['sort'];  // Storing Selected Value In Variable
-        print ($test);
-        print ($sort);
 
-        print($test);
 
         switch ($sort) {
             case 1:
@@ -52,15 +48,23 @@ function zoeken($zoeken) {
                 $orderBy->execute(array("%$test%"));
                 break;
         }
+        $test = $zoeken;
+            $a = $orderBy->rowCount();
+            print(searchontwerp($orderBy, $zoeken, $a));
     }
 
     if (!isset($_GET['submit'])) {
+print($zoeken);
+
         $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
         $orderBy->execute(array("%$zoeken%"));
-    }
+    
     $a = $orderBy->rowCount();
-
+           //print('<form method="GET" action="search.php" class="zoeken">');
+//print('<a href=search.php?zoekresultaat=' . $zoeken);
     print(searchontwerp($orderBy, $zoeken, $a));
+    
+    }
 }
 
 // De resultaten uit function zoeken weergeven, dit wordt weergegeven op naam(link naar product), prijs en voorraad
@@ -78,9 +82,10 @@ function searchontwerp($orderBy, $zoeken, $a) {
             } else {
                 $opVoorraad = "Product is niet op voorraad<br>";
             }
-
-            print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
-            print('<p class="prijsproduct">' . number_format($prijs, 2, ",", ".") . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
+$purl = '<a href=product.php?product=';
+            $productl = preg_replace('/\s/', '_', $naam);
+            print('<div class="zoekenproduct" class="naamproduct">' . $purl . $productl . '>' . $naam . '</a>');
+            print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
     } elseif ($a == NULL) {
         print("Geen resultaten");
@@ -97,8 +102,9 @@ function searchontwerp($orderBy, $zoeken, $a) {
             } else {
                 $opVoorraad = "Product is niet op voorraad<br>";
             }
-
-            print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . ($naam) . '">' . $naam . '</a>');
+$purl = '<a href=product.php?product=';
+            $productl = preg_replace('/\s/', '_', $naam);
+            print('<div class="zoekenproduct" class="naamproduct">' . $purl . $productl . '>' . $naam . '</a>');
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
 

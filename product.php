@@ -74,6 +74,7 @@ $keyresStock++;
 $keyresSupplier++;
 
 }
+//print_r($itemresults);
 //check of product bestaat en of de lengte van de get niet kleiner is dan 2 IVM verkeerde invoer get
 if(!$itemresults || strlen($newnaam) < 2) {
     print("product does not exist");
