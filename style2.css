@@ -250,3 +250,9 @@ footer a{
     top: 120px;
     position: fixed;
 }
+
+.filter{
+    position: absolute;
+    padding-left: 30px;
+    padding-top: 40px;
+}
