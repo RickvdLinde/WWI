@@ -47,8 +47,9 @@ if (isset($_POST['registrerenknop'])) {
     if ($user_check->rowCount() == 0 && $password == $confirmpassword) {
         $_SESSION['logged_in'] = TRUE;
         $_SESSION['LogonName'] = $email;
-        header("location = index.php");
         $stmt->execute();
+        header("location:index.php");
+        
     } else {
         //Als het email format fout is, bijvoorbeeld geen @.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
