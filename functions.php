@@ -54,7 +54,7 @@ function zoeken($zoeken) {
     }
 
     if (!isset($_GET['submit'])) {
-print($zoeken);
+//print($zoeken);
 
         $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
         $orderBy->execute(array("%$zoeken%"));
