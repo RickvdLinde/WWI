@@ -40,7 +40,8 @@ include "functions.php"
                         $overige = $aantal - $voorraad;
                     }
                     // als het aantal groter is dan de voorraad
-                    print($voorraad . " producten zijn nu op voorraad. De overige " . $overige . " zullen nabesteld worden. De levertijd zal hierdoor langer worden.<br>");
+                    print($voorraad . " products are available. The remaining " . $overige . " products will be deliverd when they are available . The delivery time will be longer, 
+                                                                                                                                                   sorry for the inconvenience.<br>");
                 } else {
                     $_SESSION["aantal"] = $aantal;
                 }
