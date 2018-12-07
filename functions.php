@@ -20,7 +20,7 @@ function zoeken($zoeken) {
             <input type="submit" name="submit" value="sort" >
             <input type="hidden" name="zoekresultaat" value="' . $zoeken . '"
         ></form>');
-    $_GET["test"] = $zoeken;
+    //$_GET["test"] = $zoeken;
     if (isset($_GET['sort'])) {      
         $test = $_GET["zoekresultaat"];
         $sort = $_GET['sort'];  // Storing Selected Value In Variable
