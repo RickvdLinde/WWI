@@ -9,7 +9,7 @@ function zoeken($zoeken) {
     $sort = "";
 
 
-    print('<form action="#" method="GET">
+    print('<form action="#" method="GET" class="filter">
             <select name="sort">
                 <option value="1">Select</option>
                 <option value="2">Price: low to high</option>
@@ -100,9 +100,9 @@ function searchontwerp($orderBy, $zoeken, $a) {
             $prijs = "€" . $s['RecommendedRetailPrice'];
             $voorraad = $s['QuantityOnHand'];
             if ($voorraad > 0) {
-                $opVoorraad = "Product is op voorraad<br>";
+                $opVoorraad = "Product is available<br>";
             } else {
-                $opVoorraad = "Product is niet op voorraad<br>";
+                $opVoorraad = "Product is not available<br>";
             }
             $productl = preg_replace('/\s/', '_', $naam);
             print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . $productl . '">' . $naam . '</a>');
