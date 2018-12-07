@@ -19,13 +19,14 @@ include "functions.php";
         ?>
 
         <h1 class="txet">
-            <a2 href="http://localhost/WWI/info.php">Wide World Importers</a2>
+            Wide World Importers
         </h1>
 
         <br/>
 
         <p class="tk border">
-            Welkom lieve vriendjes en vriendinnetjes
+            Wide World Importers is an importer and wholesaler that supplies products to various department stores and supermarkets in the United States. </br>
+             We have the ambition to expand our activities in Europe, which we do by selling products directly to the Dutch consumer.
         </p>
 
         <br>
