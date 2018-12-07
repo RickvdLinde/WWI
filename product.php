@@ -280,6 +280,13 @@ print('<div class="drop"> <form id="s" method="post">');
         $_SESSION["voorraad"] = $Stockresults[$setkey];
         $_SESSION["itemID"] = $itemID;
                     }
+        ?>
+  
+            
+            <a class="link" href="http://localhost/WWI/service.php">Question or complain? click here</a>
+         
+        
+        <?php
 $pdo = NULL;}} else {
     print("It seems like this page does not exist! ");
 }

@@ -19,7 +19,7 @@ include "functions.php";
         ?>
 
         <h1 class="txet">
-            Wide World Importers
+            <a href="http://localhost/WWI/info.php">Wide World Importers</a>
         </h1>
 
         <br/>
