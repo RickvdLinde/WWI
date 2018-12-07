@@ -85,8 +85,9 @@ function searchontwerp($orderBy, $zoeken, $a) {
                 $opVoorraad = "Product is not available<br>";
             }
 
+            $purl = "<a class='naamproduct' href='product.php?product=";
             $productl = preg_replace('/\s/', '_', $naam);
-            print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . $productl . '">' . $naam . '</a>');
+            print("<div class='zoekenproduct'>" . $purl . $productl . "'>" . $naam . "</a>");
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
     } elseif ($a == NULL) {
@@ -104,8 +105,9 @@ function searchontwerp($orderBy, $zoeken, $a) {
             } else {
                 $opVoorraad = "Product is not available<br>";
             }
+            $purl = "<a class='naamproduct' href='product.php?product=";
             $productl = preg_replace('/\s/', '_', $naam);
-            print('<div class="zoekenproduct"><a class="naamproduct" href="product.php?product=' . $productl . '">' . $naam . '</a>');
+            print("<div class='zoekenproduct'>" . $purl . $productl . "'>" . $naam . "</a>");
             print('<p class="prijsproduct">' . $prijs . '</p><br><br><p class="voorraadproduct">' . $opVoorraad . '</p></div>');
         }
 
