@@ -25,7 +25,7 @@ include "functions.php";
         <br/>
 
         <p class="tk border">
-            Welcome to our website!
+            Krijg allemaal bloedkanker!
         </p>
 
         <br>
