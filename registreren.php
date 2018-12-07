@@ -41,7 +41,7 @@ if (isset($_POST['registrerenknop'])) {
         $newID = $oldmaxID + 1;
     }
     //Statement voor het toevoegen van de nieuwe geregistreerde gebruiker.
-    $stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ($newID, '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
+    $stmt = $pdo->prepare("INSERT INTO people (PersonID, FullName, PreferredName, LogonName, HashedPassword, PhoneNumber, EmailAddress) VALUES ('$newID', '$firstname $lastname', '$firstname', '$email', '$hashedpassword', '$phonenumber', '$email')");
 
     //Als er nog niemand is geregistreerd op dat account en de 2 wachtwoorden zijn hetzelfde, statement wordt uitgevoerd en je wordt ingelogd.
     if ($user_check->rowCount() == 0 && $password == $confirmpassword) {

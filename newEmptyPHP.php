@@ -1,7 +1,5 @@
 <?php
-session_start();
-$a = $_SESSION['zoekenvalue'];
-print $a;
+print(hash('sha256', 'bier'));
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
