@@ -17,7 +17,7 @@ include "functions.php";
 
         <?php
         print(category());
-
+//categorienaam uit GET halen
         $Subcat2 = filter_input(INPUT_GET, "category", FILTER_SANITIZE_STRING);
 
         $Subcat2 = preg_replace('/_/', ' ', $Subcat2);
@@ -54,8 +54,7 @@ include "functions.php";
             $CitemName = $row["StockItemName"];
             $loneproducts[$key2] = $CitemName;
             $key2++;
-            //print($CitemName . "<br>");
-            //print substr_compare($itemnames[$key], $itemnames[$key] - 1, 0, 3);
+            //bepalen hoe de namen van de subcategorie eruit zien.
             $HasUnderscore = strpos($CitemName, " - ");
             $HasColorassignment = strpos($CitemName, "(");
             if ($HasUnderscore) {
@@ -69,22 +68,17 @@ include "functions.php";
             $DuplicateCats[$key] = $itemsubcats;
             $key++;
             $arraydups = array_count_values($DuplicateCats);
-            $UniqueCats = array_unique($DuplicateCats);
         }
-
-//print_r($arraydups);
+// link naar productpagina
         $urlproduct1 = '<a href=product.php?product=';
         $urlproduct2 = '<a href=product2.php?product=';
-//$productlink = preg_replace('/\s+/', '_', $loneproducts);
-
-$usedproducts = array();
+//weergave van de subcategorieen
 if (count($DuplicateCats) > 0){
 print("<div class=\"wrapper\">");
     foreach ($arraydups as $cats => $counts) {
     
             $productlink = preg_replace('/\s/', '_', $cats);
             print("<div class=\"grid\">" . $urlproduct1 . ($productlink) . "><div class='productview'>" .($cats) . "</div></a><br><div class'productlink'>" . $counts . " Option(s)</div></div>");
-            //print("<br>");
 }
 print("</div>");
     } else {

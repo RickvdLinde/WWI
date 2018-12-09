@@ -8,7 +8,7 @@ function zoeken($zoeken) {
     $pdo = new PDO($db, $user, $pass);
     $sort = "";
 
-
+//filterlijst
     print('<form action="#" method="GET" class="filter">
             <select name="sort">
                 <option value="1">Select</option>
@@ -20,10 +20,11 @@ function zoeken($zoeken) {
             <input type="submit" name="submit" value="sort" >
             <input type="hidden" name="zoekresultaat" value="' . $zoeken . '"
         ></form>');
-    //$_GET["test"] = $zoeken;
-    if (isset($_GET['sort'])) {      
-        $test = $_GET["zoekresultaat"];
-        $sort = $_GET['sort'];  // Storing Selected Value In Variable
+// als filterlijst is aangeklikt voert hij dit uit
+    if (isset($_GET['sort'])) {
+                $test = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
+                                $sort = filter_input(INPUT_GET, "sort", FILTER_SANITIZE_STRING);
+
 
 
         switch ($sort) {
@@ -52,16 +53,14 @@ function zoeken($zoeken) {
             $a = $orderBy->rowCount();
             print(searchontwerp($orderBy, $zoeken, $a));
     }
-
+//Als filterlijst niet is aangeklikt wordt dit uitgevoerd
     if (!isset($_GET['submit'])) {
-//print($zoeken);
+
 
         $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
         $orderBy->execute(array("%$zoeken%"));
     
     $a = $orderBy->rowCount();
-           //print('<form method="GET" action="search.php" class="zoeken">');
-//print('<a href=search.php?zoekresultaat=' . $zoeken);
     print(searchontwerp($orderBy, $zoeken, $a));
     
     }

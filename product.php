@@ -16,18 +16,11 @@ include "functions.php"
     <body>                
         <?php
         print(category());
-if(isset($_GET["product"])) {
-$naam = $_GET["product"];
-
-$Hasquotations = strpos($naam, '" ');
-                $naam = preg_replace('/_/',' ', $naam);
-            if ($Hasquotations) {
-            $newnaam = strstr($naam, '" ');
-                            $newnaam = preg_replace('/"/', ' ', $newnaam);
-} else {
+// Als in de GET een product staat aangegeven wordt hij hier uit de GET gehaald.
+        if(isset($_GET["product"])) {
+        $naam = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
                 $newnaam = $naam;
-            }
-
+                //Voor het gebruik van de variabelen buiten de SQL query worden ze toegevoegd in de volgende arrays.
             $itemresults = array();
             $keyres = 0;
             $itemresultsCat = array();
@@ -61,7 +54,7 @@ $Hasquotations = strpos($naam, '" ');
             $comment = $row["MarketingComments"];
             $leverancier = $row["SupplierName"];
 
-
+//Daadwerkelijk toevoegen van de variabelen aan arrays
             $itemresults[$keyres] = $name;
 $keyres++;
             $itemresultsCat[$keyresCat] = $newnaam;
