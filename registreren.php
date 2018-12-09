@@ -35,7 +35,7 @@ if (isset($_POST['registrerenknop'])) {
     $user_check->execute();
     $row->execute();
 
-    //Loop om het eerstvolgende PersonID uit te rekenen.
+    //Loop om het eerstvolgende PersonID uit te rekenen omdat de tabel geen AUTO INCREMENT is.
     while ($row2 = $row->fetch()) {
         $oldmaxID = $row2["max(PersonID)"];
         $newID = $oldmaxID + 1;

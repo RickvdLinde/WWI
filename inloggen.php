@@ -30,14 +30,16 @@ if (isset($_POST['inloggenknop'])) {
     $admin->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
+    //Controleren of de ingevulde gegevens van admin zijn
      while ($row = $admin->fetch()) {
          $admingegevens = $row['EmailAddress'];
      }
-    
+    //Als ze van admin zijn
     if ($username == $admingegevens){
         $_SESSION['user_id'] = $user['PersonID'];
         $_SESSION['logged_in_admin'] = TRUE;
     } else {
+        //Error bij verkeerde inloggegevens
     if ($user === false) {
         $false = ('<p class="errorsinloggen"><strong>Wrong combination of E-mail and password</strong></p><br>');
     } else {
@@ -73,12 +75,15 @@ $pdo = NULL;
             <label for='user'>E-mail: </label><input type='text' id='user' name='user' maxlength='50' required><br>
             <label for='pass'>Password: </label><input type='password' id='pass' name='pass' maxlength='50' required><br>$false");
         }
+        //Als je bent ingelogd, naar homepagina.
             if (isset($_SESSION['logged_in'])){
                 header("location:index.php");
             } else {
+                //Anders, inlogpagina laten zien.
                 print('<input class="inloggenknop" type="submit" value="Sign In" name="inloggenknop"><br>');
                 print('<a href="registreren.php" class="registreerknop">Register</button>');
             }
+            //Als admin is ingelogd.
             if (isset($_SESSION['logged_in_admin'])){
                 header("location:index.php");
             }

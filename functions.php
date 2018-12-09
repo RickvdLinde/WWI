@@ -20,7 +20,7 @@ function zoeken($zoeken) {
             <input type="submit" name="submit" value="sort" >
             <input type="hidden" name="zoekresultaat" value="' . $zoeken . '"
         ></form>');
-// als filterlijst is aangeklikt voert hij dit uit
+// als filterlijst is aangeklikt voert hij de aangeklikte sorteerkeuze uit
     if (isset($_GET['sort'])) {
                 $test = filter_input(INPUT_GET, "zoekresultaat", FILTER_SANITIZE_STRING);
                                 $sort = filter_input(INPUT_GET, "sort", FILTER_SANITIZE_STRING);
@@ -55,8 +55,6 @@ function zoeken($zoeken) {
     }
 //Als filterlijst niet is aangeklikt wordt dit uitgevoerd
     if (!isset($_GET['submit'])) {
-
-
         $orderBy = $pdo->prepare("SELECT s.StockItemName, s.RecommendedRetailPrice, h.QuantityOnHand  FROM stockitems s JOIN stockitemholdings h ON s.StockItemID = h.StockItemID WHERE StockItemName LIKE ?");
         $orderBy->execute(array("%$zoeken%"));
     
