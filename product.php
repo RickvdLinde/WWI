@@ -251,24 +251,24 @@ print('<div class="drop"> <form id="s" method="post">');
             }
             </script>
             
-            <?php
+        <?php
 
-
+        //Alles in de sessie zetten, zodat het in winkelmandje.php hier weer uit gehaald kan worden
         if (isset($_SESSION["winkelwagen"])) {
             $winkelwagen = $_SESSION["winkelwagen"];
         }
         if (empty($winkelwagen)) {
             $winkelwagen = array();
-                    }
-                    if(isset($_POST['small'])) {
+        }
+        if(isset($_POST['small'])) {
         $_SESSION["winkelwagen"] = $winkelwagen;
-                $_SESSION["naam"] = $itemresults[$dropdowncount];
+        $_SESSION["naam"] = $itemresults[$dropdowncount];
         $_SESSION["prijs"] = $priceresults[$dropdowncount];
         $_SESSION["voorraad"] = $Stockresults[$dropdowncount];
         $_SESSION["itemID"] = $itemID;
-                    } else {
-                                $_SESSION["winkelwagen"] = $winkelwagen;
-                                        $_SESSION["naam"] = $itemresults[$setkey];
+        } else {
+        $_SESSION["winkelwagen"] = $winkelwagen;
+        $_SESSION["naam"] = $itemresults[$setkey];
         $_SESSION["prijs"] = $priceresults[$setkey];
         $_SESSION["voorraad"] = $Stockresults[$setkey];
         $_SESSION["itemID"] = $itemID;
