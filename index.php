@@ -45,9 +45,9 @@ include "functions.php";
             <a href="product.php?product=<?php print(recommend($product3)); ?>"><img src="Images/<?php print ($product3); ?>.png" class="recommend"></a>
             <br>
             <!-- naam van product met bijhorende link-->
-            <a class="dealtext" href="product.php?product=<?php print(recommend($product1)); ?>"><?php print(recommend($product1)); ?></a>
-            <a class="dealtext" href="product.php?product=<?php print(recommend($product2)); ?>"><?php print(recommend($product2)); ?></a>
-            <a class="dealtext" href="product.php?product=<?php print(recommend($product3)); ?>"><?php print(recommend($product3)); ?></a>   
+            <a class="recommendtext" href="product.php?product=<?php print(recommend($product1)); ?>"><?php print(recommend($product1)); ?></a> 
+            <a class="recommendtext" href="product.php?product=<?php print(recommend($product2)); ?>"><?php print(recommend($product2)); ?></a>
+            <a class="recommendtext" href="product.php?product=<?php print(recommend($product3)); ?>"><?php print(recommend($product3)); ?></a>   
             
              <!-- Prijs van product-->
              <a class="price2" href="product.php?product=<?php print(recommend($product1)); ?>"><?php print(price($product1)); ?></a>
