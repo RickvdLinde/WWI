@@ -63,6 +63,7 @@ include "functions.php";
                 $itemsubcats = strstr($CitemName, "(", TRUE);
             } else {
                 $itemsubcats = $CitemName;
+                
             }
 
             $DuplicateCats[$key] = $itemsubcats;
