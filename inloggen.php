@@ -36,6 +36,7 @@ if (isset($_POST['inloggenknop'])) {
      }
     //Als ze van admin zijn
     if ($username == $admingegevens){
+        //de variable $_SESSION['user_id'] word weer in functions.php gebruikt om een email om te zetten naar fullname
         $_SESSION['user_id'] = $user['PersonID'];
         $_SESSION['logged_in_admin'] = TRUE;
     } else {

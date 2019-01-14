@@ -145,7 +145,7 @@ function category() {
     if (!isset($_SESSION['logged_in'])) {
         if (isset($_SESSION["logged_in_admin"])) {
             $loggedinadmin = true;
-            $welkombericht = ('<h1 class="welkom">Welcome ' . welkom() . "</h1>"); //Zodra de gebruiker ingelogd, word er een variabel gemaakt.
+            $welkombericht = ('<h1 class="welkom">Welcome ' . welkom() . "</h1>"); //Zodra de admin ingelogd, word er een variabel gemaakt.
         } else {
             $loggedinadmin = false;
         }
@@ -222,7 +222,7 @@ function recommend($recom2) {
         print ("$item");
     }
 }
-
+//hier word de prijs op gezocht van het product d.m.v. stockitemid
 function price($price2) {
     $db = "mysql:host=localhost;dbname=wideworldimporters;port=3306";
     $user = "root";
@@ -255,6 +255,7 @@ function photo($photo2){
      }
 }*/
 
+//would have
 /*function footer() {
     print("<footer><div><a href=\"info.php\">About Wide World Importers</a>"
             . "<a href=\"service.php\">Customer support</a><a href=\"leveranciers.php\">Suppliers</a><a href=\"contact.php\">Contact</a></div></footer>");
